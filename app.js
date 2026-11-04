@@ -281,21 +281,21 @@ document.addEventListener('DOMContentLoaded', () => {
               Lihat Rincian & Tabel Harga
             </button>
 
-            <div class="grid grid-cols-3 gap-1.5 text-center text-[11px] font-semibold">
+            <div class="grid grid-cols-3 gap-1 sm:gap-1.5 text-center text-[10px] sm:text-[11px] font-semibold">
               ${p.pricelist_link ? `
-                <a href="${p.pricelist_link}" target="_blank" class="py-1.5 px-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center justify-center gap-1">
-                  <i data-lucide="file-text" class="w-3.5 h-3.5 text-blue-600"></i> Pricelist
-                </a>` : `<span class="py-1.5 px-2 rounded-lg bg-slate-50 text-slate-300 cursor-not-allowed">Pricelist</span>`}
+                <a href="${p.pricelist_link}" target="_blank" class="py-1.5 px-1 sm:px-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center justify-center gap-1">
+                  <i data-lucide="file-text" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-600 flex-shrink-0"></i> <span>Pricelist</span>
+                </a>` : `<span class="py-1.5 px-1 sm:px-2 rounded-lg bg-slate-50 text-slate-300 cursor-not-allowed">Pricelist</span>`}
               
               ${p.brochure_link ? `
-                <a href="${p.brochure_link}" target="_blank" class="py-1.5 px-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center justify-center gap-1">
-                  <i data-lucide="image" class="w-3.5 h-3.5 text-emerald-600"></i> Brosur
-                </a>` : `<span class="py-1.5 px-2 rounded-lg bg-slate-50 text-slate-300 cursor-not-allowed">Brosur</span>`}
+                <a href="${p.brochure_link}" target="_blank" class="py-1.5 px-1 sm:px-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center justify-center gap-1">
+                  <i data-lucide="image" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Brosur</span>
+                </a>` : `<span class="py-1.5 px-1 sm:px-2 rounded-lg bg-slate-50 text-slate-300 cursor-not-allowed">Brosur</span>`}
               
               ${p.location_map ? `
-                <a href="${p.location_map}" target="_blank" class="py-1.5 px-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center justify-center gap-1">
-                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-rose-500"></i> Maps
-                </a>` : `<span class="py-1.5 px-2 rounded-lg bg-slate-50 text-slate-300 cursor-not-allowed">Maps</span>`}
+                <a href="${p.location_map}" target="_blank" class="py-1.5 px-1 sm:px-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center justify-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-rose-500 flex-shrink-0"></i> <span>Maps</span>
+                </a>` : `<span class="py-1.5 px-1 sm:px-2 rounded-lg bg-slate-50 text-slate-300 cursor-not-allowed">Maps</span>`}
             </div>
           </div>
         </div>
@@ -804,6 +804,52 @@ document.addEventListener('DOMContentLoaded', () => {
     dpPercentValue.textContent = `${calcDpSlider.value}%`;
     updateCalculator();
   });
+
+  // Mobile Menu Drawer Handler
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+  const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+  if (mobileMenuBtn && mobileMenuDrawer) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isClosed = mobileMenuDrawer.classList.contains('hidden');
+      if (isClosed) {
+        mobileMenuDrawer.classList.remove('hidden');
+        if (mobileMenuIcon) mobileMenuIcon.setAttribute('data-lucide', 'x');
+      } else {
+        mobileMenuDrawer.classList.add('hidden');
+        if (mobileMenuIcon) mobileMenuIcon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    });
+
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuDrawer.classList.add('hidden');
+        if (mobileMenuIcon) mobileMenuIcon.setAttribute('data-lucide', 'menu');
+        lucide.createIcons();
+      });
+    });
+  }
+
+  // Floating Back to Top Button Handler
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 350) {
+        backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+        backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+        backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   // Init
   applyFilters();

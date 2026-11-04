@@ -15,8 +15,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
     .custom-scrollbar::-webkit-scrollbar {
       width: 6px;
@@ -32,11 +36,28 @@
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
       background: #94a3b8;
     }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.2s ease-out forwards;
+    }
   </style>
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          screens: {
+            'xs': '480px'
+          },
           colors: {
             brand: {
               50: '#f0fdf4',
@@ -58,28 +79,28 @@
     }
   </script>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col pb-16 md:pb-0">
 
   <!-- TOP ANNOUNCEMENT BAR & AUTO-SYNC WIDGET -->
-  <div class="bg-gradient-to-r from-cipta-navy via-slate-900 to-cipta-blue text-white text-xs py-2 px-4 shadow-sm border-b border-slate-700/50">
+  <div class="bg-gradient-to-r from-cipta-navy via-slate-900 to-cipta-blue text-white text-[11px] sm:text-xs py-2 px-3 sm:px-4 shadow-sm border-b border-slate-700/50">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <!-- Auto-Sync Status Indicator -->
       <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          Auto-Sync Aktif
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Auto-Sync
         </span>
-        <span class="text-slate-300 text-xs flex items-center gap-1">
-          <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400"></i>
-          Terakhir sinkron: <span id="topLastSyncText" class="font-bold text-white">Memuat...</span>
+        <span class="text-slate-300 text-[11px] sm:text-xs flex items-center gap-1">
+          <i data-lucide="clock" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-400"></i>
+          <span class="hidden xs:inline">Terakhir: </span><span id="topLastSyncText" class="font-bold text-white">Memuat...</span>
         </span>
-        <button id="topSyncBtn" class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold transition shadow-sm">
+        <button id="topSyncBtn" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[10px] sm:text-xs font-bold transition shadow-sm active:scale-95">
           <i data-lucide="refresh-cw" id="topSyncIcon" class="w-3 h-3"></i>
-          <span>Sinkronkan Sekarang</span>
+          <span>Sinkronkan</span>
         </button>
       </div>
 
-      <div class="flex items-center gap-4 text-slate-300 text-xs">
+      <div class="hidden sm:flex items-center gap-4 text-slate-300 text-xs">
         <a href="https://linktr.ee/ciptagroupofficial" target="_blank" class="hover:text-white flex items-center gap-1 transition">
           <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Sumber Linktree Resmi
         </a>
@@ -91,31 +112,31 @@
   </div>
 
   <!-- FLOATING SYNC PROGRESS BANNER -->
-  <div id="syncProgressBanner" class="hidden bg-gradient-to-r from-amber-600 to-amber-500 text-slate-950 px-4 py-2 text-xs font-bold shadow-md transition-all">
+  <div id="syncProgressBanner" class="hidden bg-gradient-to-r from-amber-600 to-amber-500 text-slate-950 px-3 sm:px-4 py-2 text-xs font-bold shadow-md transition-all">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
-      <div class="flex items-center gap-2">
-        <i data-lucide="refresh-cw" class="w-4 h-4 animate-spin text-slate-950"></i>
-        <span id="syncProgressMsg">Sedang mengambil data terbaru langsung dari https://linktr.ee/ciptagroupofficial...</span>
+      <div class="flex items-center gap-2 min-w-0">
+        <i data-lucide="refresh-cw" class="w-4 h-4 animate-spin text-slate-950 flex-shrink-0"></i>
+        <span id="syncProgressMsg" class="truncate sm:whitespace-normal">Sedang mengambil data terbaru langsung dari https://linktr.ee/ciptagroupofficial...</span>
       </div>
-      <span class="text-[11px] font-semibold text-slate-900 bg-amber-400/80 px-2 py-0.5 rounded">Harap tunggu ~15-20 detik</span>
+      <span class="text-[10px] sm:text-[11px] font-semibold text-slate-900 bg-amber-400/80 px-2 py-0.5 rounded whitespace-nowrap flex-shrink-0">Proses ~1 dtk</span>
     </div>
   </div>
 
   <!-- NAVIGATION BAR -->
   <header class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200/80 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-600 via-amber-500 to-emerald-600 flex items-center justify-center text-white font-black text-xl shadow-md shadow-amber-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-tr from-amber-600 via-amber-500 to-emerald-600 flex items-center justify-center text-white font-black text-lg sm:text-xl shadow-md shadow-amber-500/20 flex-shrink-0">
           C
         </div>
         <div>
-          <div class="flex items-center gap-2">
-            <span class="text-xl font-extrabold tracking-tight text-slate-900">CIPTA GROUP</span>
-            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-300">
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-base sm:text-xl font-extrabold tracking-tight text-slate-900">CIPTA GROUP</span>
+            <span class="bg-amber-100 text-amber-800 text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded border border-amber-300">
               30 TH BATAM
             </span>
           </div>
-          <p class="text-xs text-slate-500 font-medium">Katalog Resmi Properti & Pricelist Sinkron</p>
+          <p class="text-[10px] sm:text-xs text-slate-500 font-medium truncate max-w-[190px] xs:max-w-[260px] sm:max-w-none">Katalog Resmi Properti & Pricelist Sinkron</p>
         </div>
       </div>
 
@@ -127,86 +148,121 @@
         <a href="#tentang" class="hover:text-cipta-blue transition">Tentang Kami</a>
       </nav>
 
-      <!-- Action Buttons -->
-      <div class="flex items-center gap-2.5">
+      <!-- Desktop Action Buttons -->
+      <div class="hidden md:flex items-center gap-2.5">
         <a href="data_harga_booking_cicilan_lengkap.xlsx" download class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold hover:bg-emerald-100 transition shadow-sm">
           <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-600"></i>
-          <span class="hidden sm:inline">Unduh</span> Excel Sinkron
+          <span>Unduh Excel Sinkron</span>
         </a>
         <a href="https://wa.me/628117700000?text=Halo%20Cipta%20Group,%20saya%20ingin%20tanya%20informasi%20pricelist%20dan%20cicilan%20properti" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition shadow-md shadow-emerald-600/20">
           <i data-lucide="message-circle" class="w-4 h-4"></i>
           <span>Hubungi CS</span>
         </a>
       </div>
+
+      <!-- Mobile Hamburger & Quick CS Button -->
+      <div class="flex items-center gap-1.5 md:hidden">
+        <a href="https://wa.me/628117700000?text=Halo%20Cipta%20Group,%20saya%20ingin%20tanya%20informasi%20pricelist%20dan%20cicilan%20properti" target="_blank" class="p-2 rounded-xl bg-emerald-600 text-white shadow-sm flex items-center justify-center">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+        </a>
+        <button id="mobileMenuBtn" class="p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition focus:outline-none" aria-label="Buka Menu">
+          <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation Drawer -->
+    <div id="mobileMenuDrawer" class="hidden md:hidden bg-white border-t border-slate-200/90 px-4 py-3 space-y-1.5 shadow-xl animate-fadeIn">
+      <a href="#katalog" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 font-bold text-sm hover:bg-slate-100 transition">
+        <i data-lucide="building" class="w-4 h-4 text-cipta-blue"></i> Katalog 15 Proyek
+      </a>
+      <a href="#kalkulator" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-xl text-amber-700 bg-amber-50 font-bold text-sm hover:bg-amber-100 transition border border-amber-200">
+        <span class="flex items-center gap-3"><i data-lucide="calculator" class="w-4 h-4 text-amber-600"></i> Kalkulator DP & Cicilan</span>
+        <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-600 text-white">DP 0%</span>
+      </a>
+      <a href="#semua-unit" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 font-bold text-sm hover:bg-slate-100 transition">
+        <i data-lucide="table" class="w-4 h-4 text-emerald-600"></i> Tabel 68 Tipe Unit & Harga
+      </a>
+      <a href="#tentang" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 font-bold text-sm hover:bg-slate-100 transition">
+        <i data-lucide="info" class="w-4 h-4 text-slate-500"></i> Tentang Cipta Group Batam
+      </a>
+      <div class="pt-2 border-t border-slate-200 grid grid-cols-2 gap-2">
+        <a href="data_harga_booking_cicilan_lengkap.xlsx" download class="py-2.5 px-3 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-sm">
+          <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> Excel Sinkron
+        </a>
+        <a href="https://linktr.ee/ciptagroupofficial" target="_blank" class="py-2.5 px-3 rounded-xl bg-slate-900 text-white text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-sm">
+          <i data-lucide="external-link" class="w-4 h-4 text-amber-400"></i> Linktree Resmi
+        </a>
+      </div>
     </div>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="relative bg-gradient-to-b from-slate-900 via-slate-800 to-cipta-navy text-white overflow-hidden py-16 sm:py-20">
+  <section class="relative bg-gradient-to-b from-slate-900 via-slate-800 to-cipta-navy text-white overflow-hidden py-12 sm:py-20">
     <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-amber-300 mb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[11px] sm:text-xs font-medium text-amber-300 mb-3 sm:mb-4">
           <i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-400"></i>
           Skema Uang Muka (DP) & Cash Bertahap Sinkron 100%
         </div>
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
           Pilihan Hunian & Investasi Terbaik di Batam
         </h1>
-        <p class="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+        <p class="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed">
           Temukan 15 proyek perumahan, ruko, dan villa dengan transparansi simulasi 
           <span class="text-amber-400 font-semibold">Cash Bertahap 60x s/d 72x Tanpa Bunga</span> (DP 0%), maupun skema bertahap dengan DP fleksibel.
         </p>
       </div>
 
       <!-- STATS COUNTER BAR -->
-      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-slate-700/60">
-        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-          <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Total Proyek</p>
-          <p class="text-2xl sm:text-3xl font-extrabold text-white mt-1">15 <span class="text-emerald-400 text-sm font-semibold">Lokasi</span></p>
-          <p class="text-[11px] text-slate-400 mt-1">Batam Kota, Marina, Tembesi, dll</p>
+      <div class="mt-8 sm:mt-10 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 pt-6 sm:pt-8 border-t border-slate-700/60">
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/10">
+          <p class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold">Total Proyek</p>
+          <p class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mt-0.5 sm:mt-1">15 <span class="text-emerald-400 text-xs sm:text-sm font-semibold">Lokasi</span></p>
+          <p class="text-[10px] sm:text-[11px] text-slate-400 mt-0.5 line-clamp-1">Batam Kota, Marina, Tembesi</p>
         </div>
-        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-          <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Tipe Unit Terdata</p>
-          <p class="text-2xl sm:text-3xl font-extrabold text-white mt-1">68+ <span class="text-amber-400 text-sm font-semibold">Unit</span></p>
-          <p class="text-[11px] text-slate-400 mt-1">Rumah, Ruko & Villa Mewah</p>
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/10">
+          <p class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold">Tipe Unit Terdata</p>
+          <p class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mt-0.5 sm:mt-1">68+ <span class="text-amber-400 text-xs sm:text-sm font-semibold">Unit</span></p>
+          <p class="text-[10px] sm:text-[11px] text-slate-400 mt-0.5 line-clamp-1">Rumah, Ruko & Villa Mewah</p>
         </div>
-        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-          <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Cash Bertahap Murni</p>
-          <p class="text-2xl sm:text-3xl font-extrabold text-white mt-1">DP 0% <span class="text-emerald-400 text-sm font-semibold">60x</span></p>
-          <p class="text-[11px] text-slate-400 mt-1">(Harga - Booking) / 60 Bulan</p>
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/10">
+          <p class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold">Cash Bertahap Murni</p>
+          <p class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mt-0.5 sm:mt-1">DP 0% <span class="text-emerald-400 text-xs sm:text-sm font-semibold">60x</span></p>
+          <p class="text-[10px] sm:text-[11px] text-slate-400 mt-0.5 line-clamp-1">(Harga - Booking) / 60 Bulan</p>
         </div>
-        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-          <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Booking Fee / UTJ</p>
-          <p class="text-2xl sm:text-3xl font-extrabold text-white mt-1">2 - 10 <span class="text-amber-400 text-sm font-semibold">Juta</span></p>
-          <p class="text-[11px] text-slate-400 mt-1">Angsuran 1 H+14 setelah UTJ</p>
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/10">
+          <p class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold">Booking Fee / UTJ</p>
+          <p class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mt-0.5 sm:mt-1">2 - 10 <span class="text-amber-400 text-xs sm:text-sm font-semibold">Juta</span></p>
+          <p class="text-[10px] sm:text-[11px] text-slate-400 mt-0.5 line-clamp-1">Angsuran 1 H+14 setelah UTJ</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SEARCH & FILTER CONTROLS BAR -->
-  <section id="katalog" class="sticky top-20 z-30 bg-white border-b border-slate-200 shadow-sm py-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
-      <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
+  <section id="katalog" class="sticky top-16 sm:top-20 z-30 bg-white border-b border-slate-200 shadow-sm py-3 sm:py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2.5 sm:space-y-3">
+      <div class="flex flex-col lg:flex-row gap-2 sm:gap-3 items-stretch lg:items-center justify-between">
         <!-- Search Input -->
         <div class="relative flex-1">
-          <i data-lucide="search" class="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <i data-lucide="search" class="w-4 h-4 sm:w-5 sm:h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
           <input 
             type="text" 
             id="searchInput" 
-            placeholder="Cari nama proyek (contoh: Marina, Amalfi, Greenville, Foresta...)" 
-            class="w-full pl-11 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-cipta-blue focus:ring-2 focus:ring-blue-100 outline-none text-sm transition placeholder:text-slate-400 font-medium"
+            placeholder="Cari proyek (contoh: Marina, Amalfi, Greenville...)" 
+            class="w-full pl-10 sm:pl-11 pr-8 sm:pr-9 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-cipta-blue focus:ring-2 focus:ring-blue-100 outline-none text-xs sm:text-sm transition placeholder:text-slate-400 font-medium"
           >
-          <button id="clearSearchBtn" class="hidden absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+          <button id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-0.5">
             <i data-lucide="x" class="w-4 h-4"></i>
           </button>
         </div>
 
-        <!-- Filter Dropdowns -->
-        <div class="flex flex-wrap items-center gap-2">
+        <!-- Filter Dropdowns (Responsive Grid on Mobile) -->
+        <div class="grid grid-cols-1 xs:grid-cols-3 sm:flex sm:flex-wrap items-center gap-2">
           <!-- Category Select -->
-          <select id="categoryFilter" class="px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 focus:outline-none focus:border-cipta-blue cursor-pointer">
+          <select id="categoryFilter" class="w-full sm:w-auto px-3 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 focus:outline-none focus:border-cipta-blue cursor-pointer">
             <option value="ALL">Semua Kategori</option>
             <option value="Rumah">🏡 Rumah Tinggal</option>
             <option value="Ruko">🏢 Ruko Komersial</option>
@@ -214,7 +270,7 @@
           </select>
 
           <!-- Price Range Filter -->
-          <select id="priceFilter" class="px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 focus:outline-none focus:border-cipta-blue cursor-pointer">
+          <select id="priceFilter" class="w-full sm:w-auto px-3 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 focus:outline-none focus:border-cipta-blue cursor-pointer">
             <option value="ALL">Semua Range Harga</option>
             <option value="UNDER_400">&lt; Rp 400 Juta</option>
             <option value="400_800">Rp 400 Jt - Rp 800 Jt</option>
@@ -222,7 +278,7 @@
           </select>
 
           <!-- Sort Filter -->
-          <select id="sortFilter" class="px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 focus:outline-none focus:border-cipta-blue cursor-pointer">
+          <select id="sortFilter" class="w-full sm:w-auto px-3 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 focus:outline-none focus:border-cipta-blue cursor-pointer">
             <option value="DEFAULT">Urutkan: Rekomendasi</option>
             <option value="PRICE_LOW">Harga: Terendah</option>
             <option value="PRICE_HIGH">Harga: Tertinggi</option>
@@ -233,13 +289,13 @@
       </div>
 
       <!-- Quick Category Pills -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs custom-scrollbar">
-        <span class="text-slate-400 font-semibold pr-1">Kategori:</span>
-        <button class="cat-pill active px-3 py-1 rounded-full font-semibold transition bg-slate-900 text-white" data-cat="ALL">Semua (15)</button>
-        <button class="cat-pill px-3 py-1 rounded-full font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-cat="Rumah">Rumah (10)</button>
-        <button class="cat-pill px-3 py-1 rounded-full font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-cat="Ruko">Ruko (4)</button>
-        <button class="cat-pill px-3 py-1 rounded-full font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200" data-cat="Villa">Villa (1)</button>
-        <span class="ml-auto text-slate-400 text-xs hidden sm:inline" id="resultCountText">Menampilkan 15 proyek</span>
+      <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 text-xs no-scrollbar flex-nowrap -mx-4 px-4 sm:mx-0 sm:px-0">
+        <span class="text-slate-400 font-semibold pr-1 text-[11px] sm:text-xs flex-shrink-0">Kategori:</span>
+        <button class="cat-pill active px-3 py-1 rounded-full font-semibold transition bg-slate-900 text-white flex-shrink-0 text-xs" data-cat="ALL">Semua (15)</button>
+        <button class="cat-pill px-3 py-1 rounded-full font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex-shrink-0 text-xs" data-cat="Rumah">Rumah (10)</button>
+        <button class="cat-pill px-3 py-1 rounded-full font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex-shrink-0 text-xs" data-cat="Ruko">Ruko (4)</button>
+        <button class="cat-pill px-3 py-1 rounded-full font-semibold transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex-shrink-0 text-xs" data-cat="Villa">Villa (1)</button>
+        <span class="ml-auto text-slate-400 text-xs hidden sm:inline flex-shrink-0" id="resultCountText">Menampilkan 15 proyek</span>
       </div>
     </div>
   </section>
@@ -402,10 +458,10 @@
         </div>
 
         <!-- SINKRONISASI RESULT BOX -->
-        <div class="lg:col-span-5 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 sm:p-8 border border-amber-500/30 shadow-2xl relative overflow-hidden">
+        <div class="lg:col-span-5 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 sm:p-6 lg:p-8 border border-amber-500/30 shadow-2xl relative overflow-hidden">
           <div class="absolute -right-12 -top-12 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
           
-          <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
             <h3 class="text-xs uppercase font-extrabold tracking-wider text-amber-400 flex items-center gap-1.5">
               <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Rincian Cicilan Sinkron
             </h3>
@@ -415,9 +471,9 @@
           </div>
 
           <!-- Main Highlighted Monthly Installment -->
-          <div class="border-b border-slate-700/80 pb-5 mb-5">
+          <div class="border-b border-slate-700/80 pb-4 sm:pb-5 mb-4 sm:mb-5">
             <p id="labelMonthlyTitle" class="text-xs text-slate-400">Cicilan Cash Bertahap per Bulan:</p>
-            <p id="resMonthlyCicilan" class="text-3xl sm:text-4xl font-extrabold text-white mt-1 text-emerald-400">
+            <p id="resMonthlyCicilan" class="text-2xl xs:text-3xl sm:text-4xl font-extrabold text-white mt-1 text-emerald-400 break-words">
               Rp 8.250.000
             </p>
             <p id="resTenorText" class="text-xs text-slate-400 mt-1">selama 60 bulan (5 tahun) tanpa bunga</p>
@@ -453,12 +509,12 @@
             </div>
 
             <!-- Mathematical Verification Formula -->
-            <div class="p-2.5 rounded-lg bg-emerald-950/40 border border-emerald-500/20 text-[11px] text-emerald-300">
+            <div class="p-2.5 sm:p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/20 text-[11px] text-emerald-300 break-words leading-relaxed">
               <span class="font-bold block text-emerald-400 mb-0.5">✓ Verifikasi Sinkronisasi Total:</span>
               <span id="resFormulaVerification">Rp 5 Jt (UTJ) + (60 × Rp 8.250.000) = Rp 500.000.000</span>
             </div>
 
-            <div class="flex justify-between py-1 pt-2 text-slate-400">
+            <div class="flex justify-between py-1 pt-2 text-slate-400 text-[11px] sm:text-xs">
               <span>Jadwal Angsuran Pertama:</span>
               <span id="resFirstInstallmentDate" class="font-bold text-white">14 Hari setelah UTJ</span>
             </div>
@@ -479,40 +535,49 @@
   </section>
 
   <!-- MASTER UNIT TABLE SECTION -->
-  <section id="semua-unit" class="bg-white border-t border-slate-200 py-16 scroll-mt-20">
+  <section id="semua-unit" class="bg-white border-t border-slate-200 py-12 sm:py-16 scroll-mt-16 sm:scroll-mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
         <div>
           <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-600 mb-1">
             <i data-lucide="database" class="w-4 h-4"></i> Master Data Pricelist Sinkron
           </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Seluruh Daftar Tipe Unit, DP & Cicilan</h2>
-          <p class="text-slate-500 text-sm mt-1">Daftar lengkap 68 unit dari 15 proyek resmi Cipta Group dengan rincian DP dan cicilan sinkron.</p>
+          <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900">Seluruh Daftar Tipe Unit, DP & Cicilan</h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-1">Daftar lengkap 68 unit dari 15 proyek resmi Cipta Group dengan rincian DP dan cicilan sinkron.</p>
         </div>
-        <div class="flex items-center gap-2">
-          <a href="data_harga_booking_cicilan_lengkap.csv" download class="px-3.5 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5">
-            <i data-lucide="download" class="w-4 h-4"></i> Download CSV
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="data_harga_booking_cicilan_lengkap.csv" download class="flex-1 sm:flex-none justify-center px-3.5 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5">
+            <i data-lucide="download" class="w-4 h-4"></i> CSV
           </a>
-          <a href="data_harga_booking_cicilan_lengkap.xlsx" download class="px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-            <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> Download Excel Sinkron
+          <a href="data_harga_booking_cicilan_lengkap.xlsx" download class="flex-1 sm:flex-none justify-center px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> Excel Sinkron
           </a>
         </div>
       </div>
 
       <!-- Units Filter Bar -->
-      <div class="mb-4 flex flex-wrap gap-2">
-        <input 
-          type="text" 
-          id="tableSearchInput" 
-          placeholder="Filter tabel (nama proyek / tipe / posisi)..." 
-          class="px-4 py-2 text-xs rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-cipta-blue w-72"
-        >
+      <div class="mb-3 sm:mb-4 flex flex-col sm:flex-row gap-2">
+        <div class="relative w-full sm:w-80">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input 
+            type="text" 
+            id="tableSearchInput" 
+            placeholder="Filter tabel (nama proyek / tipe / posisi)..." 
+            class="w-full pl-9 pr-4 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-cipta-blue font-medium"
+          >
+        </div>
+      </div>
+
+      <!-- Mobile Scroll Hint -->
+      <div class="lg:hidden flex items-center gap-1.5 text-[11px] text-amber-800 bg-amber-50 px-3 py-2 rounded-xl border border-amber-200 mb-3 font-semibold">
+        <i data-lucide="chevrons-right" class="w-4 h-4 text-amber-600 animate-pulse flex-shrink-0"></i>
+        <span>Geser tabel ke samping untuk melihat seluruh data DP & cicilan</span>
       </div>
 
       <!-- Responsive Table Container -->
       <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm custom-scrollbar max-h-[600px] overflow-y-auto">
-        <table class="w-full text-left border-collapse text-xs">
-          <thead class="bg-slate-800 text-white sticky top-0 z-10">
+        <table class="w-full text-left border-collapse text-xs min-w-[820px]">
+          <thead class="bg-slate-800 text-white sticky top-0 z-10 shadow-sm">
             <tr>
               <th class="py-3 px-3.5 font-bold">Proyek</th>
               <th class="py-3 px-3 font-bold">Kategori</th>
@@ -535,46 +600,52 @@
   </section>
 
   <!-- MODAL: PROJECT DETAIL & PRICE TABLE POPUP -->
-  <div id="projectModal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
+  <div id="projectModal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[92vh] sm:max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
       <!-- Modal Header -->
-      <div class="p-6 border-b border-slate-200 flex items-start justify-between bg-slate-50">
-        <div class="flex items-center gap-4">
-          <img id="modalLogo" src="" alt="Project" class="w-14 h-14 rounded-xl object-cover border border-slate-200 shadow-sm">
-          <div>
-            <div class="flex items-center gap-2">
-              <h3 id="modalTitle" class="text-xl font-extrabold text-slate-900">Nama Proyek</h3>
+      <div class="p-4 sm:p-6 border-b border-slate-200 flex items-start justify-between bg-slate-50 gap-3">
+        <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+          <img id="modalLogo" src="" alt="Project" class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl object-cover border border-slate-200 shadow-sm flex-shrink-0">
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <h3 id="modalTitle" class="text-base sm:text-xl font-extrabold text-slate-900 truncate">Nama Proyek</h3>
               <span id="modalCategory" class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">Kategori</span>
             </div>
-            <p id="modalTagline" class="text-xs text-slate-500 font-medium mt-0.5">Tagline Proyek</p>
+            <p id="modalTagline" class="text-xs text-slate-500 font-medium mt-0.5 line-clamp-1">Tagline Proyek</p>
           </div>
         </div>
-        <button id="closeModalBtn" class="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition">
+        <button id="closeModalBtn" class="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition flex-shrink-0">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
       <!-- Modal Body (Scrollable) -->
-      <div class="p-6 overflow-y-auto custom-scrollbar space-y-6">
+      <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar space-y-4 sm:space-y-6">
         <!-- Quick Links / External Resource Badges -->
-        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-          <p class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">Berkas & Tautan Resmi Google Drive:</p>
-          <div id="modalResourceLinks" class="flex flex-wrap gap-2 text-xs">
+        <div class="bg-slate-50 rounded-xl p-3 sm:p-4 border border-slate-200">
+          <p class="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Berkas & Tautan Resmi Google Drive:</p>
+          <div id="modalResourceLinks" class="flex flex-wrap gap-1.5 sm:gap-2 text-xs">
             <!-- Injected dynamically -->
           </div>
         </div>
 
         <!-- Project Price Table -->
         <div>
-          <div class="flex items-center justify-between mb-2">
-            <h4 class="text-sm font-extrabold text-slate-900 flex items-center gap-1.5">
+          <div class="flex flex-wrap items-center justify-between gap-1 mb-2">
+            <h4 class="text-xs sm:text-sm font-extrabold text-slate-900 flex items-center gap-1.5">
               <i data-lucide="table-properties" class="w-4 h-4 text-emerald-600"></i> Rincian Unit, DP & Cicilan Cash Bertahap
             </h4>
-            <span class="text-[11px] text-slate-500">Angsuran 1: 14 Hari setelah UTJ</span>
+            <span class="text-[10px] sm:text-[11px] text-slate-500">Angsuran 1: 14 Hari setelah UTJ</span>
+          </div>
+
+          <!-- Mobile Scroll Hint for Modal -->
+          <div class="sm:hidden flex items-center gap-1 text-[10px] text-amber-800 bg-amber-50 px-2.5 py-1.5 rounded-lg border border-amber-200 mb-2 font-medium">
+            <i data-lucide="chevrons-right" class="w-3.5 h-3.5 text-amber-600 flex-shrink-0 animate-pulse"></i>
+            <span>Geser ke kanan untuk melihat rincian cicilan unit</span>
           </div>
 
           <div class="overflow-x-auto rounded-xl border border-slate-200 custom-scrollbar">
-            <table class="w-full text-left border-collapse text-xs">
+            <table class="w-full text-left border-collapse text-xs min-w-[620px]">
               <thead class="bg-slate-100 text-slate-700 border-b border-slate-200">
                 <tr>
                   <th class="py-2.5 px-3 font-bold">Tipe Unit</th>
@@ -595,9 +666,9 @@
         </div>
 
         <!-- Notes / Disclaimer -->
-        <div class="bg-amber-50 rounded-xl p-4 border border-amber-200 text-xs text-amber-900 space-y-1">
-          <p class="font-bold flex items-center gap-1.5">
-            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600"></i> Ketentuan Pembayaran:
+        <div class="bg-amber-50 rounded-xl p-3 sm:p-4 border border-amber-200 text-xs text-amber-900 space-y-1">
+          <p class="font-bold flex items-center gap-1.5 text-xs sm:text-sm">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 flex-shrink-0"></i> Ketentuan Pembayaran:
           </p>
           <ul class="list-disc list-inside text-[11px] space-y-0.5 text-amber-800">
             <li><b>Cash Bertahap 60x - 72x</b>: Murni tanpa bunga, DP 0% (Hanya Booking Fee di awal, sisa dibagi rata ke jumlah bulan).</li>
@@ -608,16 +679,16 @@
       </div>
 
       <!-- Modal Footer -->
-      <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
-        <a id="modalLinktreeBtn" href="#" target="_blank" class="text-xs font-semibold text-slate-600 hover:text-cipta-blue flex items-center gap-1">
+      <div class="p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3">
+        <a id="modalLinktreeBtn" href="#" target="_blank" class="text-xs font-semibold text-slate-600 hover:text-cipta-blue flex items-center gap-1 justify-center sm:justify-start">
           <i data-lucide="link" class="w-3.5 h-3.5"></i> Buka Halaman Linktree Proyek
         </a>
-        <div class="flex items-center gap-2">
-          <button id="modalSimulateBtn" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition flex items-center gap-1.5">
-            <i data-lucide="calculator" class="w-4 h-4"></i> Buka di Kalkulator
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+          <button id="modalSimulateBtn" class="px-4 py-2 sm:py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition flex items-center justify-center gap-1.5">
+            <i data-lucide="calculator" class="w-4 h-4 text-amber-400"></i> Buka di Kalkulator
           </button>
-          <a id="modalWaBtn" href="#" target="_blank" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-            <i data-lucide="message-circle" class="w-4 h-4"></i> Tanya Unit Ini di WhatsApp
+          <a id="modalWaBtn" href="#" target="_blank" class="px-4 py-2 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> Tanya di WhatsApp
           </a>
         </div>
       </div>
@@ -625,10 +696,10 @@
   </div>
 
   <!-- FOOTER SECTION -->
-  <footer id="tentang" class="bg-slate-900 text-slate-400 text-xs py-12 border-t border-slate-800 mt-auto">
+  <footer id="tentang" class="bg-slate-900 text-slate-400 text-xs py-10 sm:py-12 border-t border-slate-800 mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-        <div class="md:col-span-2 space-y-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div class="sm:col-span-2 space-y-3">
           <div class="flex items-center gap-2">
             <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-black text-sm">C</div>
             <span class="text-base font-extrabold text-white">CIPTA GROUP BATAM</span>
@@ -658,12 +729,41 @@
         </div>
       </div>
 
-      <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-500 text-[11px]">
+      <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-500 text-[11px] text-center sm:text-left">
         <p>&copy; 2026 Cipta Group Official Batam. Scraped & Digested for Property Catalog & Price Calculator.</p>
         <p>Data diambil langsung dari tautan Linktree & Google Drive resmi pengembang.</p>
       </div>
     </div>
   </footer>
+
+  <!-- MOBILE BOTTOM APP BAR (Fixed on Mobile Phones) -->
+  <nav class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-slate-200/90 py-2 px-2 flex md:hidden items-center justify-around text-[10px] font-bold text-slate-600 shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
+    <a href="#katalog" class="flex flex-col items-center gap-0.5 py-1 px-3 text-slate-700 hover:text-cipta-blue active:scale-95 transition">
+      <i data-lucide="building" class="w-4 h-4"></i>
+      <span>Katalog</span>
+    </a>
+    <a href="#kalkulator" class="flex flex-col items-center gap-0.5 py-1 px-3 text-amber-600 font-extrabold hover:text-amber-700 active:scale-95 transition">
+      <i data-lucide="calculator" class="w-4 h-4"></i>
+      <span>Kalkulator</span>
+    </a>
+    <a href="#semua-unit" class="flex flex-col items-center gap-0.5 py-1 px-3 text-slate-700 hover:text-cipta-blue active:scale-95 transition">
+      <i data-lucide="table" class="w-4 h-4"></i>
+      <span>Unit</span>
+    </a>
+    <a href="https://wa.me/628117700000?text=Halo%20Cipta%20Group,%20saya%20ingin%20tanya%20informasi%20pricelist%20dan%20cicilan%20properti" target="_blank" class="flex flex-col items-center gap-0.5 py-1 px-3 text-emerald-600 font-extrabold hover:text-emerald-700 active:scale-95 transition">
+      <i data-lucide="message-circle" class="w-4 h-4"></i>
+      <span>Chat CS</span>
+    </a>
+  </nav>
+
+  <!-- FLOATING BACK TO TOP BUTTON -->
+  <button 
+    id="backToTopBtn" 
+    class="fixed bottom-16 md:bottom-6 right-4 z-30 p-2.5 sm:p-3 rounded-full bg-slate-900/90 hover:bg-slate-900 text-white shadow-xl backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none translate-y-3"
+    aria-label="Kembali ke atas"
+  >
+    <i data-lucide="arrow-up" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+  </button>
 
   <!-- LOAD DATASET & APPLICATION SCRIPT -->
   <script src="data.js"></script>
