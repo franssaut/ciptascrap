@@ -34,7 +34,7 @@ module.exports = async function handler(req, res) {
     };
   }
 
-  data.auto_interval_hours = 6;
+  data.auto_interval = 'Harian (Setiap Hari jam 07:00 WIB via Vercel Cron)';
   data.environment = 'Vercel Edge / Serverless';
 
   return res.status(200).json(data);

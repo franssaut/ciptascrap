@@ -4,3 +4,5 @@ Thumbs.db
 sync.log
 __pycache__/
 *.tmp
+
+.vercel

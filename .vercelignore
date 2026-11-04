@@ -2,3 +2,4 @@
 *.bat
 sync.log
 .git
+server.js
