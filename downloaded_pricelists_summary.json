@@ -1,0 +1,137 @@
+[
+  {
+    "project": "Aster Tropika",
+    "filename": "Astro_PL_start 010926.pdf",
+    "file_id": "1D8am8iEf6V2K4fzDcnBU6s2rj0g0I34q",
+    "path": "pricelists\\Aster_Tropika.pdf",
+    "num_pages": 1,
+    "is_text": false,
+    "text_sample": "IMAGE_BASED"
+  },
+  {
+    "project": "Amalfi",
+    "filename": "HJ Amalfi April 2026.pdf",
+    "file_id": "1HcqNKJnQxNru5uRl-wHqAohZPEk3E4A1",
+    "path": "pricelists\\Amalfi.pdf",
+    "num_pages": 6,
+    "is_text": true,
+    "text_sample": "NO        :       / DH / PAB - BTP / IV / 2026\nPriode   :   01 April 2026\nRevisi   :          \nCicilan UM \n15 Kali 5Th ( 7.5 %) 10Th ( 7.5% ) 15Th (7.5%)\n   30/87.95 - Hook    C5 - 12 378,000,000 3,00"
+  },
+  {
+    "project": "Era Cipta Square",
+    "filename": "HJ Ruko Era Cipta Square April 2026.pdf",
+    "file_id": "1LljgHH4TYdRYjFEGDgzpbU0ObFcV-h42",
+    "path": "pricelists\\Era_Cipta_Square.pdf",
+    "num_pages": 1,
+    "is_text": true,
+    "text_sample": "NO        :      / DH /RECS - BTP / IV / 2026\nPriode   :   01  April 2026   \nRevisi   :          \nCash Bertahap \n60 X Discount 10% Down payment Perbulan\n  107.5/68.75M2/Std    A1 No. 12A 945,000,000 5"
+  },
+  {
+    "project": "Pertokoan Marina Central",
+    "filename": "Marina Central_PL_start 010926.pdf",
+    "file_id": "19cs8oZf_H7dxx4o_g6AL-yuJu17YgZ4y",
+    "path": "pricelists\\Pertokoan_Marina_Central.pdf",
+    "num_pages": 1,
+    "is_text": true,
+    "text_sample": "POSISI\n60 (5x12) 112,5 (5x10,5)/(5x12) STD 2 3 3a 5 910.000.000      15.000.000   \n60 (5x12) 112,5 (5x10,5)/(5x12) Hook 1 1.010.000.000  16.666.667   \n3 3a 5 6 7 8\n9 10 11 12\n60 (5x12) 112,5 (5x10,5)/"
+  },
+  {
+    "project": "Pertokoan Graha Namarina",
+    "filename": "Namarina_PL_start 01092026.pdf",
+    "file_id": "1fb_HjX4Ca1DTiGd_yCaobMlUSAnBNPZX",
+    "path": "pricelists\\Pertokoan_Graha_Namarina.pdf",
+    "num_pages": 1,
+    "is_text": true,
+    "text_sample": "POSISI\n2 3 4 5 6 7\n8\nB 75(5x15) 107,5(5x10/(5x11,5) STD 6 950.000.000     15.666.667  \nSYARAT & KETENTUAN BERLAKU :\n- Uang Tanda Jadi/UTJ sebesar Rp.10.000.000,-\n- Uang Tanda Jadi/UTJ yang disetor tid"
+  },
+  {
+    "project": "Sunny Bay",
+    "filename": "HJ Sunny Bay April 2026.pdf",
+    "file_id": "1a1vEp05U-pv6Or57zcHnWBxLiWzYlwdU",
+    "path": "pricelists\\Sunny_Bay.pdf",
+    "num_pages": 3,
+    "is_text": true,
+    "text_sample": "Scandinavian\nNO        :      / DH / SBPY - BTP / IV / 2026\nPriode   :   01  April 2026\nRevisi   :          \n14Th ( 4.99% ) 19Th (4.99%)\n  36/66 - Standart    C1 - 35 sd 40 300,000,000 2,000,000 15,00"
+  },
+  {
+    "project": "Aster Garden",
+    "filename": "AsGar_PL_011026_301126.pdf",
+    "file_id": "1Zd6eXZnZq4IS08g4bH6cgkFAmkPTA2Hq",
+    "path": "pricelists\\Aster_Garden.pdf",
+    "num_pages": 1,
+    "is_text": false,
+    "text_sample": "IMAGE_BASED"
+  },
+  {
+    "project": "Aster Hills",
+    "filename": "PRICE LIST AH  1 JUN 2025.pdf",
+    "file_id": "1iHcifE1EVdafO37LtcKFLuRJoEL-tUNV",
+    "path": "pricelists\\Aster_Hills.pdf",
+    "num_pages": 1,
+    "is_text": true,
+    "text_sample": "No              : ………. /....…./AH-BCP/VI/2025\nPeriode     :  1 JUNI 2025\nRevisi        : 0\nBOOKING UANG MUKA\nTYPE Kelebihan Tanah KET FEE LAMA PER BULAN\nNO. 41 HOOK JALAN 28 / 75 15 HOOK 7.5 X 10 6 X "
+  },
+  {
+    "project": "Buana Duta Bandara",
+    "filename": "PRICE RUKO BDB 1 MEI 2025.pdf",
+    "file_id": "16COp5AWKvweidva4nnZPHlbbDBBnWQk0",
+    "path": "pricelists\\Buana_Duta_Bandara.pdf",
+    "num_pages": 1,
+    "is_text": true,
+    "text_sample": "No              : ………. /....…./BDB-BCP/VI/2025\nPeriode     :  1 JUNI 2025\nRevisi        : 00\nBOOKING UANG MUKA\nTYPE KELEBIHAN TANAH LUAS BANGUNAN KET FEE LAMA PER BULAN\nBLOK C NO 22  HOOK JALAN 175 / "
+  },
+  {
+    "project": "Cipta Green Ville",
+    "filename": "CGV_PL_011026_311226.pdf",
+    "file_id": "1e3lUEZ9XzEWI0srZEscKQBFKGL0da2WN",
+    "path": "pricelists\\Cipta_Green_Ville.pdf",
+    "num_pages": 3,
+    "is_text": false,
+    "text_sample": "IMAGE_BASED"
+  },
+  {
+    "project": "Cipta Village Marina",
+    "filename": "Daftar Harga Blok Baru Perum CVM 20 Agus 2026.pdf",
+    "file_id": "1BLRKSTZNt6bmVTxqzseXPqpH0e7jGDxd",
+    "path": "pricelists\\Cipta_Village_Marina.pdf",
+    "num_pages": 1,
+    "is_text": false,
+    "text_sample": "IMAGE_BASED"
+  },
+  {
+    "project": "Gabana",
+    "filename": "Gabana_PL_010126_310126.pdf",
+    "file_id": "1jsCX29vpW76kPXXW930YVFVodllJpJxT",
+    "path": "pricelists\\Gabana.pdf",
+    "num_pages": 1,
+    "is_text": true,
+    "text_sample": "Berlaku Mulai  :  01 Januari 2026 s/d 31 Januari 2026\nHARGA CICILAN\n60+/133 COUPLE 16 960.000.000           15.833.333        \nSyarat & Ketentuan:\n- Uang Tanda Jadi Rp. 10.000.000,-, Uang tanda jadi y"
+  },
+  {
+    "project": "Plumeria",
+    "filename": "HJ Plumeria Sept 2024.pdf",
+    "file_id": "1nCD6L6UkX8B5owZRBkbFAAtvMWMQBpco",
+    "path": "pricelists\\Plumeria.pdf",
+    "num_pages": 1,
+    "is_text": true,
+    "text_sample": "NO        :      / DH / GVPM - BTP / IX /2024\nPriode   :   01 September 2024\nRevisi   :          \nUnit Standart ( 17-58 )\nCicilan UM \n06 Kali 5Th ( 9.5 %) 10Th ( 9.5% ) 15Th (9.5%)\n440.000.000 2.500.0"
+  },
+  {
+    "project": "Villa Foresta",
+    "filename": "Foresta_PL_011026_311026.pdf",
+    "file_id": "1_JwYBBiWh5_OtwYUaMTg6q_yfTNVKC3u",
+    "path": "pricelists\\Villa_Foresta.pdf",
+    "num_pages": 1,
+    "is_text": true,
+    "text_sample": "CASH KERAS KPR REGULER ESTIMASI DP CICILAN DP ESTIMASI\nHARGA CICILAN DISC 10% DISC 5% 25% 18X PLAFON KPR 10 Tahun 15 Tahun\n150/209 Single 1 2.602.000.000      43.200.000    2.341.800.000     2.471.900"
+  },
+  {
+    "project": "Buana Central Park",
+    "filename": "BuCePa_PL_011026_311026.pdf",
+    "file_id": "13njJMwAi_m3hBs4SPXfL8spOix6qjhND",
+    "path": "pricelists\\Buana_Central_Park.pdf",
+    "num_pages": 5,
+    "is_text": false,
+    "text_sample": "IMAGE_BASED"
+  }
+]

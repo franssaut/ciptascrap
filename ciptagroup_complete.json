@@ -1,0 +1,795 @@
+{
+  "profile": {
+    "username": "ciptagroupofficial",
+    "page_title": "@ciptagroupofficial",
+    "description": null,
+    "avatar_url": "https://ugc.production.linktr.ee/DpHkHt2dSTC3PYjYwjGa_aby9zXA4gg19yS4z",
+    "social_links": [
+      {
+        "type": "FACEBOOK",
+        "url": "https://www.facebook.com/ciptagroupofficial",
+        "position": 1
+      },
+      {
+        "type": "INSTAGRAM",
+        "url": "https://instagram.com/ciptagroupofficial",
+        "position": 2
+      }
+    ]
+  },
+  "projects": [
+    {
+      "index": 1,
+      "project_name": "Aster Tropika",
+      "linktree_url": "https://linktr.ee/astertropika",
+      "thumbnail": "https://ugc.production.linktr.ee/be3cb027-dc15-409c-9625-b9525da5a095_linktree-cropped-A14DB01C-AE55-4759-9078-34FEE3FE90BB.jpeg",
+      "sub_profile_title": "Aster Tropika",
+      "sub_profile_description": null,
+      "sub_social_links": [],
+      "sub_links": [
+        {
+          "title": "E-Brosur & Flyer",
+          "url": "https://drive.google.com/drive/folders/1RPImSqYQrwgs746uiLLbABwnD2usahBl?hl=ID",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Siteplan",
+          "url": "https://drive.google.com/drive/folders/1xssEz4-7dFAdsUvXA6O1WCMoMnzM2Wyg?hl=ID",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Pricelist",
+          "url": "https://drive.google.com/drive/folders/1jEE4SiUgfRtuJlVdUWSiZnQejZPZuyED?hl=ID",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "3D Render Rumah dan Lingkungan",
+          "url": "https://drive.google.com/drive/folders/1kS8bM-e80stg1Xc6k1bnoBfEjEFXKw3E?usp=drive_link",
+          "category": "Visuals & 3D Render",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/aster_tropika.jpeg"
+    },
+    {
+      "index": 2,
+      "project_name": "Amalfi",
+      "linktree_url": "https://linktr.ee/amalfibtp",
+      "thumbnail": "https://ugc.production.linktr.ee/3865d980-7f29-406a-9dde-796a7bfe4176_e092fa68-93b8-4bf1-b93c-329188d2356e-amalfi-logo.jpeg.webp",
+      "sub_profile_title": "@amalfibtp",
+      "sub_profile_description": "Mulai Rumah Impian Anda Dari Sini",
+      "sub_social_links": [],
+      "sub_links": [
+        {
+          "title": "E-Brochures",
+          "url": "https://drive.google.com/drive/folders/1wf3gqFVFP102gR-YkBTwFar76SYP90oA?usp=drive_link",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Siteplan",
+          "url": "https://drive.google.com/drive/folders/1Tkm2wp3tOtsQk-S4McYQg-ZGjYArKt8k?usp=sharing",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Promo",
+          "url": "https://drive.google.com/drive/folders/1GD_1eB7AZBdhimFGw3gn-jfEWhBM3y-0?usp=sharing",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Lokasi",
+          "url": "https://maps.app.goo.gl/TfWpBjproHPuSRir7",
+          "category": "Location & Map",
+          "type": "EXTENSION"
+        },
+        {
+          "title": "Harga",
+          "url": "https://drive.google.com/drive/folders/1T0uuqI3NAQF7nir0sqgLAu7YIwlFdjb5?usp=drive_link",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Video Promosi",
+          "url": "https://drive.google.com/drive/folders/1_WxQ_09EyR3OJ9FcVe4W2TepFaq4y7Zw?usp=drive_link",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Desain Rumah",
+          "url": "https://drive.google.com/drive/folders/13lJCLKFsve8BfawJpfAiW0b2od5JC8DU?usp=drive_link",
+          "category": "Visuals & 3D Render",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/amalfi.webp"
+    },
+    {
+      "index": 3,
+      "project_name": "Era Cipta Square",
+      "linktree_url": "https://linktr.ee/eraciptasquare",
+      "thumbnail": "https://ugc.production.linktr.ee/c739635b-2f1d-4fc9-ae12-5529b39df44a_4ccb9a3e-dd64-4122-8c27-73fe220dffd1-ECS-logo.jpeg.webp",
+      "sub_profile_title": "@eraciptasquare",
+      "sub_profile_description": null,
+      "sub_social_links": [],
+      "sub_links": [
+        {
+          "title": "E-Brochure",
+          "url": "https://drive.google.com/drive/folders/1x0xkhaVz4zg5ce35j99I6O56BhxGOlrK?usp=sharing",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Siteplan",
+          "url": "https://drive.google.com/drive/folders/1g3Y68L4rAAwoSq7vOr1is9aobkAiMCOD?usp=sharing",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Promo",
+          "url": "https://drive.google.com/drive/folders/13hWzVkF1GQYcSdM0WCiC4HZk9L939D-M?usp=sharing",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Lokasi",
+          "url": "https://maps.app.goo.gl/pa7ybqn3Gn39AyRt8",
+          "category": "Location & Map",
+          "type": "EXTENSION"
+        },
+        {
+          "title": "Harga",
+          "url": "https://drive.google.com/drive/folders/1CiRpNJEmiy6pmOJy-tPza2OYPUVkxkLa?usp=drive_link",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Video Promosi",
+          "url": "https://drive.google.com/drive/folders/1gajkUjKicO8z_Yqjfkw4dI5LNB19jPWA?usp=sharing",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Desain Ruko",
+          "url": "https://drive.google.com/drive/folders/1R_aytI84dNapq2TE1_tlK7IwHg4x2QSn?usp=sharing",
+          "category": "Visuals & 3D Render",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/era_cipta_square.webp"
+    },
+    {
+      "index": 4,
+      "project_name": "Pertokoan Marina Central",
+      "linktree_url": "https://linktr.ee/marinacentral",
+      "thumbnail": "https://ugc.production.linktr.ee/9a17099d-c599-4f21-a10a-372f8685c71c_IMG-3196.jpeg",
+      "sub_profile_title": "Pertokoan Marina Central",
+      "sub_profile_description": "Berlokasi di Jalan Utama Marina City\nRuko terbaik lokasinya, terbaik kualitasnya!",
+      "sub_social_links": [],
+      "sub_links": [
+        {
+          "title": "Tampak Fasad",
+          "url": "https://drive.google.com/drive/folders/1bT4xySbr9fumvuZ_b8WuMSy50i6Ch3sU?usp=drive_link",
+          "category": "Visuals & 3D Render",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "E Brochure",
+          "url": "https://drive.google.com/drive/folders/1gdgN-8AghGRhhMbqwJ6vMPwkS6LuBST5?usp=drive_link",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Siteplan",
+          "url": "https://drive.google.com/drive/folders/1CsfHsi8UeCV4jg7LYYgfdsBHCFR1vFQf?usp=drive_link",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Pricelist",
+          "url": "https://drive.google.com/drive/folders/1kXyeuBCSh62zC4fykxUe2-NmqkXgwrDW?usp=drive_link",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Video Lokasi dan Pembangunan",
+          "url": "https://drive.google.com/drive/folders/1b-aPX5OpXBNKEyh1X5EyYX_ULpvIwnJi?usp=drive_link",
+          "category": "Location & Map",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Lokasi maps",
+          "url": "https://maps.app.goo.gl/b1Ldqv8n8jNi48JY6",
+          "category": "Location & Map",
+          "type": "EXTENSION"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/pertokoan_marina_central.jpeg"
+    },
+    {
+      "index": 5,
+      "project_name": "Pertokoan Graha Namarina",
+      "linktree_url": "https://linktr.ee/grahanamarina",
+      "thumbnail": "https://ugc.production.linktr.ee/5ad282be-5fc6-45a1-aa07-15b29c953535_IMG-3195.jpeg",
+      "sub_profile_title": "Pertokoan Graha Namarina",
+      "sub_profile_description": "Lokasi Ruko Dekat Warga, Dekat Rezeki",
+      "sub_social_links": [],
+      "sub_links": [
+        {
+          "title": "Tampak Fasad",
+          "url": "https://drive.google.com/drive/folders/11maUgRJtZlpWM22Ob8cqqpOOPT9WAhn6?usp=drive_link",
+          "category": "Visuals & 3D Render",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "E Brochure",
+          "url": "https://drive.google.com/drive/folders/1cYnU3vWgTkEWOy0MeRFxiDk4_XIQlmJL?usp=drive_link",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Siteplan",
+          "url": "https://drive.google.com/drive/folders/1vNIL9Yuivo4ollJ1GBq-S5jvv2_4P1oE?usp=drive_link",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Video Lokasi dan Pembangunan",
+          "url": "https://drive.google.com/drive/folders/15B0Nlrt4jh8z15L9eS71KdDbfWUWdUuc?usp=drive_link",
+          "category": "Location & Map",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Pricelist",
+          "url": "https://drive.google.com/drive/folders/1Ni1pGv0BuqIJ7SMMtUTLOAtniPSdwWDu?usp=drive_link",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Lokasi Maps",
+          "url": "https://maps.app.goo.gl/z3qCr1GxrHaNrBk56",
+          "category": "Location & Map",
+          "type": "EXTENSION"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/pertokoan_graha_namarina.jpeg"
+    },
+    {
+      "index": 6,
+      "project_name": "Sunny Bay",
+      "linktree_url": "https://linktr.ee/sunny_bay",
+      "thumbnail": "https://ugc.production.linktr.ee/McvKlkLjQuK0wSa9vvAK_image",
+      "sub_profile_title": "@sunnybaybtp",
+      "sub_profile_description": "Rumah Dengan Panorama Alam\nDesign Scandinavian & Design Tropical",
+      "sub_social_links": [],
+      "sub_links": [
+        {
+          "title": "E-Brochures",
+          "url": "https://drive.google.com/drive/folders/1F9cmN5aTep9PcJysj8IBh9iZbO0kJ_-_?usp=sharing",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Siteplan",
+          "url": "https://drive.google.com/drive/folders/1G8OXFhnROf4Wo4b572N5hmw0OnFL9dop?usp=sharing",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Promo",
+          "url": "https://drive.google.com/drive/folders/1mDRc90BquFxtGn4iLTjO1qpKS3_4z-aF?usp=sharing",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Lokasi",
+          "url": "https://maps.app.goo.gl/XwFY4wM9QZBWQqyX7",
+          "category": "Location & Map",
+          "type": "EXTENSION"
+        },
+        {
+          "title": "Harga",
+          "url": "https://drive.google.com/drive/folders/198w3hGWdiJpmvdJXT1boXAD9mtwOwe0i?usp=drive_link",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Video Promosi",
+          "url": "https://drive.google.com/drive/folders/1QOMny8orWS5dCbanNtrnbxi2vYcSdutA?usp=sharing",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Desain Rumah",
+          "url": "https://drive.google.com/drive/folders/1xOrom-Eu_nRfmyF3CDGmpEOB7Rf-VkLO?usp=sharing",
+          "category": "Visuals & 3D Render",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/sunny_bay.jpg"
+    },
+    {
+      "index": 7,
+      "project_name": "Aster Garden",
+      "linktree_url": "https://linktr.ee/astergarden",
+      "thumbnail": "https://ugc.production.linktr.ee/17d14b84-23ed-47a4-98b2-3291f042bd48_IMG-2420.jpeg",
+      "sub_profile_title": "@astergarden",
+      "sub_profile_description": "Ternyaman dikelasnya.",
+      "sub_social_links": [
+        "https://instagram.com/crisanta.id",
+        "https://tiktok.com/@cakapproperti",
+        "https://api.whatsapp.com/send?phone=6281285912288",
+        "mailto:astergarden024@gmail.com"
+      ],
+      "sub_links": [
+        {
+          "title": "Siteplan ",
+          "url": "https://drive.google.com/drive/folders/1BLIN7jeJA4o3gatNQ8r-i-UhCjk1u8ld?usp=drive_link",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Promo ",
+          "url": "https://drive.google.com/drive/folders/1JVJswtFhxHsLLX9Bu43DFTOKNGGZppNq?usp=sharing",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Progres Pembangunan",
+          "url": "https://drive.google.com/drive/folders/1Mu9FY0VqGJUOKYfTsZbfcmpowrKmTv_r?usp=drive_link",
+          "category": "Construction Progress",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Pricelist",
+          "url": "https://drive.google.com/drive/folders/1YzILyXVQrsx8Xhowjyaz58zaXkjd8wfo?usp=drive_link",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Gambar Rumah",
+          "url": "https://drive.google.com/drive/folders/1tWd9D7DSf9SYck8iFvxcqbSXnMKolJeO?usp=drive_link",
+          "category": "Visuals & 3D Render",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Denah & Lokasi",
+          "url": "https://drive.google.com/drive/folders/1WteGt-aPX41D-O2pSiLVzxlAuwKO9a3P?usp=drive_link",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/aster_garden.jpeg"
+    },
+    {
+      "index": 8,
+      "project_name": "Aster Hills",
+      "linktree_url": "https://linktr.ee/asterhills",
+      "thumbnail": "https://ugc.production.linktr.ee/uyK1iYpS3aSQUsIHQAzA_convert.jpg",
+      "sub_profile_title": "AsterHills",
+      "sub_profile_description": null,
+      "sub_social_links": [],
+      "sub_links": [
+        {
+          "title": "PROMO ",
+          "url": "https://drive.google.com/drive/folders/1qLYu5ND56ADYw59qlv1RC-5Nmddjn1tl?usp=share_link",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "E BROSUR ",
+          "url": "https://drive.google.com/drive/folders/1iOWi4-FRxDM_VbCKBMu-GMouJrVrDe8X?usp=share_link",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "PEMBANGUNAN ",
+          "url": "https://drive.google.com/drive/folders/17t-qK-VaDsQ49A0ao66eDgFBfxUdJGhx?usp=share_link",
+          "category": "General",
+          "type": "CLASSIC"
+        },
+        {
+          "title": " TYPE 36 ",
+          "url": "https://drive.google.com/drive/folders/1mk1BG4rqIpznecmAL9gBmq10DETNmbFD?usp=share_link",
+          "category": "General",
+          "type": "CLASSIC"
+        },
+        {
+          "title": " TYPE 28 PLUS ",
+          "url": "https://drive.google.com/drive/folders/1JLYnuHjql0PK5EQcXGcIMeVHllus5jdo?usp=share_link",
+          "category": "General",
+          "type": "CLASSIC"
+        },
+        {
+          "title": " TYPE 28 ",
+          "url": "https://drive.google.com/drive/folders/1bfinJWjJ4Ati4sWuX3WcplxLT54Kqhkm?usp=share_link",
+          "category": "General",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "SITEPLAN ",
+          "url": "https://drive.google.com/drive/folders/1yhJX7S0ZBKFlHWYZTJ73JKZ2SWg98axR?usp=share_link",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "DAFTAR HARGA ",
+          "url": "https://drive.google.com/drive/folders/1IpcRsGEeSxEaOWsJr0p8evd8cP_tN0SC?usp=share_link",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/aster_hills.jpg"
+    },
+    {
+      "index": 9,
+      "project_name": "Buana Central Park",
+      "linktree_url": "https://linktr.ee/bucepark",
+      "thumbnail": "https://ugc.production.linktr.ee/dH9yagqR0qMey87GvLnJ_convert.png",
+      "sub_profile_title": "@buceparkbatam",
+      "sub_profile_description": null,
+      "sub_social_links": [
+        "https://instagram.com/buceparkbatam",
+        "https://www.youtube.com/channel/UCi7ODzvHdsyIDRgoCU6oI7A"
+      ],
+      "sub_links": [
+        {
+          "title": "Tentang Kami",
+          "url": "https://www.ciptagroup.com",
+          "category": "General",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Informasi Detail Rumah, Ruko dan Townhouse Yang Diperjualbelikan",
+          "url": "https://drive.google.com/drive/folders/1lrD_MT9V1qnBIRjd8SJI-ZR_fQ_JfTud",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Foto Lokasi",
+          "url": "https://drive.google.com/drive/folders/1ULtjV8H0NHUWdTlGIwrOd9M3znNqDC-F",
+          "category": "Visuals & 3D Render",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Video Kawasan",
+          "url": "https://drive.google.com/file/d/1kraNtV_z3NBA2bw7opBnEsPLAMq5MZCi/view?usp=drive_link",
+          "category": "Visuals & 3D Render",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Lokasi",
+          "url": "https://maps.app.goo.gl/2mwfvbLjHg8gni4U8",
+          "category": "Location & Map",
+          "type": "EXTENSION"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/buana_central_park.png"
+    },
+    {
+      "index": 10,
+      "project_name": "Buana Duta Bandara",
+      "linktree_url": "https://linktr.ee/BuanaDutaBandara",
+      "thumbnail": "https://ugc.production.linktr.ee/wZWe2LbmQ8O5ie3jv7hm_convert.jpg",
+      "sub_profile_title": "Buana_Duta_Bandara",
+      "sub_profile_description": null,
+      "sub_social_links": [],
+      "sub_links": [
+        {
+          "title": "PROMO ",
+          "url": "https://drive.google.com/drive/folders/1hgaezNMrBsrhSQ3k8w5J5OUoIi5SgCIH?usp=share_link",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "E BROSUR ",
+          "url": "https://drive.google.com/drive/folders/1y1Zted9W18T9osktUEGZrkHjHfSATNy-?usp=share_link",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "TYPE 36 PLUS ",
+          "url": "https://drive.google.com/drive/folders/1sKFmHYulV3dSK9zMQmMyQb4eKIXGEx-Z?usp=share_link",
+          "category": "General",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "TYPE RUMAH 48 ",
+          "url": "https://drive.google.com/drive/folders/1E3REY-axZ2IQCEns3_vv0ZEXuOIvqEe8?usp=share_link",
+          "category": "Unit Types",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "TYPE RUMAH 36 ",
+          "url": "https://drive.google.com/drive/folders/1HHB61GGrSNj0sjd58t645TgRWmO-4PJ_?usp=share_link",
+          "category": "Unit Types",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "SITEPLAN ",
+          "url": "https://drive.google.com/drive/folders/1ob1MlqMk0p6WzW8VRawDjY1wUKi82c4o?usp=share_link",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "PROGRES ",
+          "url": "https://drive.google.com/drive/folders/1HLGQcMYbky5PpayW76m3yfRKkliKlSiF?usp=share_link",
+          "category": "Construction Progress",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "PRICELIST ",
+          "url": "https://drive.google.com/drive/folders/1nXDnB4WUnk8AcOtOfP_Su1DB7TUK3HRc?usp=share_link",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/buana_duta_bandara.jpg"
+    },
+    {
+      "index": 11,
+      "project_name": "Cipta Green Ville",
+      "linktree_url": "https://linktr.ee/greenvillenew",
+      "thumbnail": "https://ugc.production.linktr.ee/a3c216ae-02c4-4865-aaf5-4e5024d41680_IMG-2421.jpeg",
+      "sub_profile_title": "@ciptagreenville",
+      "sub_profile_description": "Kawasan Prestisius dari CIPTA GROUP",
+      "sub_social_links": [
+        "https://instagram.com/ciptagreenville",
+        "https://tiktok.com/@cakapproperti",
+        "https://api.whatsapp.com/send?phone=621285912288",
+        "mailto:greenvillenew@gmail.com"
+      ],
+      "sub_links": [
+        {
+          "title": "News ",
+          "url": "https://drive.google.com/drive/folders/15fJuduaa0FofNW7kgv52Jf5M0OjjNf8a?usp=sharing",
+          "category": "News",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Promotion ",
+          "url": "https://drive.google.com/drive/folders/16cbnJzlw13dq-Ha8KmIdZZtDdiGrWs0R?usp=sharing",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Siteplan",
+          "url": "https://drive.google.com/drive/folders/1jjCcbwvdObbdPsZq70f0-r8deDu9XOtQ?usp=sharing",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Pricelist ",
+          "url": "https://drive.google.com/drive/folders/1X5-zgV2_hNWg4jXJmQZQ_vTDsuRzGdcY?usp=sharing",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "e-Brochure ",
+          "url": "https://drive.google.com/drive/folders/1Cr2vDql-qhP6Qz6ui8tQtGzl8DGvAO4h?usp=sharing",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/cipta_green_ville.jpeg"
+    },
+    {
+      "index": 12,
+      "project_name": "Cipta Village Marina",
+      "linktree_url": "https://linktr.ee/CiptaVillageMarina",
+      "thumbnail": "https://ugc.production.linktr.ee/vw10i0CNSHyF75mbDREj_convert.jpg",
+      "sub_profile_title": "@CiptaVillageMarina",
+      "sub_profile_description": null,
+      "sub_social_links": [],
+      "sub_links": [
+        {
+          "title": "PROMO  ",
+          "url": "https://drive.google.com/drive/folders/1r-UqXVT18Uu45XXzYZDqMalslOhV-JNC?usp=sharing",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "GOOGLE MAPS",
+          "url": "https://goo.gl/maps/zEw8Zq4oTt54Xaqd6",
+          "category": "Location & Map",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "SITEPLAN",
+          "url": "https://drive.google.com/drive/folders/12BHlxMK2zkHyCCp4KqZJpsYGppSjUThl?usp=sharing",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "DENAH RUMAH",
+          "url": "https://drive.google.com/drive/folders/17o_AXbbO2qLyvQmumphXV1GqftT4L8Dp?usp=share_link",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "BROSUR",
+          "url": "https://drive.google.com/drive/folders/1QU7mGC-yOAnuEcUFlUw3u18zgR_YLGSX?usp=share_link",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "PRICELIST",
+          "url": "https://drive.google.com/drive/folders/1Bo-Wg-Sj8JY-WGRDiynrKaG2oVmVq6ad?usp=share_link",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/cipta_village_marina.jpg"
+    },
+    {
+      "index": 13,
+      "project_name": "Gabana",
+      "linktree_url": "https://linktr.ee/gabanabtmcentre",
+      "thumbnail": "https://ugc.production.linktr.ee/3fZHfsSDirdugzyG8OwK_image",
+      "sub_profile_title": "@gabanabtmcentre",
+      "sub_profile_description": "Rumah Tumbuh",
+      "sub_social_links": [
+        "https://instagram.com/gabanabatamcentre",
+        "https://tiktok.com/@cakaproperti",
+        "https://api.whatsapp.com/send?phone=6281285912288"
+      ],
+      "sub_links": [
+        {
+          "title": "Sosmed ",
+          "url": "https://drive.google.com/drive/folders/1r18y6scU2O8j5LouuSpIn4rddV2tkqXj?usp=sharing",
+          "category": "Social Media",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Promosi",
+          "url": "https://drive.google.com/drive/folders/1CiNcYRa8AlMu1g4puiRvmspazvRuNKhy",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Floor Plan",
+          "url": "https://drive.google.com/drive/folders/1hwMMAGp2DCEGheYWGBoHjyLLa9lQGvqP",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Gambar Rumah",
+          "url": "https://drive.google.com/drive/folders/132yBRTkfwa7GmR1OZwj0Eq8tb2NQM3zH",
+          "category": "Visuals & 3D Render",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Pricelist",
+          "url": "https://drive.google.com/drive/folders/1wRTod8EIO87jzT3x4bTpijvAJmdevm-e",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Progress Pembangunan",
+          "url": "https://drive.google.com/drive/folders/1juYQVg8SjsH30toAVeO0Un6BLy8cVS4U",
+          "category": "Construction Progress",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Siteplan",
+          "url": "https://drive.google.com/drive/folders/1NhcSSPAI5cfUdTOyRKjKsf9vJXv24yhH",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/gabana.jpg"
+    },
+    {
+      "index": 14,
+      "project_name": "Plumeria",
+      "linktree_url": "https://linktr.ee/PlumeriaSukses",
+      "thumbnail": "https://ugc.production.linktr.ee/io9yMXmwRkyvI5XSTN4U_convert.png",
+      "sub_profile_title": "@Plumeria",
+      "sub_profile_description": null,
+      "sub_social_links": [],
+      "sub_links": [
+        {
+          "title": "E-Flyer Plumeria",
+          "url": "https://drive.google.com/drive/folders/1zDRJB3rb3bwb-vXod27pa4NG96vT0TRE?usp=sharing",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Google Maps",
+          "url": "https://goo.gl/maps/b7Yu9wWGgwBL812z5",
+          "category": "Location & Map",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Denah Rumah",
+          "url": "https://drive.google.com/drive/folders/1K4GNR0xG-rvFoBZXDNtg5xj-2eSIJ0is?usp=share_link",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Video Promosi",
+          "url": "https://drive.google.com/drive/folders/1IHy6qOK8fdhdDmv_AqWMYhp2bNZLdEAH?usp=share_link",
+          "category": "Promo & Offers",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Siteplan",
+          "url": "https://drive.google.com/drive/folders/1E-qTOS6iLa-KqtaJouzIYpbrgPYRW0KP?usp=share_link",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Pricelist",
+          "url": "https://drive.google.com/drive/folders/1IAMbdpTXprRAldwxw48XV2xuFuBECjRT?usp=share_link",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/plumeria.png"
+    },
+    {
+      "index": 15,
+      "project_name": "Villa Foresta",
+      "linktree_url": "https://linktr.ee/villaforestabatam",
+      "thumbnail": "https://ugc.production.linktr.ee/3rgmHg8gRWqGjkpE0yMj_convert.png",
+      "sub_profile_title": "Villa Foresta",
+      "sub_profile_description": "Luxury in the Nature",
+      "sub_social_links": [],
+      "sub_links": [
+        {
+          "title": "E-Brochure",
+          "url": "https://drive.google.com/drive/folders/1c31jpNS3dOw-z8el2jLwNiHRvT_jD5tP",
+          "category": "Brochure",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "PK & Video",
+          "url": "https://drive.google.com/drive/folders/1UmdlyRxi-64dIymAgMvW1cZ_pdfchvWn",
+          "category": "General",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Pricelist",
+          "url": "https://drive.google.com/drive/u/0/folders/1UnMxMXn9Pj7CfrtrqjRSNLCtC6PxIiVK",
+          "category": "Pricelist",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Siteplan - Floorplan - Spec",
+          "url": "https://drive.google.com/drive/u/0/folders/19U20S3VVxnBhLCWNIngatFBFnLVEeiTU",
+          "category": "Siteplan & Floor Plan",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Site Progress",
+          "url": "https://drive.google.com/drive/folders/1BUZrihBiAesK4KWTfskVGqjpg1RXxS-4",
+          "category": "Construction Progress",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "Google Maps",
+          "url": "https://www.google.co.id/maps/place/VILLA+FORESTA/@1.1360794,103.9312109,234m/data=!3m1!1e3!4m9!1m2!2m1!1svilla+foresta!3m5!1s0x31d98b1e26fb7ee7:0xcc7e4c627c0b2cf0!8m2!3d1.1356847!4d103.9315948!15sCg12aWxsYSBmb3Jlc3RhkgEVcmVhbF9lc3RhdGVfZGV2ZWxvcGVy",
+          "category": "Location & Map",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "News",
+          "url": "https://drive.google.com/drive/u/0/folders/169jLgoJHsBf6ubn7FXFfiimcP9Gjd3F2",
+          "category": "News",
+          "type": "CLASSIC"
+        },
+        {
+          "title": "FAQ",
+          "url": "https://drive.google.com/drive/u/0/folders/1iAaucgqTBxhGwyksoj4RIjpHoKxKur1o",
+          "category": "FAQ",
+          "type": "CLASSIC"
+        }
+      ],
+      "local_thumbnail": "assets/thumbnails/villa_foresta.png"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "ciptagroup-linktree-sync",
+  "version": "1.0.0",
+  "description": "Katalog Properti & Auto-Sync Linktree Cipta Group Batam",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "sync": "node sync.js"
+  },
+  "keywords": [
+    "ciptagroup",
+    "linktree",
+    "sync",
+    "scraper",
+    "real-estate"
+  ],
+  "author": "Antigravity",
+  "license": "ISC"
+}
