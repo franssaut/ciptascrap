@@ -135,22 +135,38 @@ document.addEventListener('DOMContentLoaded', () => {
       const res = await fetch('/api/sync', { method: 'POST' });
       const triggerData = await res.json();
 
+      // If Vercel Serverless returned data directly:
+      if (triggerData.data) {
+        window.CIPTA_DATA = triggerData.data;
+        applyFilters();
+        renderMasterTable();
+        updateCalculator();
+        if (triggerData.last_sync) {
+          topLastSyncText.textContent = triggerData.last_sync;
+        }
+        syncProgressMsg.textContent = '✓ Data berhasil disinkronkan dari Linktree!';
+        setTimeout(() => {
+          syncProgressBanner.classList.add('hidden');
+          topSyncIcon.classList.remove('animate-spin');
+          topSyncBtn.disabled = false;
+        }, 2000);
+        return;
+      }
+
       if (syncPollingInterval) clearInterval(syncPollingInterval);
 
-      // Poll every 2.5 seconds
+      // Local server polling mode
       syncPollingInterval = setInterval(async () => {
         const s = await checkSyncStatus();
         if (s && !s.is_syncing) {
           clearInterval(syncPollingInterval);
           syncPollingInterval = null;
 
-          // Reload fresh data.json
           try {
             const freshRes = await fetch('data.json?t=' + Date.now());
             if (freshRes.ok) {
               const freshData = await freshRes.json();
               window.CIPTA_DATA = freshData;
-              // Re-run UI
               applyFilters();
               renderMasterTable();
               updateCalculator();
@@ -162,7 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
           syncProgressMsg.textContent = '✓ Data berhasil disinkronkan!';
           setTimeout(() => {
             syncProgressBanner.classList.add('hidden');
-          }, 3000);
+            topSyncIcon.classList.remove('animate-spin');
+            topSyncBtn.disabled = false;
+          }, 2000);
         }
       }, 2500);
 
@@ -171,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
       syncProgressBanner.classList.add('hidden');
       topSyncIcon.classList.remove('animate-spin');
       topSyncBtn.disabled = false;
-      alert("Gagal menghubungi server auto-sync. Pastikan server lokal berjalan (python server.py).");
+      alert("Gagal menghubungi endpoint auto-sync.");
     }
   }
 

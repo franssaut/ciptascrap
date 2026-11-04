@@ -1,0 +1,4 @@
+*.py
+*.bat
+sync.log
+.git

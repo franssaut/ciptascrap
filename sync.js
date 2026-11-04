@@ -6,10 +6,13 @@ const HEADERS = {
   'Accept-Language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
 };
 
+const IS_VERCEL = !!process.env.VERCEL;
 const BASE_DIR = __dirname;
-const STATUS_FILE = path.join(BASE_DIR, 'sync_status.json');
-const LOG_FILE = path.join(BASE_DIR, 'sync.log');
-const THUMB_DIR = path.join(BASE_DIR, 'assets', 'thumbnails');
+const WRITABLE_DIR = IS_VERCEL ? '/tmp' : BASE_DIR;
+
+const STATUS_FILE = path.join(WRITABLE_DIR, 'sync_status.json');
+const LOG_FILE = path.join(WRITABLE_DIR, 'sync.log');
+const THUMB_DIR = path.join(WRITABLE_DIR, 'assets', 'thumbnails');
 
 function log(msg) {
   const now = new Date().toISOString().replace('T', ' ').substring(0, 19);
@@ -26,6 +29,10 @@ function updateStatus(status, message, details = {}) {
     try {
       current = JSON.parse(fs.readFileSync(STATUS_FILE, 'utf-8'));
     } catch (e) {}
+  } else if (fs.existsSync(path.join(BASE_DIR, 'sync_status.json'))) {
+    try {
+      current = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'sync_status.json'), 'utf-8'));
+    } catch (e) {}
   }
 
   const now = new Date();
@@ -40,7 +47,7 @@ function updateStatus(status, message, details = {}) {
     status,
     message,
     last_attempt: now.toISOString(),
-    engine: 'Node.js v' + process.versions.node,
+    engine: 'Node.js v' + process.versions.node + (IS_VERCEL ? ' (Vercel Serverless)' : ''),
     ...details
   };
 
@@ -52,8 +59,9 @@ function updateStatus(status, message, details = {}) {
   try {
     fs.writeFileSync(STATUS_FILE, JSON.stringify(updated, null, 2), 'utf-8');
   } catch (err) {
-    log(`Gagal menulis ${STATUS_FILE}: ${err.message}`);
+    log(`Gagal menulis status: ${err.message}`);
   }
+  return updated;
 }
 
 async function fetchLinktreePage(url) {
@@ -112,6 +120,7 @@ function categorizeLink(title = '', url = '') {
 
 async function downloadThumbnail(title, url) {
   if (!url) return null;
+  if (IS_VERCEL) return url; // Use direct CDN on serverless
   try {
     fs.mkdirSync(THUMB_DIR, { recursive: true });
     const safeName = title.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
@@ -136,7 +145,6 @@ async function downloadThumbnail(title, url) {
   }
 }
 
-// Simple CSV parser for existing units
 function parseUnitsCSV() {
   const candidates = [
     path.join(BASE_DIR, 'data_harga_booking_cicilan_lengkap.csv'),
@@ -152,10 +160,6 @@ function parseUnitsCSV() {
         for (let i = 1; i < lines.length; i++) {
           const l = lines[i].trim();
           if (!l) continue;
-          
-          // Regex for CSV row respecting quotes
-          const match = l.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-          // Standard split fallback
           const parts = l.split(',');
           const obj = {};
           headers.forEach((h, idx) => {
@@ -174,7 +178,7 @@ function parseUnitsCSV() {
     }
   }
 
-  // Fallback to data.json
+  // Fallback to bundled data.json
   const dataJsonPath = path.join(BASE_DIR, 'data.json');
   if (fs.existsSync(dataJsonPath)) {
     try {
@@ -192,23 +196,22 @@ function parseUnitsCSV() {
 async function runSync() {
   const startTime = Date.now();
   log('======================================================');
-  log('MEMULAI AUTO SINKRONISASI LINKTREE (NODE.JS ENGINE)');
+  log(`MEMULAI AUTO SINKRONISASI LINKTREE (${IS_VERCEL ? 'VERCEL' : 'LOCAL'})`);
   log('Target: https://linktr.ee/ciptagroupofficial');
-  updateStatus('running', 'Node.js sedang mengambil data terbaru dari Linktree...');
+  updateStatus('running', 'Sedang mengambil data terbaru dari Linktree...');
 
   try {
     const mainProps = await fetchLinktreePage('https://linktr.ee/ciptagroupofficial');
     if (!mainProps) {
-      updateStatus('error', 'Gagal mengakses https://linktr.ee/ciptagroupofficial');
-      log('[X] Halaman utama Linktree gagal dimuat.');
-      return false;
+      const statusObj = updateStatus('error', 'Gagal mengakses https://linktr.ee/ciptagroupofficial');
+      return { success: false, status: statusObj };
     }
 
     const rawLinks = mainProps.links || [];
     log(`Ditemukan ${rawLinks.length} proyek aktif di akun @${mainProps.username}`);
 
     const existingUnits = parseUnitsCSV();
-    log(`Dimuat ${existingUnits.length} unit terverifikasi dari basis data lokal.`);
+    log(`Dimuat ${existingUnits.length} unit terverifikasi.`);
 
     const projectsData = [];
     const allFlattenedLinks = [];
@@ -340,37 +343,34 @@ async function runSync() {
         linktree: "https://linktr.ee/ciptagroupofficial"
       },
       last_sync: formattedDate,
-      sync_engine: 'Node.js',
+      sync_engine: IS_VERCEL ? 'Node.js (Vercel Serverless)' : 'Node.js',
       projects: webProjects
     };
 
-    // Write data.json
-    fs.writeFileSync(path.join(BASE_DIR, 'data.json'), JSON.stringify(appDataset, null, 2), 'utf-8');
-
-    // Write data.js
-    fs.writeFileSync(path.join(BASE_DIR, 'data.js'), 'window.CIPTA_DATA = ' + JSON.stringify(appDataset, null, 2) + ';\n', 'utf-8');
-
-    // Write overview CSV
-    const csvHeader = 'No,Project Name,Linktree URL,Category,Total Units,Min Price,Min Cicilan,Booking Fee,Pricelist Link,Brochure Link,Location Map\n';
-    const csvRows = webProjects.map(p => 
-      `"${p.id}","${p.name}","${p.linktree_url}","${p.category}","${p.total_units_recorded}","${p.min_price}","${p.min_cicilan}","${p.booking_fee_str}","${p.pricelist_link || ''}","${p.brochure_link || ''}","${p.location_map || ''}"`
-    ).join('\n');
-    fs.writeFileSync(path.join(BASE_DIR, 'ciptagroup_projects_overview.csv'), csvHeader + csvRows, 'utf-8');
+    // Save to writable directory if possible
+    try {
+      fs.writeFileSync(path.join(WRITABLE_DIR, 'data.json'), JSON.stringify(appDataset, null, 2), 'utf-8');
+      fs.writeFileSync(path.join(WRITABLE_DIR, 'data.js'), 'window.CIPTA_DATA = ' + JSON.stringify(appDataset, null, 2) + ';\n', 'utf-8');
+    } catch (e) {}
 
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-    log(`[✓] Node.js Sinkronisasi selesai dalam ${elapsed} detik.`);
-    updateStatus('success', `Sinkronisasi Node.js berhasil (${elapsed} detik). 15 proyek & ${existingUnits.length} unit terdata.`, {
+    log(`[✓] Sinkronisasi selesai dalam ${elapsed} detik.`);
+    const statusObj = updateStatus('success', `Sinkronisasi berhasil (${elapsed} detik). 15 proyek & ${existingUnits.length} unit terdata.`, {
       total_projects: webProjects.length,
       total_units: existingUnits.length,
       elapsed_seconds: Number(elapsed)
     });
 
-    return true;
+    return {
+      success: true,
+      data: appDataset,
+      status: statusObj
+    };
 
   } catch (err) {
-    log(`[X] Error Node.js sinkronisasi: ${err.message}`);
-    updateStatus('error', `Error Node.js: ${err.message}`);
-    return false;
+    log(`[X] Error: ${err.message}`);
+    const statusObj = updateStatus('error', `Error: ${err.message}`);
+    return { success: false, status: statusObj, error: err.message };
   }
 }
 
@@ -378,4 +378,4 @@ if (require.main === module) {
   runSync();
 }
 
-module.exports = { runSync, updateStatus };
+module.exports = { runSync, updateStatus, STATUS_FILE, BASE_DIR };
