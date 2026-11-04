@@ -18,7 +18,8 @@ module.exports = async function handler(req, res) {
     const result = await runSync();
     return res.status(200).json({
       status: result.success ? 'success' : 'error',
-      message: result.status?.message || 'Sinkronisasi selesai.',
+      message: result.status?.message || result.error || 'Sinkronisasi selesai.',
+      error: result.error || null,
       last_sync: result.status?.last_sync_formatted,
       total_projects: result.status?.total_projects,
       total_units: result.status?.total_units,
