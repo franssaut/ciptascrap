@@ -3,17 +3,8 @@ const path = require('path');
 
 const HEADERS = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  'Accept-Language': 'en-US,en;q=0.9,id;q=0.8',
-  'Sec-Ch-Ua': '"Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122"',
-  'Sec-Ch-Ua-Mobile': '?0',
-  'Sec-Ch-Ua-Platform': '"Windows"',
-  'Sec-Fetch-Dest': 'document',
-  'Sec-Fetch-Mode': 'navigate',
-  'Sec-Fetch-Site': 'none',
-  'Sec-Fetch-User': '?1',
-  'Upgrade-Insecure-Requests': '1',
-  'Cache-Control': 'max-age=0'
+  'Accept': '*/*',
+  'Accept-Language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
 };
 
 const IS_VERCEL = !!process.env.VERCEL;
@@ -79,22 +70,20 @@ async function fetchLinktreePage(url) {
     const cleanUrl = url.split('?')[0];
     const res = await fetch(cleanUrl, { headers: HEADERS });
     if (!res.ok) {
-      const errTxt = `HTTP ${res.status} ${res.statusText} untuk ${cleanUrl}`;
-      log(errTxt);
-      throw new Error(errTxt);
+      log(`HTTP ${res.status} ${res.statusText} untuk ${cleanUrl}`);
+      return null;
     }
     const html = await res.text();
     const match = html.match(/<script id="__NEXT_DATA__"[^>]*>(.*?)<\/script>/s);
     if (!match) {
-      const errTxt = `Tidak ada __NEXT_DATA__ pada ${cleanUrl} (HTML length: ${html.length})`;
-      log(errTxt);
-      throw new Error(errTxt);
+      log(`Tidak ada __NEXT_DATA__ pada ${cleanUrl}`);
+      return null;
     }
     const data = JSON.parse(match[1]);
     return data?.props?.pageProps || null;
   } catch (err) {
     log(`Error fetchLinktreePage ${url}: ${err.message}`);
-    throw err;
+    return null;
   }
 }
 
@@ -225,11 +214,7 @@ async function runSync() {
     const existingUnits = parseUnitsCSV();
     log(`Dimuat ${existingUnits.length} unit terverifikasi.`);
 
-    const projectsData = [];
-    const allFlattenedLinks = [];
-
-    for (let idx = 0; idx < rawLinks.length; idx++) {
-      const item = rawLinks[idx];
+    const projectsData = await Promise.all(rawLinks.map(async (item, idx) => {
       const pTitle = item.title;
       const pUrl = item.url || '';
       const pThumb = item.thumbnail;
@@ -252,32 +237,42 @@ async function runSync() {
       };
 
       if (cleanUrl.includes('linktr.ee')) {
-        const subProps = await fetchLinktreePage(cleanUrl);
-        if (subProps) {
-          projectRecord.sub_profile_title = subProps.pageTitle;
-          projectRecord.sub_profile_description = subProps.description;
-          projectRecord.sub_social_links = (subProps.socialLinks || []).map(s => s.url);
+        try {
+          const subProps = await fetchLinktreePage(cleanUrl);
+          if (subProps) {
+            projectRecord.sub_profile_title = subProps.pageTitle;
+            projectRecord.sub_profile_description = subProps.description;
+            projectRecord.sub_social_links = (subProps.socialLinks || []).map(s => s.url);
 
-          for (const sItem of (subProps.links || [])) {
-            const cat = categorizeLink(sItem.title, sItem.url);
-            projectRecord.sub_links.push({
-              title: sItem.title,
-              url: sItem.url,
-              category: cat,
-              type: sItem.type
-            });
-            allFlattenedLinks.push({
-              'Project Name': pTitle,
-              'Project Linktree': cleanUrl,
-              'Resource Title': sItem.title,
-              'Category': cat,
-              'Resource URL': sItem.url
-            });
+            for (const sItem of (subProps.links || [])) {
+              const cat = categorizeLink(sItem.title, sItem.url);
+              projectRecord.sub_links.push({
+                title: sItem.title,
+                url: sItem.url,
+                category: cat,
+                type: sItem.type
+              });
+            }
           }
+        } catch (subErr) {
+          log(`Peringatan sub-linktree ${pTitle}: ${subErr.message}`);
         }
       }
 
-      projectsData.push(projectRecord);
+      return projectRecord;
+    }));
+
+    const allFlattenedLinks = [];
+    for (const p of projectsData) {
+      for (const sItem of p.sub_links) {
+        allFlattenedLinks.push({
+          'Project Name': p.project_name,
+          'Project Linktree': p.linktree_url,
+          'Resource Title': sItem.title,
+          'Category': sItem.category,
+          'Resource URL': sItem.url
+        });
+      }
     }
 
     // Build Web Projects Array
