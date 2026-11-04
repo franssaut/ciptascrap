@@ -333,12 +333,15 @@
         </p>
       </div>
 
-      <!-- MODE TABS -->
-      <div class="flex items-center gap-2 p-1 bg-slate-800/90 rounded-2xl border border-slate-700/80 max-w-md mb-8">
-        <button id="tabCashBertahap" class="flex-1 py-2.5 px-4 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 bg-amber-500 text-slate-950 shadow-md">
-          <i data-lucide="coins" class="w-4 h-4"></i> Cash Bertahap (In-House)
+      <!-- MODE TABS (3 SKEMA PILIHAN) -->
+      <div class="flex flex-wrap items-center gap-2 p-1.5 bg-slate-800/90 rounded-2xl border border-slate-700/80 max-w-xl mb-8">
+        <button id="tabCashBertahap60" class="flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 bg-amber-500 text-slate-950 shadow-md">
+          <i data-lucide="coins" class="w-4 h-4"></i> Cash Bertahap 60x
         </button>
-        <button id="tabKprBank" class="flex-1 py-2.5 px-4 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 text-slate-300 hover:text-white">
+        <button id="tabCashBertahap72" class="flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 text-slate-300 hover:text-white">
+          <i data-lucide="clock" class="w-4 h-4"></i> Cash Bertahap 72x (+6%)
+        </button>
+        <button id="tabKprBank" class="flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 text-slate-300 hover:text-white">
           <i data-lucide="landmark" class="w-4 h-4"></i> Skema KPR Bank
         </button>
       </div>
@@ -531,6 +534,137 @@
           </div>
         </div>
       </div>
+
+      <!-- KOMPARASI PERBEDAAN HARGA LANGSUNG (60X vs 72X vs KPR BANK) -->
+      <div class="mt-8 bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-6 backdrop-blur-md shadow-2xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+          <div>
+            <div class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 uppercase tracking-wider mb-1">
+              <i data-lucide="arrow-left-right" class="w-4 h-4 text-emerald-400"></i> Komparasi Harga Nyata
+            </div>
+            <h3 class="text-base sm:text-xl font-extrabold text-white">
+              Perbedaan Harga: Cash Bertahap 60x vs 72x vs KPR Bank
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">Perbandingan langsung total biaya, booking fee, uang muka, dan cicilan bulanan</p>
+          </div>
+          <span class="text-[11px] font-extrabold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30 self-start sm:self-auto flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Sinkron 100%
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Card 60x -->
+          <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-700/80 hover:border-amber-500/50 transition flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-xs font-extrabold text-amber-400 uppercase tracking-wide flex items-center gap-1">
+                  <i data-lucide="coins" class="w-3.5 h-3.5"></i> Cash Bertahap 60x
+                </span>
+                <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-semibold border border-slate-700">5 Thn (Base)</span>
+              </div>
+              <p id="cmpPrice60" class="text-xl sm:text-2xl font-extrabold text-white mt-1">Rp 500.000.000</p>
+              <p class="text-[11px] text-slate-400 mt-0.5">Harga Dasar (DP 0% Tanpa Bunga)</p>
+
+              <div class="mt-4 pt-3 border-t border-slate-800 space-y-2 text-xs">
+                <div class="flex justify-between text-slate-300">
+                  <span>Booking Fee (UTJ):</span>
+                  <span id="cmpBooking60" class="font-bold text-blue-400">Rp 5.000.000</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>Uang Muka (DP):</span>
+                  <span class="font-bold text-emerald-400">Rp 0 (DP 0%)</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>Tenor Pembayaran:</span>
+                  <span class="font-bold text-white">60 Bulan (5 Tahun)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-800 bg-amber-500/10 -mx-4 -mb-4 p-3 rounded-b-xl border-t border-amber-500/20">
+              <span class="text-[10px] text-amber-300 font-semibold block uppercase">Cicilan per Bulan:</span>
+              <span id="cmpCicilan60" class="text-lg font-extrabold text-amber-400">Rp 8.250.000/bln</span>
+            </div>
+          </div>
+
+          <!-- Card 72x -->
+          <div class="bg-slate-900/90 rounded-xl p-4 border border-emerald-500/40 hover:border-emerald-500 transition flex flex-col justify-between shadow-lg relative overflow-hidden">
+            <div class="absolute -right-8 -top-8 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl pointer-events-none"></div>
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-xs font-extrabold text-emerald-400 uppercase tracking-wide flex items-center gap-1">
+                  <i data-lucide="clock" class="w-3.5 h-3.5"></i> Cash Bertahap 72x
+                </span>
+                <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-bold border border-emerald-500/30">6 Thn (+6%)</span>
+              </div>
+              <p id="cmpPrice72" class="text-xl sm:text-2xl font-extrabold text-white mt-1">Rp 529.700.000</p>
+              <p id="cmpDiff72" class="text-[11px] text-amber-300 font-semibold mt-0.5">Selisih: +Rp 29.700.000 (+6% Tenor)</p>
+
+              <div class="mt-4 pt-3 border-t border-slate-800 space-y-2 text-xs">
+                <div class="flex justify-between text-slate-300">
+                  <span>Booking Fee (UTJ):</span>
+                  <span id="cmpBooking72" class="font-bold text-blue-400">Rp 5.000.000</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>Uang Muka (DP):</span>
+                  <span class="font-bold text-emerald-400">Rp 0 (DP 0%)</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>Tenor Pembayaran:</span>
+                  <span class="font-bold text-white">72 Bulan (6 Tahun)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-800 bg-emerald-500/10 -mx-4 -mb-4 p-3 rounded-b-xl border-t border-emerald-500/20">
+              <div class="flex items-center justify-between gap-1">
+                <div>
+                  <span class="text-[10px] text-emerald-300 font-semibold block uppercase">Cicilan per Bulan:</span>
+                  <span id="cmpCicilan72" class="text-lg font-extrabold text-emerald-400">Rp 7.287.500/bln</span>
+                </div>
+                <span id="cmpHemat72" class="text-[10px] font-bold text-emerald-300 bg-emerald-500/20 px-2 py-1 rounded border border-emerald-500/30 whitespace-nowrap">
+                  Hemat Rp 962.500/bln
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card KPR Bank -->
+          <div class="bg-slate-900/90 rounded-xl p-4 border border-blue-500/40 hover:border-blue-500 transition flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-xs font-extrabold text-blue-400 uppercase tracking-wide flex items-center gap-1">
+                  <i data-lucide="landmark" class="w-3.5 h-3.5"></i> Skema KPR Bank
+                </span>
+                <span class="text-[10px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded font-semibold border border-blue-500/30">Bank KPR</span>
+              </div>
+              <p id="cmpPriceKpr" class="text-xl sm:text-2xl font-extrabold text-white mt-1">Rp 500.000.000</p>
+              <p class="text-[11px] text-slate-400 mt-0.5">Harga Jual KPR (DP Dicicil Developer)</p>
+
+              <div class="mt-4 pt-3 border-t border-slate-800 space-y-2 text-xs">
+                <div class="flex justify-between text-slate-300">
+                  <span id="cmpLabelDpKpr">Total DP (20%):</span>
+                  <span id="cmpTotalDpKpr" class="font-bold text-amber-400">Rp 100.000.000</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>Cicilan DP (15x):</span>
+                  <span id="cmpCicilanDpKpr" class="font-bold text-amber-300">Rp 6.333.333/bln</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>Plafon Pinjaman Bank:</span>
+                  <span id="cmpPlafonKpr" class="font-bold text-white">Rp 400.000.000</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-800 bg-blue-500/10 -mx-4 -mb-4 p-3 rounded-b-xl border-t border-blue-500/20">
+              <span class="text-[10px] text-blue-300 font-semibold block uppercase">Estimasi Cicilan Bank (15 Thn):</span>
+              <span id="cmpAngsuranBankKpr" class="text-lg font-extrabold text-blue-400">Rp 3.595.000/bln</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -576,19 +710,16 @@
 
       <!-- Responsive Table Container -->
       <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm custom-scrollbar max-h-[600px] overflow-y-auto">
-        <table class="w-full text-left border-collapse text-xs min-w-[820px]">
+        <table class="w-full text-left border-collapse text-xs min-w-[960px]">
           <thead class="bg-slate-800 text-white sticky top-0 z-10 shadow-sm">
             <tr>
-              <th class="py-3 px-3.5 font-bold">Proyek</th>
-              <th class="py-3 px-3 font-bold">Kategori</th>
-              <th class="py-3 px-3.5 font-bold">Tipe Unit</th>
-              <th class="py-3 px-3 font-bold">Posisi</th>
-              <th class="py-3 px-3.5 font-bold text-right">Harga Jual</th>
-              <th class="py-3 px-3.5 font-bold text-right">Booking Fee</th>
-              <th class="py-3 px-3 font-bold text-center">DP Cash Bertahap</th>
-              <th class="py-3 px-3.5 font-bold text-right">Cicilan Bertahap / Bln</th>
-              <th class="py-3 px-3.5 font-bold text-right">Estimasi DP KPR</th>
-              <th class="py-3 px-3 font-bold text-center">Aksi</th>
+              <th class="py-3.5 px-3.5 font-bold">Proyek & Kategori</th>
+              <th class="py-3.5 px-3.5 font-bold">Tipe & Posisi</th>
+              <th class="py-3.5 px-3 font-bold text-right">UTJ / Booking</th>
+              <th class="py-3.5 px-3.5 font-bold text-right text-amber-300 border-l border-slate-700 bg-slate-800/95">Cash Bertahap 60x</th>
+              <th class="py-3.5 px-3.5 font-bold text-right text-emerald-300 border-l border-slate-700 bg-slate-800/95">Cash Bertahap 72x (+6%)</th>
+              <th class="py-3.5 px-3.5 font-bold text-right text-blue-300 border-l border-slate-700 bg-slate-800/95">Skema KPR Bank</th>
+              <th class="py-3.5 px-3 font-bold text-center border-l border-slate-700">Simulasi</th>
             </tr>
           </thead>
           <tbody id="masterTableBody" class="divide-y divide-slate-100 bg-white text-slate-700">
@@ -645,17 +776,16 @@
           </div>
 
           <div class="overflow-x-auto rounded-xl border border-slate-200 custom-scrollbar">
-            <table class="w-full text-left border-collapse text-xs min-w-[620px]">
+            <table class="w-full text-left border-collapse text-xs min-w-[760px]">
               <thead class="bg-slate-100 text-slate-700 border-b border-slate-200">
                 <tr>
                   <th class="py-2.5 px-3 font-bold">Tipe Unit</th>
-                  <th class="py-2.5 px-3 font-bold">Posisi</th>
-                  <th class="py-2.5 px-3 font-bold text-center">LB / LT</th>
-                  <th class="py-2.5 px-3 font-bold text-right">Harga Jual</th>
-                  <th class="py-2.5 px-3 font-bold text-right">Booking Fee</th>
-                  <th class="py-2.5 px-3 font-bold text-center">DP Bertahap</th>
-                  <th class="py-2.5 px-3 font-bold text-right">Cicilan Bertahap</th>
-                  <th class="py-2.5 px-3 font-bold text-center">Simulasi</th>
+                  <th class="py-2.5 px-3 font-bold">Posisi & Luas</th>
+                  <th class="py-2.5 px-3 font-bold text-right">UTJ / Booking</th>
+                  <th class="py-2.5 px-3.5 font-bold text-right text-amber-800 bg-amber-50/70 border-l border-slate-200">Cash Bertahap 60x</th>
+                  <th class="py-2.5 px-3.5 font-bold text-right text-emerald-800 bg-emerald-50/70 border-l border-slate-200">Cash Bertahap 72x (+6%)</th>
+                  <th class="py-2.5 px-3.5 font-bold text-right text-blue-800 bg-blue-50/70 border-l border-slate-200">KPR Bank (DP 20%)</th>
+                  <th class="py-2.5 px-3 font-bold text-center border-l border-slate-200">Simulasi</th>
                 </tr>
               </thead>
               <tbody id="modalUnitTableBody" class="divide-y divide-slate-100">

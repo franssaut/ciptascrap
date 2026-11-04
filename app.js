@@ -1,4 +1,4 @@
-// Cipta Group Web Application Logic - Synchronized Version
+// Cipta Group Web Application Logic - Synchronized Version with 60x vs 72x vs KPR Comparison
 document.addEventListener('DOMContentLoaded', () => {
   const data = window.CIPTA_DATA;
   if (!data || !data.projects) {
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // DOM Elements
+  // DOM Elements - Catalog & Filters
   const projectGrid = document.getElementById('projectGrid');
   const emptyState = document.getElementById('emptyState');
   const searchInput = document.getElementById('searchInput');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultCountText = document.getElementById('resultCountText');
   const resetFilterBtn = document.getElementById('resetFilterBtn');
 
-  // Modal elements
+  // Modal Elements
   const projectModal = document.getElementById('projectModal');
   const closeModalBtn = document.getElementById('closeModalBtn');
   const modalLogo = document.getElementById('modalLogo');
@@ -31,15 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalSimulateBtn = document.getElementById('modalSimulateBtn');
   const modalWaBtn = document.getElementById('modalWaBtn');
 
-  // Master Table elements
+  // Master Table Elements
   const masterTableBody = document.getElementById('masterTableBody');
   const tableSearchInput = document.getElementById('tableSearchInput');
 
-  // Calculator elements
-  const tabCashBertahap = document.getElementById('tabCashBertahap');
+  // Calculator Mode Switcher Tabs
+  const tabCashBertahap60 = document.getElementById('tabCashBertahap60');
+  const tabCashBertahap72 = document.getElementById('tabCashBertahap72');
   const tabKprBank = document.getElementById('tabKprBank');
   const badgeCurrentMode = document.getElementById('badgeCurrentMode');
 
+  // Calculator Form Controls
   const calcUnitSelect = document.getElementById('calcUnitSelect');
   const calcPriceInput = document.getElementById('calcPriceInput');
   const calcPriceFormatted = document.getElementById('calcPriceFormatted');
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const calcTenorSelect = document.getElementById('calcTenorSelect');
   const tenorLabel = document.getElementById('tenorLabel');
 
+  // Uang Muka (DP) Controls
   const dpControlContainer = document.getElementById('dpControlContainer');
   const dpDescText = document.getElementById('dpDescText');
   const dpModeZeroBtn = document.getElementById('dpModeZeroBtn');
@@ -61,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const barRemaining = document.getElementById('barRemaining');
   const waterfallTotalLabel = document.getElementById('waterfallTotalLabel');
 
-  // Results
+  // Active Highlight Results
   const labelMonthlyTitle = document.getElementById('labelMonthlyTitle');
   const resMonthlyCicilan = document.getElementById('resMonthlyCicilan');
   const resTenorText = document.getElementById('resTenorText');
@@ -77,12 +80,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const resFirstInstallmentDate = document.getElementById('resFirstInstallmentDate');
   const calcWaBtn = document.getElementById('calcWaBtn');
 
+  // Comparison Matrix Cards Elements
+  const cmpPrice60 = document.getElementById('cmpPrice60');
+  const cmpBooking60 = document.getElementById('cmpBooking60');
+  const cmpCicilan60 = document.getElementById('cmpCicilan60');
+
+  const cmpPrice72 = document.getElementById('cmpPrice72');
+  const cmpDiff72 = document.getElementById('cmpDiff72');
+  const cmpBooking72 = document.getElementById('cmpBooking72');
+  const cmpCicilan72 = document.getElementById('cmpCicilan72');
+  const cmpHemat72 = document.getElementById('cmpHemat72');
+
+  const cmpPriceKpr = document.getElementById('cmpPriceKpr');
+  const cmpLabelDpKpr = document.getElementById('cmpLabelDpKpr');
+  const cmpTotalDpKpr = document.getElementById('cmpTotalDpKpr');
+  const cmpCicilanDpKpr = document.getElementById('cmpCicilanDpKpr');
+  const cmpPlafonKpr = document.getElementById('cmpPlafonKpr');
+  const cmpAngsuranBankKpr = document.getElementById('cmpAngsuranBankKpr');
+
+  // State Variables
   let currentCategory = 'ALL';
   let currentActiveProject = null;
-
-  // Calculator State
-  let calcMode = 'BERTAHAP'; // 'BERTAHAP' or 'KPR'
-  let dpMode = 'ZERO'; // 'ZERO' (Tanpa DP) or 'CUSTOM' (Pakai DP)
+  let calcMode = 'BERTAHAP_60'; // 'BERTAHAP_60' | 'BERTAHAP_72' | 'KPR'
+  let dpMode = 'ZERO'; // 'ZERO' (Tanpa DP) | 'CUSTOM' (Pakai DP)
 
   // ==================== AUTO-SYNC API & WIDGET LOGIC ====================
   const topSyncBtn = document.getElementById('topSyncBtn');
@@ -135,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const res = await fetch('/api/sync', { method: 'POST' });
       const triggerData = await res.json();
 
-      // If Vercel Serverless returned data directly:
       if (triggerData.data) {
         window.CIPTA_DATA = triggerData.data;
         applyFilters();
@@ -155,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (syncPollingInterval) clearInterval(syncPollingInterval);
 
-      // Local server polling mode
       syncPollingInterval = setInterval(async () => {
         const s = await checkSyncStatus();
         if (s && !s.is_syncing) {
@@ -197,7 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
     topSyncBtn.addEventListener('click', triggerManualSync);
   }
 
-  // Initial check & poll every 45s
   checkSyncStatus();
   setInterval(checkSyncStatus, 45000);
 
@@ -256,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
           <div class="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs">
             <div>
-              <span class="text-[10px] font-semibold text-slate-400 block uppercase">Harga Mulai</span>
+              <span class="text-[10px] font-semibold text-slate-400 block uppercase">Harga Mulai (60x)</span>
               <span class="font-extrabold text-slate-900 text-sm">${p.min_price > 0 ? formatIDR(p.min_price) : 'Hubungi CS'}</span>
             </div>
             <div>
@@ -268,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="text-[10px] font-semibold text-slate-400 block uppercase">Cash Bertahap (DP 0%)</span>
                 <span class="font-extrabold text-emerald-600 text-xs">Mulai ${p.min_cicilan > 0 ? formatIDR(p.min_cicilan) + '/bln' : '-'}</span>
               </div>
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">${p.tenor_str}</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">60x & 72x</span>
             </div>
           </div>
 
@@ -278,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
               data-id="${p.id}"
             >
               <i data-lucide="layers" class="w-4 h-4 text-amber-400"></i>
-              Lihat Rincian & Tabel Harga
+              Lihat Perbandingan 60x, 72x & KPR
             </button>
 
             <div class="grid grid-cols-3 gap-1 sm:gap-1.5 text-center text-[10px] sm:text-[11px] font-semibold">
@@ -406,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Open Modal Detail
+  // 3. Open Modal Detail with 60x vs 72x vs KPR Price Comparison Table
   function openModal(proj) {
     currentActiveProject = proj;
 
@@ -435,35 +452,60 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Populate unit table
+    // Populate Modal Unit Table with 3-Option Comparison
     modalUnitTableBody.innerHTML = '';
     if (proj.units && proj.units.length > 0) {
       proj.units.forEach((u, idx) => {
         const tr = document.createElement('tr');
-        tr.className = idx % 2 === 0 ? 'bg-white hover:bg-slate-50' : 'bg-slate-50/60 hover:bg-slate-50';
+        tr.className = idx % 2 === 0 ? 'bg-white hover:bg-slate-50/80 transition' : 'bg-slate-50/60 hover:bg-slate-50/80 transition';
+        
+        const p60 = u['Harga Bertahap 60x (Rp)'] || u['Harga Jual (Rp)'];
+        const c60 = u['Cicilan Bertahap 60x / Bln (Rp)'] || u['Cicilan Cash Bertahap / Bln (Rp)'];
+        const p72 = u['Harga Bertahap 72x (Rp)'] || (u['Booking Fee / UTJ (Rp)'] + Math.round((p60 - u['Booking Fee / UTJ (Rp)']) * 1.06));
+        const c72 = u['Cicilan Bertahap 72x / Bln (Rp)'] || Math.round((p72 - u['Booking Fee / UTJ (Rp)']) / 72);
+        const hemat72 = u['Hemat Cicilan 72x / Bln (Rp)'] || Math.max(0, c60 - c72);
+        
+        const cicilanDpKpr = u['Cicilan DP KPR / Bln (Rp)'] || Math.round((p60 * 0.2 - u['Booking Fee / UTJ (Rp)']) / 15);
+        const estBankKpr = u['Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)'] || Math.round((p60 * 0.8) * 0.008988);
+
         tr.innerHTML = `
           <td class="py-2.5 px-3 font-bold text-slate-900">${u['Tipe Unit']}</td>
-          <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${u['Posisi'] === 'Hook' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'}">${u['Posisi'] || '-'}</span></td>
-          <td class="py-2.5 px-3 text-center">${u['LB'] || '-'} / ${u['LT'] || '-'}</td>
-          <td class="py-2.5 px-3 text-right font-extrabold text-slate-900">${formatIDR(u['Harga Jual (Rp)'])}</td>
+          <td class="py-2.5 px-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${u['Posisi'] === 'Hook' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'}">${u['Posisi'] || 'Standar'}</span>
+            ${u['LB'] && u['LT'] ? `<span class="text-[10px] text-slate-400 block mt-0.5 font-medium">${u['LB']}/${u['LT']} m²</span>` : ''}
+          </td>
           <td class="py-2.5 px-3 text-right font-bold text-blue-600">${formatIDR(u['Booking Fee / UTJ (Rp)'])}</td>
-          <td class="py-2.5 px-3 text-center font-bold text-slate-500">Rp 0 (DP 0%)</td>
-          <td class="py-2.5 px-3 text-right font-extrabold text-emerald-600">${formatIDR(u['Cicilan Cash Bertahap / Bln (Rp)'])}/bln <span class="text-[10px] text-slate-400 block font-normal">(${u['Tenor Bertahap (Bulan)']}x)</span></td>
-          <td class="py-2.5 px-3 text-center">
-            <button class="sim-from-modal-btn px-2.5 py-1 rounded-md bg-cipta-blue hover:bg-blue-800 text-white font-bold text-[10px] transition" data-price="${u['Harga Jual (Rp)']}" data-booking="${u['Booking Fee / UTJ (Rp)']}" data-tenor="${u['Tenor Bertahap (Bulan)']}" data-unit="${proj.name} - ${u['Tipe Unit']}">
-              Hitung
+          <td class="py-2.5 px-3.5 text-right border-l border-slate-200 bg-amber-50/40">
+            <span class="font-extrabold text-slate-900 block">${formatIDR(p60)}</span>
+            <span class="text-[11px] font-bold text-amber-600 block">${formatIDR(c60)}/bln</span>
+          </td>
+          <td class="py-2.5 px-3.5 text-right border-l border-slate-200 bg-emerald-50/40">
+            <span class="font-extrabold text-slate-900 block">${formatIDR(p72)}</span>
+            <span class="text-[11px] font-bold text-emerald-600 block">${formatIDR(c72)}/bln</span>
+            <span class="text-[9px] font-semibold text-emerald-700 bg-emerald-100/70 px-1 py-0.2 rounded inline-block mt-0.5">Hemat ${formatIDR(hemat72)}/bln</span>
+          </td>
+          <td class="py-2.5 px-3.5 text-right border-l border-slate-200 bg-blue-50/40">
+            <span class="font-semibold text-slate-700 text-[11px] block">DP 15x: ${formatIDR(cicilanDpKpr)}/bln</span>
+            <span class="text-[10px] text-blue-600 font-bold block">Est. Bank: ${formatIDR(estBankKpr)}/bln</span>
+          </td>
+          <td class="py-2.5 px-3 text-center border-l border-slate-200">
+            <button class="sim-from-modal-btn px-2.5 py-1.5 rounded-lg bg-cipta-blue hover:bg-blue-800 text-white font-bold text-[10px] transition shadow-sm flex items-center justify-center gap-1 mx-auto" 
+              data-price="${p60}" 
+              data-booking="${u['Booking Fee / UTJ (Rp)']}" 
+              data-unit="${proj.name} - ${u['Tipe Unit']}">
+              <i data-lucide="calculator" class="w-3 h-3"></i> Hitung
             </button>
           </td>
         `;
         modalUnitTableBody.appendChild(tr);
       });
     } else {
-      modalUnitTableBody.innerHTML = `<tr><td colspan="8" class="text-center py-6 text-slate-400">Data unit terperinci dapat dilihat langsung di berkas Pricelist resmi.</td></tr>`;
+      modalUnitTableBody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-400">Data unit terperinci dapat dilihat langsung di berkas Pricelist resmi.</td></tr>`;
     }
 
     modalLinktreeBtn.href = proj.linktree_url || 'https://linktr.ee/ciptagroupofficial';
     
-    const waText = encodeURIComponent(`Halo Cipta Group, saya ingin informasi lebih lanjut mengenai proyek *${proj.name}* (Pricelist & Promo Cicilan Cash Bertahap).`);
+    const waText = encodeURIComponent(`Halo Cipta Group, saya ingin informasi perbandingan harga Cash Bertahap 60x vs 72x vs KPR untuk proyek *${proj.name}*.`);
     modalWaBtn.href = `https://wa.me/628117700000?text=${waText}`;
 
     modalSimulateBtn.onclick = () => {
@@ -484,7 +526,6 @@ document.addEventListener('DOMContentLoaded', () => {
       b.addEventListener('click', () => {
         const pr = parseFloat(b.getAttribute('data-price'));
         const bk = parseFloat(b.getAttribute('data-booking'));
-        const tn = parseInt(b.getAttribute('data-tenor'));
         const un = b.getAttribute('data-unit');
         
         closeModal();
@@ -492,8 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         calcPriceInput.value = pr;
         calcBookingSelect.value = bk;
-        calcTenorSelect.value = tn;
-        setDpMode('ZERO');
+        setCalculatorMode('BERTAHAP_60');
         updateCalculator(un);
       });
     });
@@ -508,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === projectModal) closeModal();
   });
 
-  // 4. Populate Master Unit Table
+  // 4. Populate Master Unit Table with Side-by-Side 60x vs 72x vs KPR Comparison
   function renderMasterTable(filterText = '') {
     masterTableBody.innerHTML = '';
     const q = filterText.toLowerCase().trim();
@@ -526,19 +566,49 @@ document.addEventListener('DOMContentLoaded', () => {
           count++;
           const tr = document.createElement('tr');
           tr.className = "hover:bg-slate-50 transition border-b border-slate-100";
+
+          const p60 = u['Harga Bertahap 60x (Rp)'] || u['Harga Jual (Rp)'];
+          const c60 = u['Cicilan Bertahap 60x / Bln (Rp)'] || u['Cicilan Cash Bertahap / Bln (Rp)'];
+          const p72 = u['Harga Bertahap 72x (Rp)'] || (u['Booking Fee / UTJ (Rp)'] + Math.round((p60 - u['Booking Fee / UTJ (Rp)']) * 1.06));
+          const c72 = u['Cicilan Bertahap 72x / Bln (Rp)'] || Math.round((p72 - u['Booking Fee / UTJ (Rp)']) / 72);
+          const hemat72 = u['Hemat Cicilan 72x / Bln (Rp)'] || Math.max(0, c60 - c72);
+          
+          const cicilanDpKpr = u['Cicilan DP KPR / Bln (Rp)'] || Math.round((p60 * 0.2 - u['Booking Fee / UTJ (Rp)']) / 15);
+          const estBankKpr = u['Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)'] || Math.round((p60 * 0.8) * 0.008988);
+
           tr.innerHTML = `
-            <td class="py-2.5 px-3.5 font-bold text-slate-900">${p.name}</td>
-            <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${p.category === 'Ruko' ? 'bg-blue-100 text-blue-800' : (p.category === 'Villa' ? 'bg-purple-100 text-purple-800' : 'bg-emerald-100 text-emerald-800')}">${p.category}</span></td>
-            <td class="py-2.5 px-3.5 font-semibold text-slate-800">${u['Tipe Unit']}</td>
-            <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded text-[10px] font-semibold ${u['Posisi'] === 'Hook' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'}">${u['Posisi'] || 'Standar'}</span></td>
-            <td class="py-2.5 px-3.5 text-right font-extrabold text-slate-900">${formatIDR(u['Harga Jual (Rp)'])}</td>
-            <td class="py-2.5 px-3.5 text-right font-bold text-blue-600">${formatIDR(u['Booking Fee / UTJ (Rp)'])}</td>
-            <td class="py-2.5 px-3 text-center text-slate-500 font-medium">Rp 0 (DP 0%)</td>
-            <td class="py-2.5 px-3.5 text-right font-extrabold text-emerald-600">${formatIDR(u['Cicilan Cash Bertahap / Bln (Rp)'])}<span class="text-[10px] text-slate-400 block font-normal">/bln (${u['Tenor Bertahap (Bulan)']}x)</span></td>
-            <td class="py-2.5 px-3.5 text-right text-slate-600 font-semibold">${formatIDR(u['Nominal DP KPR (Rp)']) || '-'}<span class="text-[10px] text-slate-400 block font-normal">(${u['DP KPR (%)']}%)</span></td>
-            <td class="py-2.5 px-3 text-center">
-              <button class="sim-from-table-btn px-2.5 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-white font-bold text-[10px] transition" data-price="${u['Harga Jual (Rp)']}" data-booking="${u['Booking Fee / UTJ (Rp)']}" data-tenor="${u['Tenor Bertahap (Bulan)']}" data-unit="${p.name} - ${u['Tipe Unit']}">
-                Hitung
+            <td class="py-3 px-3.5">
+              <div class="font-bold text-slate-900">${p.name}</div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold ${p.category === 'Ruko' ? 'bg-blue-100 text-blue-800' : (p.category === 'Villa' ? 'bg-purple-100 text-purple-800' : 'bg-emerald-100 text-emerald-800')}">${p.category}</span>
+            </td>
+            <td class="py-3 px-3.5">
+              <div class="font-semibold text-slate-800">${u['Tipe Unit']}</div>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span class="px-1.5 py-0.2 rounded text-[10px] font-medium ${u['Posisi'] === 'Hook' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-600'}">${u['Posisi'] || 'Standar'}</span>
+                ${u['LB'] && u['LT'] ? `<span class="text-[10px] text-slate-400 font-medium">${u['LB']}/${u['LT']} m²</span>` : ''}
+              </div>
+            </td>
+            <td class="py-3 px-3.5 text-right font-bold text-blue-600">${formatIDR(u['Booking Fee / UTJ (Rp)'])}</td>
+            <td class="py-3 px-3.5 text-right border-l border-slate-100 bg-amber-50/20">
+              <div class="font-extrabold text-slate-900">${formatIDR(p60)}</div>
+              <div class="text-[11px] font-bold text-amber-600">${formatIDR(c60)}<span class="text-[10px] text-slate-400 font-normal">/bln (60x)</span></div>
+            </td>
+            <td class="py-3 px-3.5 text-right border-l border-slate-100 bg-emerald-50/20">
+              <div class="font-extrabold text-slate-900">${formatIDR(p72)}</div>
+              <div class="text-[11px] font-bold text-emerald-600">${formatIDR(c72)}<span class="text-[10px] text-slate-400 font-normal">/bln (72x)</span></div>
+              <div class="mt-0.5"><span class="inline-block text-[9px] font-extrabold text-emerald-700 bg-emerald-100 px-1.5 py-0.2 rounded">Hemat ${formatIDR(hemat72)}/bln</span></div>
+            </td>
+            <td class="py-3 px-3.5 text-right border-l border-slate-100 bg-blue-50/20">
+              <div class="text-[11px] font-bold text-slate-700">DP 15x: ${formatIDR(cicilanDpKpr)}/bln</div>
+              <div class="text-[11px] font-extrabold text-blue-600">Est. Bank: ${formatIDR(estBankKpr)}/bln</div>
+              <div class="text-[9px] text-slate-400">(DP 20% | 15 Thn @7%)</div>
+            </td>
+            <td class="py-3 px-3.5 text-center border-l border-slate-100">
+              <button class="sim-from-table-btn px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-[11px] transition shadow-sm flex items-center justify-center gap-1 mx-auto" 
+                data-price="${p60}" 
+                data-booking="${u['Booking Fee / UTJ (Rp)']}" 
+                data-unit="${p.name} - ${u['Tipe Unit']}">
+                <i data-lucide="calculator" class="w-3.5 h-3.5 text-amber-400"></i> Hitung
               </button>
             </td>
           `;
@@ -548,21 +618,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (count === 0) {
-      masterTableBody.innerHTML = `<tr><td colspan="10" class="text-center py-8 text-slate-400">Tidak ada unit yang sesuai pencarian.</td></tr>`;
+      masterTableBody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-slate-400">Tidak ada unit yang sesuai pencarian.</td></tr>`;
     }
+
+    lucide.createIcons();
 
     document.querySelectorAll('.sim-from-table-btn').forEach(b => {
       b.addEventListener('click', () => {
         const pr = parseFloat(b.getAttribute('data-price'));
         const bk = parseFloat(b.getAttribute('data-booking'));
-        const tn = parseInt(b.getAttribute('data-tenor'));
         const un = b.getAttribute('data-unit');
         
         window.location.hash = 'kalkulator';
         calcPriceInput.value = pr;
         calcBookingSelect.value = bk;
-        calcTenorSelect.value = tn;
-        setDpMode('ZERO');
+        setCalculatorMode('BERTAHAP_60');
         updateCalculator(un);
       });
     });
@@ -583,7 +653,7 @@ document.addEventListener('DOMContentLoaded', () => {
         type: u['Tipe Unit'],
         price: u['Harga Jual (Rp)'],
         booking: u['Booking Fee / UTJ (Rp)'],
-        tenor: u['Tenor Bertahap (Bulan)']
+        tenor: u['Tenor Bertahap (Bulan)'] || 60
       });
       opt.textContent = `${p.name} - ${u['Tipe Unit']} (${u['Posisi'] || 'Std'}) - ${formatIDR(u['Harga Jual (Rp)'])}`;
       optGroup.appendChild(opt);
@@ -596,51 +666,63 @@ document.addEventListener('DOMContentLoaded', () => {
     const u = JSON.parse(e.target.value);
     calcPriceInput.value = u.price;
     calcBookingSelect.value = u.booking;
-    calcTenorSelect.value = u.tenor;
-    setDpMode('ZERO');
     updateCalculator(`${u.project} - ${u.type}`);
   });
 
   function populateCalculatorWithUnit(unit, projectName) {
     calcPriceInput.value = unit['Harga Jual (Rp)'];
     calcBookingSelect.value = unit['Booking Fee / UTJ (Rp)'];
-    calcTenorSelect.value = unit['Tenor Bertahap (Bulan)'];
-    setDpMode('ZERO');
+    setCalculatorMode('BERTAHAP_60');
     updateCalculator(`${projectName} - ${unit['Tipe Unit']}`);
   }
 
-  // Calculator Mode Switchers
-  tabCashBertahap.addEventListener('click', () => {
-    calcMode = 'BERTAHAP';
-    tabCashBertahap.className = "flex-1 py-2.5 px-4 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 bg-amber-500 text-slate-950 shadow-md";
-    tabKprBank.className = "flex-1 py-2.5 px-4 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 text-slate-300 hover:text-white";
-    tenorLabel.textContent = "Tenor Cash Bertahap:";
-    calcTenorSelect.innerHTML = `
-      <option value="12">12 Bulan (1 Tahun)</option>
-      <option value="24">24 Bulan (2 Tahun)</option>
-      <option value="36">36 Bulan (3 Tahun)</option>
-      <option value="48">48 Bulan (4 Tahun)</option>
-      <option value="60" selected>60 Bulan (5 Tahun - Standar Cipta)</option>
-      <option value="72">72 Bulan (6 Tahun - Khusus Greenville)</option>
-    `;
-    setDpMode('ZERO');
-    updateCalculator();
-  });
+  // 6. Calculator Mode Switchers (60x vs 72x vs KPR)
+  function setCalculatorMode(mode) {
+    calcMode = mode;
 
-  tabKprBank.addEventListener('click', () => {
-    calcMode = 'KPR';
-    tabKprBank.className = "flex-1 py-2.5 px-4 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 bg-amber-500 text-slate-950 shadow-md";
-    tabCashBertahap.className = "flex-1 py-2.5 px-4 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 text-slate-300 hover:text-white";
-    tenorLabel.textContent = "Lama Cicilan DP ke Developer:";
-    calcTenorSelect.innerHTML = `
-      <option value="12">12 Bulan</option>
-      <option value="15" selected>15 Bulan (Standar)</option>
-      <option value="18">18 Bulan</option>
-      <option value="24">24 Bulan</option>
-    `;
-    setDpMode('CUSTOM');
+    tabCashBertahap60.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 text-slate-300 hover:text-white";
+    tabCashBertahap72.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 text-slate-300 hover:text-white";
+    tabKprBank.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 text-slate-300 hover:text-white";
+
+    if (calcMode === 'BERTAHAP_60') {
+      tabCashBertahap60.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 bg-amber-500 text-slate-950 shadow-md";
+      tenorLabel.textContent = "Tenor Cash Bertahap:";
+      calcTenorSelect.innerHTML = `
+        <option value="12">12 Bulan (1 Tahun)</option>
+        <option value="24">24 Bulan (2 Tahun)</option>
+        <option value="36">36 Bulan (3 Tahun)</option>
+        <option value="48">48 Bulan (4 Tahun)</option>
+        <option value="60" selected>60 Bulan (5 Tahun - Standar Base Cipta)</option>
+      `;
+      dpControlContainer.classList.remove('hidden');
+      setDpMode('ZERO');
+    } else if (calcMode === 'BERTAHAP_72') {
+      tabCashBertahap72.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 bg-emerald-500 text-slate-950 shadow-md";
+      tenorLabel.textContent = "Tenor Cash Bertahap Panjang:";
+      calcTenorSelect.innerHTML = `
+        <option value="72" selected>72 Bulan (6 Tahun - Markup +6% Pokok)</option>
+      `;
+      dpControlContainer.classList.remove('hidden');
+      setDpMode('ZERO');
+    } else if (calcMode === 'KPR') {
+      tabKprBank.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 bg-blue-500 text-white shadow-md";
+      tenorLabel.textContent = "Lama Cicilan DP ke Developer:";
+      calcTenorSelect.innerHTML = `
+        <option value="12">12 Bulan</option>
+        <option value="15" selected>15 Bulan (Standar Cipta)</option>
+        <option value="18">18 Bulan</option>
+        <option value="24">24 Bulan</option>
+      `;
+      dpControlContainer.classList.remove('hidden');
+      setDpMode('CUSTOM');
+    }
+
     updateCalculator();
-  });
+  }
+
+  tabCashBertahap60.addEventListener('click', () => setCalculatorMode('BERTAHAP_60'));
+  tabCashBertahap72.addEventListener('click', () => setCalculatorMode('BERTAHAP_72'));
+  tabKprBank.addEventListener('click', () => setCalculatorMode('KPR'));
 
   dpModeZeroBtn.addEventListener('click', () => setDpMode('ZERO'));
   dpModeCustomBtn.addEventListener('click', () => setDpMode('CUSTOM'));
@@ -663,32 +745,73 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCalculator();
   }
 
-  // Master Synchronized Calculation Engine
+  // 7. Master Synchronized Calculation Engine with Live 3-Way Comparison
   function updateCalculator(customUnitTitle = '') {
-    const price = parseFloat(calcPriceInput.value) || 0;
+    const basePrice = parseFloat(calcPriceInput.value) || 0;
     const booking = parseFloat(calcBookingSelect.value) || 0;
-    const tenor = parseInt(calcTenorSelect.value) || 60;
+    const tenor = parseInt(calcTenorSelect.value) || (calcMode === 'BERTAHAP_72' ? 72 : 60);
     const dpPercent = parseInt(calcDpSlider.value) || 20;
 
-    calcPriceFormatted.textContent = formatIDR(price);
+    calcPriceFormatted.textContent = formatIDR(basePrice);
 
+    // --- Benchmark 1: Skema Cash Bertahap 60x (Base) ---
+    const p60 = basePrice;
+    const sisa60 = Math.max(0, p60 - booking);
+    const cicilan60 = Math.round(sisa60 / 60);
+
+    // --- Benchmark 2: Skema Cash Bertahap 72x (+6% Markup on Sisa Pokok) ---
+    const sisa72 = Math.round(Math.max(0, basePrice - booking) * 1.06);
+    const p72 = booking + sisa72;
+    const diff72 = p72 - p60;
+    const cicilan72 = Math.round(sisa72 / 72);
+    const hemat72 = Math.max(0, cicilan60 - cicilan72);
+
+    // --- Benchmark 3: Skema KPR Bank (DP dicicil 15x ke developer, bunga bank 7% p.a 15 tahun) ---
+    const pKpr = basePrice;
+    const totalDpKpr = Math.round(pKpr * (dpPercent / 100));
+    const netDpKpr = Math.max(0, totalDpKpr - booking);
+    const cicilanDpKpr = Math.round(netDpKpr / 15);
+    const plafonKpr = Math.max(0, pKpr - totalDpKpr);
+    const rBank = 0.07 / 12;
+    const nBank = 15 * 12;
+    const angsuranBankKpr = plafonKpr > 0 ? Math.round(plafonKpr * (rBank * Math.pow(1 + rBank, nBank)) / (Math.pow(1 + rBank, nBank) - 1)) : 0;
+
+    // --- Update Direct Comparison Cards ---
+    if (cmpPrice60) cmpPrice60.textContent = formatIDR(p60);
+    if (cmpBooking60) cmpBooking60.textContent = formatIDR(booking);
+    if (cmpCicilan60) cmpCicilan60.textContent = formatIDR(cicilan60) + '/bln';
+
+    if (cmpPrice72) cmpPrice72.textContent = formatIDR(p72);
+    if (cmpDiff72) cmpDiff72.textContent = `Selisih: +${formatIDR(diff72)} (+6% Tenor)`;
+    if (cmpBooking72) cmpBooking72.textContent = formatIDR(booking);
+    if (cmpCicilan72) cmpCicilan72.textContent = formatIDR(cicilan72) + '/bln';
+    if (cmpHemat72) cmpHemat72.textContent = `Hemat ${formatIDR(hemat72)}/bln`;
+
+    if (cmpPriceKpr) cmpPriceKpr.textContent = formatIDR(pKpr);
+    if (cmpLabelDpKpr) cmpLabelDpKpr.textContent = `Total DP (${dpPercent}%):`;
+    if (cmpTotalDpKpr) cmpTotalDpKpr.textContent = formatIDR(totalDpKpr);
+    if (cmpCicilanDpKpr) cmpCicilanDpKpr.textContent = formatIDR(cicilanDpKpr) + '/bln';
+    if (cmpPlafonKpr) cmpPlafonKpr.textContent = formatIDR(plafonKpr);
+    if (cmpAngsuranBankKpr) cmpAngsuranBankKpr.textContent = formatIDR(angsuranBankKpr) + '/bln';
+
+    // --- Active Highlight Display Box Calculation ---
+    let activePrice = basePrice;
     let totalDp = 0;
     let netDp = 0;
     let sisaPokok = 0;
     let monthlyCicilan = 0;
 
-    if (calcMode === 'BERTAHAP') {
-      // CASH BERTAHAP MODE
+    if (calcMode === 'BERTAHAP_60') {
+      activePrice = p60;
       if (dpMode === 'ZERO') {
-        // Mode Standar Cipta Group: DP 0%
-        badgeCurrentMode.textContent = "Cash Bertahap (DP 0%)";
-        badgeCurrentMode.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+        badgeCurrentMode.textContent = "Cash Bertahap 60x (DP 0%)";
+        badgeCurrentMode.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30";
         labelMonthlyTitle.textContent = "Cicilan Cash Bertahap per Bulan:";
-        
+
         totalDp = 0;
         netDp = 0;
-        sisaPokok = Math.max(0, price - booking);
-        monthlyCicilan = sisaPokok / tenor;
+        sisaPokok = Math.max(0, activePrice - booking);
+        monthlyCicilan = Math.round(sisaPokok / tenor);
 
         resTenorText.textContent = `selama ${tenor} bulan (${(tenor/12).toFixed(1)} tahun) tanpa bunga`;
         resLabelDp.textContent = "3. Uang Muka (DP):";
@@ -699,18 +822,17 @@ document.addEventListener('DOMContentLoaded', () => {
         resRemainingPrice.textContent = formatIDR(sisaPokok);
 
         resFormulaVerification.innerHTML = `
-          ${formatIDR(booking)} (Booking) + (${tenor} bln × ${formatIDR(monthlyCicilan)}) = <b>${formatIDR(price)}</b>
+          ${formatIDR(booking)} (Booking) + (${tenor} bln × ${formatIDR(monthlyCicilan)}) = <b>${formatIDR(activePrice)}</b>
         `;
       } else {
-        // Mode Bertahap Dengan DP
-        badgeCurrentMode.textContent = `Cash Bertahap (DP ${dpPercent}%)`;
+        badgeCurrentMode.textContent = `Cash Bertahap 60x (DP ${dpPercent}%)`;
         badgeCurrentMode.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30";
         labelMonthlyTitle.textContent = "Cicilan Pokok Bertahap per Bulan:";
 
-        totalDp = price * (dpPercent / 100);
+        totalDp = Math.round(activePrice * (dpPercent / 100));
         netDp = Math.max(0, totalDp - booking);
-        sisaPokok = Math.max(0, price - totalDp);
-        monthlyCicilan = sisaPokok / tenor;
+        sisaPokok = Math.max(0, activePrice - totalDp);
+        monthlyCicilan = Math.round(sisaPokok / tenor);
 
         dpPercentValue.textContent = `${dpPercent}% (${formatIDR(totalDp)})`;
         resTenorText.textContent = `selama ${tenor} bulan (setelah pelunasan DP)`;
@@ -723,19 +845,68 @@ document.addEventListener('DOMContentLoaded', () => {
         resRemainingPrice.textContent = formatIDR(sisaPokok);
 
         resFormulaVerification.innerHTML = `
-          ${formatIDR(booking)} (Booking) + ${formatIDR(netDp)} (Sisa DP) + (${tenor} bln × ${formatIDR(monthlyCicilan)}) = <b>${formatIDR(price)}</b>
+          ${formatIDR(booking)} (Booking) + ${formatIDR(netDp)} (Sisa DP) + (${tenor} bln × ${formatIDR(monthlyCicilan)}) = <b>${formatIDR(activePrice)}</b>
+        `;
+      }
+    } else if (calcMode === 'BERTAHAP_72') {
+      activePrice = p72;
+      if (dpMode === 'ZERO') {
+        badgeCurrentMode.textContent = "Cash Bertahap 72x (+6% Tenor Panjang)";
+        badgeCurrentMode.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+        labelMonthlyTitle.textContent = "Cicilan Cash Bertahap 72x per Bulan:";
+
+        totalDp = 0;
+        netDp = 0;
+        sisaPokok = sisa72;
+        monthlyCicilan = cicilan72;
+
+        resTenorText.textContent = `selama 72 bulan (6 tahun) • Hemat ${formatIDR(hemat72)}/bulan dibanding tenor 60x`;
+        resLabelDp.textContent = "3. Uang Muka (DP):";
+        resDpValue.textContent = "Rp 0 (DP 0% / Murni Bertahap 72x)";
+        rowNetDp.classList.add('hidden');
+
+        resLabelRemaining.textContent = "4. Sisa Pokok yang Dicicil (Markup +6%):";
+        resRemainingPrice.textContent = formatIDR(sisaPokok);
+
+        resFormulaVerification.innerHTML = `
+          ${formatIDR(booking)} (Booking) + (72 bln × ${formatIDR(monthlyCicilan)}) = <b>${formatIDR(activePrice)}</b><br>
+          <span class="text-emerald-300 font-semibold block mt-1">✓ Penghematan cicilan: ${formatIDR(hemat72)}/bulan dibanding tenor 60x (Rp ${formatIDR(cicilan60)}/bln)</span>
+        `;
+      } else {
+        badgeCurrentMode.textContent = `Cash Bertahap 72x (DP ${dpPercent}%)`;
+        badgeCurrentMode.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+        labelMonthlyTitle.textContent = "Cicilan Pokok Bertahap 72x per Bulan:";
+
+        totalDp = Math.round(activePrice * (dpPercent / 100));
+        netDp = Math.max(0, totalDp - booking);
+        sisaPokok = Math.max(0, activePrice - totalDp);
+        monthlyCicilan = Math.round(sisaPokok / 72);
+
+        dpPercentValue.textContent = `${dpPercent}% (${formatIDR(totalDp)})`;
+        resTenorText.textContent = `selama 72 bulan (setelah pelunasan DP)`;
+        resLabelDp.textContent = `3. Total Uang Muka (${dpPercent}%):`;
+        resDpValue.textContent = formatIDR(totalDp);
+        rowNetDp.classList.remove('hidden');
+        resNetDpValue.textContent = formatIDR(netDp);
+
+        resLabelRemaining.textContent = "4. Sisa Pokok yang Dicicil (72x):";
+        resRemainingPrice.textContent = formatIDR(sisaPokok);
+
+        resFormulaVerification.innerHTML = `
+          ${formatIDR(booking)} (Booking) + ${formatIDR(netDp)} (Sisa DP) + (72 bln × ${formatIDR(monthlyCicilan)}) = <b>${formatIDR(activePrice)}</b>
         `;
       }
     } else {
-      // SKEMA KPR BANK MODE
+      // SKEMA KPR BANK
+      activePrice = pKpr;
       badgeCurrentMode.textContent = `Skema KPR Bank (DP ${dpPercent}%)`;
       badgeCurrentMode.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30";
-      labelMonthlyTitle.textContent = "Cicilan Uang Muka (DP) per Bulan:";
+      labelMonthlyTitle.textContent = "Cicilan DP ke Developer per Bulan:";
 
-      totalDp = price * (dpPercent / 100);
-      netDp = Math.max(0, totalDp - booking);
-      monthlyCicilan = netDp / tenor; // Installment for the DP portion
-      sisaPokok = Math.max(0, price - totalDp); // KPR Loan Amount
+      totalDp = totalDpKpr;
+      netDp = netDpKpr;
+      sisaPokok = plafonKpr;
+      monthlyCicilan = Math.round(netDp / tenor);
 
       dpPercentValue.textContent = `${dpPercent}% (${formatIDR(totalDp)})`;
       resTenorText.textContent = `dicicil selama ${tenor} bulan ke Developer sebelum akad KPR`;
@@ -747,30 +918,25 @@ document.addEventListener('DOMContentLoaded', () => {
       resLabelRemaining.textContent = "4. Plafon KPR (Diajukan ke Bank):";
       resRemainingPrice.textContent = formatIDR(sisaPokok);
 
-      // KPR rough estimate at 7% p.a for 15 years
-      const r = 0.07 / 12;
-      const n = 15 * 12;
-      const kprEst = sisaPokok * (r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
-
       resFormulaVerification.innerHTML = `
-        ${formatIDR(booking)} (Booking) + (${tenor} bln × ${formatIDR(monthlyCicilan)} DP) + ${formatIDR(sisaPokok)} (Plafon KPR) = <b>${formatIDR(price)}</b><br>
-        <span class="text-amber-300 font-semibold block mt-1">Estimasi Angsuran KPR Bank (15 Thn): ${formatIDR(kprEst)}/bulan</span>
+        ${formatIDR(booking)} (Booking) + (${tenor} bln × ${formatIDR(monthlyCicilan)} DP) + ${formatIDR(sisaPokok)} (Plafon Bank) = <b>${formatIDR(activePrice)}</b><br>
+        <span class="text-amber-300 font-semibold block mt-1">Estimasi Angsuran KPR Bank (15 Thn @7%): ${formatIDR(angsuranBankKpr)}/bulan</span>
       `;
     }
 
     resMonthlyCicilan.textContent = formatIDR(monthlyCicilan);
-    resTotalPrice.textContent = formatIDR(price);
+    resTotalPrice.textContent = formatIDR(activePrice);
     resBookingFee.textContent = formatIDR(booking);
 
     // Update Waterfall Bar widths
-    const pctBooking = price > 0 ? (booking / price) * 100 : 0;
-    const pctDp = price > 0 ? (netDp / price) * 100 : 0;
-    const pctRem = price > 0 ? (sisaPokok / price) * 100 : 0;
+    const pctBooking = activePrice > 0 ? (booking / activePrice) * 100 : 0;
+    const pctDp = activePrice > 0 ? (netDp / activePrice) * 100 : 0;
+    const pctRem = activePrice > 0 ? (sisaPokok / activePrice) * 100 : 0;
 
     barBooking.style.width = `${Math.min(100, Math.max(1, pctBooking))}%`;
     barDp.style.width = `${Math.min(100, pctDp)}%`;
     barRemaining.style.width = `${Math.min(100, pctRem)}%`;
-    waterfallTotalLabel.textContent = `100% Sinkron (${formatIDR(price)})`;
+    waterfallTotalLabel.textContent = `100% Sinkron (${formatIDR(activePrice)})`;
 
     // Estimate First Installment Date (H+14)
     const firstDate = new Date();
@@ -780,16 +946,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // WhatsApp Message
     const unitText = customUnitTitle ? `untuk unit *${customUnitTitle}*` : '';
-    const modeDesc = calcMode === 'BERTAHAP' ? (dpMode === 'ZERO' ? 'Cash Bertahap Tanpa DP (60x)' : `Cash Bertahap dengan DP ${dpPercent}%`) : `KPR Bank (DP ${dpPercent}%)`;
+    let modeText = '';
+    if (calcMode === 'BERTAHAP_60') {
+      modeText = dpMode === 'ZERO' ? 'Cash Bertahap 60x Tanpa DP' : `Cash Bertahap 60x (DP ${dpPercent}%)`;
+    } else if (calcMode === 'BERTAHAP_72') {
+      modeText = dpMode === 'ZERO' ? 'Cash Bertahap 72x (+6% Tenor Panjang)' : `Cash Bertahap 72x (DP ${dpPercent}%)`;
+    } else {
+      modeText = `Skema KPR Bank (DP ${dpPercent}%, Cicil DP ${tenor}x)`;
+    }
     
     const msg = encodeURIComponent(
       `Halo Cipta Group, saya ingin konsultasi simulasi pembiayaan ${unitText}:\n` +
-      `• Skema: ${modeDesc}\n` +
-      `• Harga Properti: ${formatIDR(price)}\n` +
-      `• Booking Fee: ${formatIDR(booking)}\n` +
+      `• Pilihan Skema: ${modeText}\n` +
+      `• Total Harga Jual: ${formatIDR(activePrice)}\n` +
+      `• Booking Fee (UTJ): ${formatIDR(booking)}\n` +
       `• Uang Muka (DP): ${formatIDR(totalDp)}\n` +
-      `• Sisa Pokok yang Dicicil: ${formatIDR(sisaPokok)}\n` +
+      `• Sisa Pokok / Plafon: ${formatIDR(sisaPokok)}\n` +
       `• Estimasi Cicilan: ${formatIDR(monthlyCicilan)}/bulan\n\n` +
+      `Perbandingan:\n` +
+      `- 60x: ${formatIDR(p60)} (Cicilan: ${formatIDR(cicilan60)}/bln)\n` +
+      `- 72x: ${formatIDR(p72)} (Cicilan: ${formatIDR(cicilan72)}/bln - Hemat ${formatIDR(hemat72)}/bln)\n` +
+      `- KPR: DP 15x @${formatIDR(cicilanDpKpr)}/bln, Bank 15 Thn @${formatIDR(angsuranBankKpr)}/bln\n\n` +
       `Mohon info ketersediaan unit dan jadwal visit lokasi. Terima kasih!`
     );
     calcWaBtn.onclick = () => {
@@ -851,7 +1028,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Init
+  // Initial Run
   applyFilters();
   renderMasterTable();
   updateCalculator();

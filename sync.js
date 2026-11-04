@@ -277,7 +277,39 @@ async function runSync() {
 
     // Build Web Projects Array
     const webProjects = projectsData.map(p => {
-      const pUnits = existingUnits.filter(u => u['Proyek'] === p.project_name);
+      const rawUnits = existingUnits.filter(u => u['Proyek'] === p.project_name);
+      const pUnits = rawUnits.map(u => {
+        const h60 = Number(u['Harga Jual (Rp)'] || u['Harga Bertahap 60x (Rp)']);
+        const b = Number(u['Booking Fee / UTJ (Rp)']);
+        const sisa60 = h60 - b;
+        const c60 = Math.round(sisa60 / 60);
+
+        const sisa72 = Math.round(sisa60 * 1.06);
+        const h72 = b + sisa72;
+        const c72 = Math.round(sisa72 / 72);
+
+        const dpPct = Number(u['DP KPR (%)'] || 20);
+        const dpKpr = Math.round(h60 * (dpPct / 100));
+        const netDp = Math.max(0, dpKpr - b);
+        const tenorDp = Number(u['Tenor Cicilan DP (Bln)'] || 15);
+        const cDp = tenorDp ? Math.round(netDp / tenorDp) : 0;
+        const plafon = h60 - dpKpr;
+
+        return {
+          ...u,
+          'Harga Jual (Rp)': h60,
+          'Booking Fee / UTJ (Rp)': b,
+          'Harga Bertahap 60x (Rp)': h60,
+          'Cicilan Bertahap 60x / Bln (Rp)': c60,
+          'Harga Bertahap 72x (Rp)': h72,
+          'Cicilan Bertahap 72x / Bln (Rp)': c72,
+          'Selisih Harga 72x vs 60x (Rp)': h72 - h60,
+          'Hemat Cicilan 72x / Bln (Rp)': c60 - c72,
+          'Harga KPR (Rp)': h60,
+          'Plafon KPR (Rp)': plafon,
+          'Cicilan DP KPR / Bln (Rp)': cDp
+        };
+      });
       const pRes = allFlattenedLinks.filter(r => r['Project Name'] === p.project_name);
 
       let cat = 'Rumah';

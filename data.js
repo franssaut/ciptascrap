@@ -7,7 +7,7 @@ window.CIPTA_DATA = {
     "instagram": "https://instagram.com/ciptagroupofficial",
     "linktree": "https://linktr.ee/ciptagroupofficial"
   },
-  "last_sync": "04 Nov 2026 08:36:15",
+  "last_sync": "04 Nov 2026 09:09:28",
   "sync_engine": "Node.js",
   "projects": [
     {
@@ -49,7 +49,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 3733333,
           "Plafon KPR (Rp)": 236000000,
-          "Catatan": "Angsuran ke-1 dilakukan 2 minggu setelah UTJ"
+          "Catatan": "Angsuran ke-1 dilakukan 2 minggu setelah UTJ",
+          "Harga Bertahap 60x (Rp)": 295000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 4866667,
+          "Harga Bertahap 72x (Rp)": 312520000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 4298889,
+          "Selisih Harga 72x vs 60x (Rp)": 17520000,
+          "Hemat Cicilan 72x / Bln (Rp)": 567778,
+          "Harga KPR (Rp)": 295000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2121235
         },
         {
           "Proyek": "Aster Tropika",
@@ -70,7 +78,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 6266667,
           "Plafon KPR (Rp)": 388000000,
-          "Catatan": "Blok D"
+          "Catatan": "Blok D",
+          "Harga Bertahap 60x (Rp)": 485000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 8033333,
+          "Harga Bertahap 72x (Rp)": 513920000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 7096111,
+          "Selisih Harga 72x vs 60x (Rp)": 28920000,
+          "Hemat Cicilan 72x / Bln (Rp)": 937222,
+          "Harga KPR (Rp)": 485000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 3487454
         },
         {
           "Proyek": "Aster Tropika",
@@ -91,7 +107,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 6466667,
           "Plafon KPR (Rp)": 400000000,
-          "Catatan": "Blok F (Ready Juni 2029)"
+          "Catatan": "Blok F (Ready Juni 2029)",
+          "Harga Bertahap 60x (Rp)": 500000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 8283333,
+          "Harga Bertahap 72x (Rp)": 529820000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 7316944,
+          "Selisih Harga 72x vs 60x (Rp)": 29820000,
+          "Hemat Cicilan 72x / Bln (Rp)": 966389,
+          "Harga KPR (Rp)": 500000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 3595313
         },
         {
           "Proyek": "Aster Tropika",
@@ -112,7 +136,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 7773600,
           "Plafon KPR (Rp)": 478416000,
-          "Catatan": "Blok F No. 12"
+          "Catatan": "Blok F No. 12",
+          "Harga Bertahap 60x (Rp)": 598020000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 9917000,
+          "Harga Bertahap 72x (Rp)": 633721200,
+          "Cicilan Bertahap 72x / Bln (Rp)": 8760017,
+          "Selisih Harga 72x vs 60x (Rp)": 35701200,
+          "Hemat Cicilan 72x / Bln (Rp)": 1156983,
+          "Harga KPR (Rp)": 598020000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 4300138
         },
         {
           "Proyek": "Aster Tropika",
@@ -133,7 +165,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 9504800,
           "Plafon KPR (Rp)": 582288000,
-          "Catatan": "Blok F No. 1"
+          "Catatan": "Blok F No. 1",
+          "Harga Bertahap 60x (Rp)": 727860000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 12081000,
+          "Harga Bertahap 72x (Rp)": 771351600,
+          "Cicilan Bertahap 72x / Bln (Rp)": 10671550,
+          "Selisih Harga 72x vs 60x (Rp)": 43491600,
+          "Hemat Cicilan 72x / Bln (Rp)": 1409450,
+          "Harga KPR (Rp)": 727860000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 5233769
         }
       ],
       "resources": [
@@ -206,7 +246,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 3733333,
           "Plafon KPR (Rp)": 232000000,
-          "Catatan": "Bisa Cash Bertahap 60x"
+          "Catatan": "Bisa Cash Bertahap 60x",
+          "Harga Bertahap 60x (Rp)": 290000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 4800000,
+          "Harga Bertahap 72x (Rp)": 307280000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 4240000,
+          "Selisih Harga 72x vs 60x (Rp)": 17280000,
+          "Hemat Cicilan 72x / Bln (Rp)": 560000,
+          "Harga KPR (Rp)": 290000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2085282
         },
         {
           "Proyek": "Amalfi",
@@ -227,7 +275,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4466667,
           "Plafon KPR (Rp)": 280000000,
-          "Catatan": "Bisa Cash Bertahap 60x"
+          "Catatan": "Bisa Cash Bertahap 60x",
+          "Harga Bertahap 60x (Rp)": 350000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 5783333,
+          "Harga Bertahap 72x (Rp)": 370820000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 5108611,
+          "Selisih Harga 72x vs 60x (Rp)": 20820000,
+          "Hemat Cicilan 72x / Bln (Rp)": 674722,
+          "Harga KPR (Rp)": 350000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2516719
         },
         {
           "Proyek": "Amalfi",
@@ -248,7 +304,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4000000,
           "Plafon KPR (Rp)": 248000000,
-          "Catatan": "Blok B5"
+          "Catatan": "Blok B5",
+          "Harga Bertahap 60x (Rp)": 310000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 5133333,
+          "Harga Bertahap 72x (Rp)": 328480000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 4534444,
+          "Selisih Harga 72x vs 60x (Rp)": 18480000,
+          "Hemat Cicilan 72x / Bln (Rp)": 598889,
+          "Harga KPR (Rp)": 310000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2229094
         },
         {
           "Proyek": "Amalfi",
@@ -269,7 +333,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4533333,
           "Plafon KPR (Rp)": 280000000,
-          "Catatan": "Blok A4"
+          "Catatan": "Blok A4",
+          "Harga Bertahap 60x (Rp)": 350000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 5800000,
+          "Harga Bertahap 72x (Rp)": 370880000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 5123333,
+          "Selisih Harga 72x vs 60x (Rp)": 20880000,
+          "Hemat Cicilan 72x / Bln (Rp)": 676667,
+          "Harga KPR (Rp)": 350000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2516719
         },
         {
           "Proyek": "Amalfi",
@@ -290,7 +362,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 5153333,
           "Plafon KPR (Rp)": 321200000,
-          "Catatan": "Blok B5 Hook"
+          "Catatan": "Blok B5 Hook",
+          "Harga Bertahap 60x (Rp)": 401500000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 6641667,
+          "Harga Bertahap 72x (Rp)": 425410000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 5866806,
+          "Selisih Harga 72x vs 60x (Rp)": 23910000,
+          "Hemat Cicilan 72x / Bln (Rp)": 774861,
+          "Harga KPR (Rp)": 401500000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2887036
         },
         {
           "Proyek": "Amalfi",
@@ -311,7 +391,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 6400000,
           "Plafon KPR (Rp)": 396000000,
-          "Catatan": "Blok A4 Hook"
+          "Catatan": "Blok A4 Hook",
+          "Harga Bertahap 60x (Rp)": 495000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 8200000,
+          "Harga Bertahap 72x (Rp)": 524520000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 7243333,
+          "Selisih Harga 72x vs 60x (Rp)": 29520000,
+          "Hemat Cicilan 72x / Bln (Rp)": 956667,
+          "Harga KPR (Rp)": 495000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 3559360
         }
       ],
       "resources": [
@@ -405,7 +493,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 11566667,
           "Plafon KPR (Rp)": 714000000,
-          "Catatan": "Blok B1 No. 20-28"
+          "Catatan": "Blok B1 No. 20-28",
+          "Harga Bertahap 60x (Rp)": 892500000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 14791667,
+          "Harga Bertahap 72x (Rp)": 945750000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 13065972,
+          "Selisih Harga 72x vs 60x (Rp)": 53250000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1725695,
+          "Harga KPR (Rp)": 892500000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 6417634
         },
         {
           "Proyek": "Era Cipta Square",
@@ -426,7 +522,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 11916667,
           "Plafon KPR (Rp)": 735000000,
-          "Catatan": "Blok B1 No. 16"
+          "Catatan": "Blok B1 No. 16",
+          "Harga Bertahap 60x (Rp)": 918750000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 15229167,
+          "Harga Bertahap 72x (Rp)": 973575000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 13452431,
+          "Selisih Harga 72x vs 60x (Rp)": 54825000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1776736,
+          "Harga KPR (Rp)": 918750000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 6606388
         },
         {
           "Proyek": "Era Cipta Square",
@@ -447,7 +551,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 12266667,
           "Plafon KPR (Rp)": 756000000,
-          "Catatan": "Blok A1 No. 12A-12B / B1 No. 11-15"
+          "Catatan": "Blok A1 No. 12A-12B / B1 No. 11-15",
+          "Harga Bertahap 60x (Rp)": 945000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 15666667,
+          "Harga Bertahap 72x (Rp)": 1001400000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 13838889,
+          "Selisih Harga 72x vs 60x (Rp)": 56400000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1827778,
+          "Harga KPR (Rp)": 945000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 6795142
         },
         {
           "Proyek": "Era Cipta Square",
@@ -468,7 +580,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 12966667,
           "Plafon KPR (Rp)": 798000000,
-          "Catatan": "Blok B1 No. 7-10"
+          "Catatan": "Blok B1 No. 7-10",
+          "Harga Bertahap 60x (Rp)": 997500000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 16541667,
+          "Harga Bertahap 72x (Rp)": 1057050000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 14611806,
+          "Selisih Harga 72x vs 60x (Rp)": 59550000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1929861,
+          "Harga KPR (Rp)": 997500000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 7172650
         },
         {
           "Proyek": "Era Cipta Square",
@@ -489,7 +609,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 16133333,
           "Plafon KPR (Rp)": 1008000000,
-          "Catatan": "Blok B1 No. 29"
+          "Catatan": "Blok B1 No. 29",
+          "Harga Bertahap 60x (Rp)": 1260000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 20833333,
+          "Harga Bertahap 72x (Rp)": 1335000000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 18402778,
+          "Selisih Harga 72x vs 60x (Rp)": 75000000,
+          "Hemat Cicilan 72x / Bln (Rp)": 2430555,
+          "Harga KPR (Rp)": 1260000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 9060189
         },
         {
           "Proyek": "Era Cipta Square",
@@ -510,7 +638,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 17533333,
           "Plafon KPR (Rp)": 1092000000,
-          "Catatan": "Blok B1 No. 6"
+          "Catatan": "Blok B1 No. 6",
+          "Harga Bertahap 60x (Rp)": 1365000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 22583333,
+          "Harga Bertahap 72x (Rp)": 1446300000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 19948611,
+          "Selisih Harga 72x vs 60x (Rp)": 81300000,
+          "Hemat Cicilan 72x / Bln (Rp)": 2634722,
+          "Harga KPR (Rp)": 1365000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 9815205
         }
       ],
       "resources": [
@@ -604,7 +740,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 11466667,
           "Plafon KPR (Rp)": 728000000,
-          "Catatan": "Unit 2"
+          "Catatan": "Unit 2",
+          "Harga Bertahap 60x (Rp)": 910000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 15000000,
+          "Harga Bertahap 72x (Rp)": 964000000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 13250000,
+          "Selisih Harga 72x vs 60x (Rp)": 54000000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1750000,
+          "Harga KPR (Rp)": 910000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 54000000
         },
         {
           "Proyek": "Pertokoan Marina Central",
@@ -625,7 +769,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 12800000,
           "Plafon KPR (Rp)": 808000000,
-          "Catatan": "Unit 1"
+          "Catatan": "Unit 1",
+          "Harga Bertahap 60x (Rp)": 1010000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 16666667,
+          "Harga Bertahap 72x (Rp)": 1070000000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 14722222,
+          "Selisih Harga 72x vs 60x (Rp)": 60000000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1944445,
+          "Harga KPR (Rp)": 1010000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 1010000000
         }
       ],
       "resources": [
@@ -712,7 +864,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 11466667,
           "Plafon KPR (Rp)": 728000000,
-          "Catatan": "Blok A Standar"
+          "Catatan": "Blok A Standar",
+          "Harga Bertahap 60x (Rp)": 910000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 15000000,
+          "Harga Bertahap 72x (Rp)": 964000000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 13250000,
+          "Selisih Harga 72x vs 60x (Rp)": 54000000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1750000,
+          "Harga KPR (Rp)": 910000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 6543470
         },
         {
           "Proyek": "Pertokoan Graha Namarina",
@@ -733,7 +893,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 12000000,
           "Plafon KPR (Rp)": 760000000,
-          "Catatan": "Blok B No. 6"
+          "Catatan": "Blok B No. 6",
+          "Harga Bertahap 60x (Rp)": 950000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 15666667,
+          "Harga Bertahap 72x (Rp)": 1006400000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 13838889,
+          "Selisih Harga 72x vs 60x (Rp)": 56400000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1827778,
+          "Harga KPR (Rp)": 950000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 6831095
         }
       ],
       "resources": [
@@ -820,7 +988,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 3866667,
           "Plafon KPR (Rp)": 240000000,
-          "Catatan": "Blok C1"
+          "Catatan": "Blok C1",
+          "Harga Bertahap 60x (Rp)": 300000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 4966667,
+          "Harga Bertahap 72x (Rp)": 317880000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 4387222,
+          "Selisih Harga 72x vs 60x (Rp)": 17880000,
+          "Hemat Cicilan 72x / Bln (Rp)": 579445,
+          "Harga KPR (Rp)": 300000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 17880000
         },
         {
           "Proyek": "Sunny Bay",
@@ -841,7 +1017,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4200000,
           "Plafon KPR (Rp)": 260000000,
-          "Catatan": "Blok C2"
+          "Catatan": "Blok C2",
+          "Harga Bertahap 60x (Rp)": 325000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 5383333,
+          "Harga Bertahap 72x (Rp)": 344380000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 4755278,
+          "Selisih Harga 72x vs 60x (Rp)": 19380000,
+          "Hemat Cicilan 72x / Bln (Rp)": 628055,
+          "Harga KPR (Rp)": 325000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 325000000
         },
         {
           "Proyek": "Sunny Bay",
@@ -862,7 +1046,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4686667,
           "Plafon KPR (Rp)": 293200000,
-          "Catatan": "Blok D2"
+          "Catatan": "Blok D2",
+          "Harga Bertahap 60x (Rp)": 366500000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 6058333,
+          "Harga Bertahap 72x (Rp)": 388310000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 5351528,
+          "Selisih Harga 72x vs 60x (Rp)": 21810000,
+          "Hemat Cicilan 72x / Bln (Rp)": 706805,
+          "Harga KPR (Rp)": 366500000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2635364
         },
         {
           "Proyek": "Sunny Bay",
@@ -883,7 +1075,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 5293333,
           "Plafon KPR (Rp)": 329600000,
-          "Catatan": "Blok C2"
+          "Catatan": "Blok C2",
+          "Harga Bertahap 60x (Rp)": 412000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 6816667,
+          "Harga Bertahap 72x (Rp)": 436540000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 6021389,
+          "Selisih Harga 72x vs 60x (Rp)": 24540000,
+          "Hemat Cicilan 72x / Bln (Rp)": 795278,
+          "Harga KPR (Rp)": 412000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 412000000
         }
       ],
       "resources": [
@@ -977,7 +1177,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 5000000,
           "Plafon KPR (Rp)": 320000000,
-          "Catatan": "Blok A (Unit 52-59)"
+          "Catatan": "Blok A (Unit 52-59)",
+          "Harga Bertahap 60x (Rp)": 400000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 6583333,
+          "Harga Bertahap 72x (Rp)": 423700000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 5815278,
+          "Selisih Harga 72x vs 60x (Rp)": 23700000,
+          "Hemat Cicilan 72x / Bln (Rp)": 768055,
+          "Harga KPR (Rp)": 400000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2876250
         },
         {
           "Proyek": "Aster Garden",
@@ -998,7 +1206,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 6386667,
           "Plafon KPR (Rp)": 403200000,
-          "Catatan": "Blok A (51"
+          "Catatan": "Blok A (51",
+          "Harga Bertahap 60x (Rp)": 504000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 8316667,
+          "Harga Bertahap 72x (Rp)": 533940000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 7346389,
+          "Selisih Harga 72x vs 60x (Rp)": 29940000,
+          "Hemat Cicilan 72x / Bln (Rp)": 970278,
+          "Harga KPR (Rp)": 504000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 970278
         }
       ],
       "resources": [
@@ -1085,7 +1301,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 3733333,
           "Plafon KPR (Rp)": 232000000,
-          "Catatan": "Cash Bertahap Tanpa Bunga 60X"
+          "Catatan": "Cash Bertahap Tanpa Bunga 60X",
+          "Harga Bertahap 60x (Rp)": 290000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 4800000,
+          "Harga Bertahap 72x (Rp)": 307280000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 4240000,
+          "Selisih Harga 72x vs 60x (Rp)": 17280000,
+          "Hemat Cicilan 72x / Bln (Rp)": 560000,
+          "Harga KPR (Rp)": 290000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2085282
         },
         {
           "Proyek": "Aster Hills",
@@ -1106,7 +1330,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4466667,
           "Plafon KPR (Rp)": 280000000,
-          "Catatan": "Cash Bertahap Tanpa Bunga 60X"
+          "Catatan": "Cash Bertahap Tanpa Bunga 60X",
+          "Harga Bertahap 60x (Rp)": 350000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 5783333,
+          "Harga Bertahap 72x (Rp)": 370820000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 5108611,
+          "Selisih Harga 72x vs 60x (Rp)": 20820000,
+          "Hemat Cicilan 72x / Bln (Rp)": 674722,
+          "Harga KPR (Rp)": 350000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2516719
         }
       ],
       "resources": [
@@ -1207,7 +1439,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 1478667,
           "Plafon KPR (Rp)": 516420000,
-          "Catatan": "Unit 32"
+          "Catatan": "Unit 32",
+          "Harga Bertahap 60x (Rp)": 543600000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 8976667,
+          "Harga Bertahap 72x (Rp)": 575916000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 7929389,
+          "Selisih Harga 72x vs 60x (Rp)": 32316000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1047278,
+          "Harga KPR (Rp)": 543600000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 7929389
         },
         {
           "Proyek": "Buana Central Park",
@@ -1228,7 +1468,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 1966667,
           "Plafon KPR (Rp)": 655500000,
-          "Catatan": "Unit 155"
+          "Catatan": "Unit 155",
+          "Harga Bertahap 60x (Rp)": 690000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 11416667,
+          "Harga Bertahap 72x (Rp)": 731100000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 10084722,
+          "Selisih Harga 72x vs 60x (Rp)": 41100000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1331945,
+          "Harga KPR (Rp)": 690000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 5891819
         },
         {
           "Proyek": "Buana Central Park",
@@ -1249,7 +1497,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 1746667,
           "Plafon KPR (Rp)": 592800000,
-          "Catatan": "Unit 146-153"
+          "Catatan": "Unit 146-153",
+          "Harga Bertahap 60x (Rp)": 624000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 10316667,
+          "Harga Bertahap 72x (Rp)": 661140000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 9113056,
+          "Selisih Harga 72x vs 60x (Rp)": 37140000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1203611,
+          "Harga KPR (Rp)": 624000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 5328254
         },
         {
           "Proyek": "Buana Central Park",
@@ -1270,7 +1526,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 2696427,
           "Plafon KPR (Rp)": 863481600,
-          "Catatan": "Unit 142"
+          "Catatan": "Unit 142",
+          "Harga Bertahap 60x (Rp)": 908928000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 15065467,
+          "Harga Bertahap 72x (Rp)": 963163680,
+          "Cicilan Bertahap 72x / Bln (Rp)": 13307829,
+          "Selisih Harga 72x vs 60x (Rp)": 54235680,
+          "Hemat Cicilan 72x / Bln (Rp)": 1757638,
+          "Harga KPR (Rp)": 908928000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 7761217
         },
         {
           "Proyek": "Buana Central Park",
@@ -1291,7 +1555,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 1753675,
           "Plafon KPR (Rp)": 594797280,
-          "Catatan": "Unit 67"
+          "Catatan": "Unit 67",
+          "Harga Bertahap 60x (Rp)": 626102400,
+          "Cicilan Bertahap 60x / Bln (Rp)": 10351707,
+          "Harga Bertahap 72x (Rp)": 663368544,
+          "Cicilan Bertahap 72x / Bln (Rp)": 9144008,
+          "Selisih Harga 72x vs 60x (Rp)": 37266144,
+          "Hemat Cicilan 72x / Bln (Rp)": 1207699,
+          "Harga KPR (Rp)": 626102400,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 5346206
         },
         {
           "Proyek": "Buana Central Park",
@@ -1312,7 +1584,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 2039000,
           "Plafon KPR (Rp)": 676115000,
-          "Catatan": "Unit 31-37"
+          "Catatan": "Unit 31-37",
+          "Harga Bertahap 60x (Rp)": 711700000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 11778333,
+          "Harga Bertahap 72x (Rp)": 754102000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 10404194,
+          "Selisih Harga 72x vs 60x (Rp)": 42402000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1374139,
+          "Harga KPR (Rp)": 711700000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 6077113
         },
         {
           "Proyek": "Buana Central Park",
@@ -1333,7 +1613,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 2586667,
           "Plafon KPR (Rp)": 832200000,
-          "Catatan": "Unit 5"
+          "Catatan": "Unit 5",
+          "Harga Bertahap 60x (Rp)": 876000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 14516667,
+          "Harga Bertahap 72x (Rp)": 928260000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 12823056,
+          "Selisih Harga 72x vs 60x (Rp)": 52260000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1693611,
+          "Harga KPR (Rp)": 876000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 876000000
         },
         {
           "Proyek": "Buana Central Park",
@@ -1354,7 +1642,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 3186667,
           "Plafon KPR (Rp)": 1003200000,
-          "Catatan": "Unit 6"
+          "Catatan": "Unit 6",
+          "Harga Bertahap 60x (Rp)": 1056000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 17516667,
+          "Harga Bertahap 72x (Rp)": 1119060000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 15473056,
+          "Selisih Harga 72x vs 60x (Rp)": 63060000,
+          "Hemat Cicilan 72x / Bln (Rp)": 2043611,
+          "Harga KPR (Rp)": 1056000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 9017045
         },
         {
           "Proyek": "Buana Central Park",
@@ -1375,7 +1671,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4934667,
           "Plafon KPR (Rp)": 1501380000,
-          "Catatan": "Unit 100-107"
+          "Catatan": "Unit 100-107",
+          "Harga Bertahap 60x (Rp)": 1580400000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 26256667,
+          "Harga Bertahap 72x (Rp)": 1674924000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 23193389,
+          "Selisih Harga 72x vs 60x (Rp)": 94524000,
+          "Hemat Cicilan 72x / Bln (Rp)": 3063278,
+          "Harga KPR (Rp)": 1580400000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 13494828
         },
         {
           "Proyek": "Buana Central Park",
@@ -1396,7 +1700,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 1566667,
           "Plafon KPR (Rp)": 541500000,
-          "Catatan": "Emerald Standar"
+          "Catatan": "Emerald Standar",
+          "Harga Bertahap 60x (Rp)": 570000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 9416667,
+          "Harga Bertahap 72x (Rp)": 603900000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 8318056,
+          "Selisih Harga 72x vs 60x (Rp)": 33900000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1098611,
+          "Harga KPR (Rp)": 570000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 4867155
         }
       ],
       "resources": [
@@ -1476,7 +1788,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 11000000,
           "Plafon KPR (Rp)": 525000000,
-          "Catatan": "Blok C No. 32-41 (LTD 4x10"
+          "Catatan": "Blok C No. 32-41 (LTD 4x10",
+          "Harga Bertahap 60x (Rp)": 700000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 11500000,
+          "Harga Bertahap 72x (Rp)": 741400000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 10158333,
+          "Selisih Harga 72x vs 60x (Rp)": 41400000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1341667,
+          "Harga KPR (Rp)": 700000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 700000000
         },
         {
           "Proyek": "Buana Duta Bandara",
@@ -1497,7 +1817,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 11966667,
           "Plafon KPR (Rp)": 568500000,
-          "Catatan": "Blok C No. 31 Hook Tengah"
+          "Catatan": "Blok C No. 31 Hook Tengah",
+          "Harga Bertahap 60x (Rp)": 758000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 12466667,
+          "Harga Bertahap 72x (Rp)": 802880000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 11012222,
+          "Selisih Harga 72x vs 60x (Rp)": 44880000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1454445,
+          "Harga KPR (Rp)": 758000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 5109839
         },
         {
           "Proyek": "Buana Duta Bandara",
@@ -1518,7 +1846,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 12250000,
           "Plafon KPR (Rp)": 581250000,
-          "Catatan": "Blok C No. 42 Hook Jalan"
+          "Catatan": "Blok C No. 42 Hook Jalan",
+          "Harga Bertahap 60x (Rp)": 775000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 12750000,
+          "Harga Bertahap 72x (Rp)": 820900000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 11262500,
+          "Selisih Harga 72x vs 60x (Rp)": 45900000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1487500,
+          "Harga KPR (Rp)": 775000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 5224439
         },
         {
           "Proyek": "Buana Duta Bandara",
@@ -1539,7 +1875,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 20833333,
           "Plafon KPR (Rp)": 967500000,
-          "Catatan": "Blok C No. 23-29 (3 Lantai)"
+          "Catatan": "Blok C No. 23-29 (3 Lantai)",
+          "Harga Bertahap 60x (Rp)": 1290000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 21333333,
+          "Harga Bertahap 72x (Rp)": 1366800000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 18844444,
+          "Selisih Harga 72x vs 60x (Rp)": 76800000,
+          "Hemat Cicilan 72x / Bln (Rp)": 2488889,
+          "Harga KPR (Rp)": 1290000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 8696164
         },
         {
           "Proyek": "Buana Duta Bandara",
@@ -1560,7 +1904,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 21800000,
           "Plafon KPR (Rp)": 1011000000,
-          "Catatan": "Blok C No. 30 Hook Tengah"
+          "Catatan": "Blok C No. 30 Hook Tengah",
+          "Harga Bertahap 60x (Rp)": 1348000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 22300000,
+          "Harga Bertahap 72x (Rp)": 1428280000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 19698333,
+          "Selisih Harga 72x vs 60x (Rp)": 80280000,
+          "Hemat Cicilan 72x / Bln (Rp)": 2601667,
+          "Harga KPR (Rp)": 1348000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 9087154
         },
         {
           "Proyek": "Buana Duta Bandara",
@@ -1581,7 +1933,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 22083333,
           "Plafon KPR (Rp)": 1023750000,
-          "Catatan": "Blok C No. 22 Hook Jalan"
+          "Catatan": "Blok C No. 22 Hook Jalan",
+          "Harga Bertahap 60x (Rp)": 1365000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 22583333,
+          "Harga Bertahap 72x (Rp)": 1446300000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 19948611,
+          "Selisih Harga 72x vs 60x (Rp)": 81300000,
+          "Hemat Cicilan 72x / Bln (Rp)": 2634722,
+          "Harga KPR (Rp)": 1365000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 9201754
         }
       ],
       "resources": [
@@ -1682,7 +2042,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 3838667,
           "Plafon KPR (Rp)": 563220000,
-          "Catatan": "Opsi 72x: Rp 9.143.722/bln"
+          "Catatan": "Opsi 72x: Rp 9.143.722/bln",
+          "Harga Bertahap 60x (Rp)": 625800000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 10346667,
+          "Harga Bertahap 72x (Rp)": 663048000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 9139556,
+          "Selisih Harga 72x vs 60x (Rp)": 37248000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1207111,
+          "Harga KPR (Rp)": 625800000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 5062381
         },
         {
           "Proyek": "Cipta Green Ville",
@@ -1703,7 +2071,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 6099667,
           "Plafon KPR (Rp)": 868455000,
-          "Catatan": "Opsi 72x: Rp 14.136.764/bln"
+          "Catatan": "Opsi 72x: Rp 14.136.764/bln",
+          "Harga Bertahap 60x (Rp)": 964950000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 15999167,
+          "Harga Bertahap 72x (Rp)": 1022547000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 14132597,
+          "Selisih Harga 72x vs 60x (Rp)": 57597000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1866570,
+          "Harga KPR (Rp)": 964950000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 7805919
         },
         {
           "Proyek": "Cipta Green Ville",
@@ -1724,7 +2100,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 3640000,
           "Plafon KPR (Rp)": 536400000,
-          "Catatan": "Opsi 72x: Rp 8.705.000/bln"
+          "Catatan": "Opsi 72x: Rp 8.705.000/bln",
+          "Harga Bertahap 60x (Rp)": 596000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 9850000,
+          "Harga Bertahap 72x (Rp)": 631460000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 8700833,
+          "Selisih Harga 72x vs 60x (Rp)": 35460000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1149167,
+          "Harga KPR (Rp)": 596000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 4821315
         },
         {
           "Proyek": "Cipta Green Ville",
@@ -1745,7 +2129,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 3780000,
           "Plafon KPR (Rp)": 555300000,
-          "Catatan": "Opsi 72x: Rp 9.014.167/bln"
+          "Catatan": "Opsi 72x: Rp 9.014.167/bln",
+          "Harga Bertahap 60x (Rp)": 617000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 10200000,
+          "Harga Bertahap 72x (Rp)": 653720000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 9010000,
+          "Selisih Harga 72x vs 60x (Rp)": 36720000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1190000,
+          "Harga KPR (Rp)": 617000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 4991193
         },
         {
           "Proyek": "Cipta Green Ville",
@@ -1766,7 +2158,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4240000,
           "Plafon KPR (Rp)": 617400000,
-          "Catatan": "Opsi 72x: Rp 10.030.000/bln"
+          "Catatan": "Opsi 72x: Rp 10.030.000/bln",
+          "Harga Bertahap 60x (Rp)": 686000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 11350000,
+          "Harga Bertahap 72x (Rp)": 726860000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 10025833,
+          "Selisih Harga 72x vs 60x (Rp)": 40860000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1324167,
+          "Harga KPR (Rp)": 686000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 5549366
         },
         {
           "Proyek": "Cipta Green Ville",
@@ -1787,7 +2187,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4468667,
           "Plafon KPR (Rp)": 648270000,
-          "Catatan": "Opsi 72x: Rp 10.534.972/bln"
+          "Catatan": "Opsi 72x: Rp 10.534.972/bln",
+          "Harga Bertahap 60x (Rp)": 720300000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 11921667,
+          "Harga Bertahap 72x (Rp)": 763218000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 10530806,
+          "Selisih Harga 72x vs 60x (Rp)": 42918000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1390861,
+          "Harga KPR (Rp)": 720300000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 5826834
         },
         {
           "Proyek": "Cipta Green Ville",
@@ -1808,7 +2216,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4576333,
           "Plafon KPR (Rp)": 707805000,
-          "Catatan": "Opsi 72x: Rp 11.439.403/bln"
+          "Catatan": "Opsi 72x: Rp 11.439.403/bln",
+          "Harga Bertahap 60x (Rp)": 786450000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 12940833,
+          "Harga Bertahap 72x (Rp)": 833037000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 11431069,
+          "Selisih Harga 72x vs 60x (Rp)": 46587000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1509764,
+          "Harga KPR (Rp)": 786450000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 6361951
         },
         {
           "Proyek": "Cipta Green Ville",
@@ -1829,7 +2245,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 7985333,
           "Plafon KPR (Rp)": 1168020000,
-          "Catatan": "Opsi 72x: Rp 18.967.611/bln"
+          "Catatan": "Opsi 72x: Rp 18.967.611/bln",
+          "Harga Bertahap 60x (Rp)": 1297800000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 21463333,
+          "Harga Bertahap 72x (Rp)": 1375068000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 18959278,
+          "Selisih Harga 72x vs 60x (Rp)": 77268000,
+          "Hemat Cicilan 72x / Bln (Rp)": 2504055,
+          "Harga KPR (Rp)": 1297800000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 10498494
         },
         {
           "Proyek": "Cipta Green Ville",
@@ -1850,7 +2274,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 9413333,
           "Plafon KPR (Rp)": 1360800000,
-          "Catatan": "Opsi 72x: Rp 22.121.111/bln"
+          "Catatan": "Opsi 72x: Rp 22.121.111/bln",
+          "Harga Bertahap 60x (Rp)": 1512000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 25033333,
+          "Harga Bertahap 72x (Rp)": 1602120000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 22112778,
+          "Selisih Harga 72x vs 60x (Rp)": 90120000,
+          "Hemat Cicilan 72x / Bln (Rp)": 2920555,
+          "Harga KPR (Rp)": 1512000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 12231255
         }
       ],
       "resources": [
@@ -1930,7 +2362,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 3466667,
           "Plafon KPR (Rp)": 216000000,
-          "Catatan": "Blok 63-65"
+          "Catatan": "Blok 63-65",
+          "Harga Bertahap 60x (Rp)": 270000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 4466667,
+          "Harga Bertahap 72x (Rp)": 286080000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 3945556,
+          "Selisih Harga 72x vs 60x (Rp)": 16080000,
+          "Hemat Cicilan 72x / Bln (Rp)": 521111,
+          "Harga KPR (Rp)": 270000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 1941469
         },
         {
           "Proyek": "Cipta Village Marina",
@@ -1951,7 +2391,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 3600000,
           "Plafon KPR (Rp)": 224000000,
-          "Catatan": "Blok 68-70"
+          "Catatan": "Blok 68-70",
+          "Harga Bertahap 60x (Rp)": 280000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 4633333,
+          "Harga Bertahap 72x (Rp)": 296680000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 4092778,
+          "Selisih Harga 72x vs 60x (Rp)": 16680000,
+          "Hemat Cicilan 72x / Bln (Rp)": 540555,
+          "Harga KPR (Rp)": 280000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2013375
         },
         {
           "Proyek": "Cipta Village Marina",
@@ -1972,7 +2420,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4566667,
           "Plafon KPR (Rp)": 286000000,
-          "Catatan": "Blok 62"
+          "Catatan": "Blok 62",
+          "Harga Bertahap 60x (Rp)": 357500000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 5908333,
+          "Harga Bertahap 72x (Rp)": 378770000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 5219028,
+          "Selisih Harga 72x vs 60x (Rp)": 21270000,
+          "Hemat Cicilan 72x / Bln (Rp)": 689305,
+          "Harga KPR (Rp)": 357500000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 357500000
         },
         {
           "Proyek": "Cipta Village Marina",
@@ -1993,7 +2449,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4700000,
           "Plafon KPR (Rp)": 294000000,
-          "Catatan": "Blok 67"
+          "Catatan": "Blok 67",
+          "Harga Bertahap 60x (Rp)": 367500000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 6075000,
+          "Harga Bertahap 72x (Rp)": 389370000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 5366250,
+          "Selisih Harga 72x vs 60x (Rp)": 21870000,
+          "Hemat Cicilan 72x / Bln (Rp)": 708750,
+          "Harga KPR (Rp)": 367500000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 367500000
         }
       ],
       "resources": [
@@ -2080,7 +2544,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 12133333,
           "Plafon KPR (Rp)": 768000000,
-          "Catatan": "Unit 16"
+          "Catatan": "Unit 16",
+          "Harga Bertahap 60x (Rp)": 960000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 15833333,
+          "Harga Bertahap 72x (Rp)": 1017000000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 13986111,
+          "Selisih Harga 72x vs 60x (Rp)": 57000000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1847222,
+          "Harga KPR (Rp)": 960000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 960000000
         }
       ],
       "resources": [
@@ -2174,7 +2646,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4000000,
           "Plafon KPR (Rp)": 248000000,
-          "Catatan": "Cash Bertahap 60x"
+          "Catatan": "Cash Bertahap 60x",
+          "Harga Bertahap 60x (Rp)": 310000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 5133333,
+          "Harga Bertahap 72x (Rp)": 328480000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 4534444,
+          "Selisih Harga 72x vs 60x (Rp)": 18480000,
+          "Hemat Cicilan 72x / Bln (Rp)": 598889,
+          "Harga KPR (Rp)": 310000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2229094
         },
         {
           "Proyek": "Plumeria",
@@ -2195,7 +2675,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 4866667,
           "Plafon KPR (Rp)": 304000000,
-          "Catatan": "Cash Bertahap 60x"
+          "Catatan": "Cash Bertahap 60x",
+          "Harga Bertahap 60x (Rp)": 380000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 6283333,
+          "Harga Bertahap 72x (Rp)": 402620000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 5550278,
+          "Selisih Harga 72x vs 60x (Rp)": 22620000,
+          "Hemat Cicilan 72x / Bln (Rp)": 733055,
+          "Harga KPR (Rp)": 380000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2732438
         },
         {
           "Proyek": "Plumeria",
@@ -2216,7 +2704,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 5966667,
           "Plafon KPR (Rp)": 368000000,
-          "Catatan": "Cash Bertahap 60x"
+          "Catatan": "Cash Bertahap 60x",
+          "Harga Bertahap 60x (Rp)": 460000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 7625000,
+          "Harga Bertahap 72x (Rp)": 487450000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 6735417,
+          "Selisih Harga 72x vs 60x (Rp)": 27450000,
+          "Hemat Cicilan 72x / Bln (Rp)": 889583,
+          "Harga KPR (Rp)": 460000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 3307688
         }
       ],
       "resources": [
@@ -2303,7 +2799,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 15833333,
           "Plafon KPR (Rp)": 742500000,
-          "Catatan": "No. Unit 10"
+          "Catatan": "No. Unit 10",
+          "Harga Bertahap 60x (Rp)": 990000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 16333333,
+          "Harga Bertahap 72x (Rp)": 1048800000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 14427778,
+          "Selisih Harga 72x vs 60x (Rp)": 58800000,
+          "Hemat Cicilan 72x / Bln (Rp)": 1905555,
+          "Harga KPR (Rp)": 990000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 6673800
         },
         {
           "Proyek": "Villa Foresta",
@@ -2324,7 +2828,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 21833333,
           "Plafon KPR (Rp)": 1012500000,
-          "Catatan": "No. Unit 12b"
+          "Catatan": "No. Unit 12b",
+          "Harga Bertahap 60x (Rp)": 1350000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 22333333,
+          "Harga Bertahap 72x (Rp)": 1430400000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 19727778,
+          "Selisih Harga 72x vs 60x (Rp)": 80400000,
+          "Hemat Cicilan 72x / Bln (Rp)": 2605555,
+          "Harga KPR (Rp)": 1350000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 9100636
         },
         {
           "Proyek": "Villa Foresta",
@@ -2345,7 +2857,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 24333333,
           "Plafon KPR (Rp)": 1125000000,
-          "Catatan": "No. Unit 2"
+          "Catatan": "No. Unit 2",
+          "Harga Bertahap 60x (Rp)": 1500000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 24833333,
+          "Harga Bertahap 72x (Rp)": 1589400000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 21936111,
+          "Selisih Harga 72x vs 60x (Rp)": 89400000,
+          "Hemat Cicilan 72x / Bln (Rp)": 2897222,
+          "Harga KPR (Rp)": 1500000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 89400000
         },
         {
           "Proyek": "Villa Foresta",
@@ -2366,7 +2886,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 28533333,
           "Plafon KPR (Rp)": 1314000000,
-          "Catatan": "No. Unit 1"
+          "Catatan": "No. Unit 1",
+          "Harga Bertahap 60x (Rp)": 1752000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 29033333,
+          "Harga Bertahap 72x (Rp)": 1856520000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 25646111,
+          "Selisih Harga 72x vs 60x (Rp)": 104520000,
+          "Hemat Cicilan 72x / Bln (Rp)": 3387222,
+          "Harga KPR (Rp)": 1752000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 1752000000
         },
         {
           "Proyek": "Villa Foresta",
@@ -2387,7 +2915,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 37666667,
           "Plafon KPR (Rp)": 1725000000,
-          "Catatan": "No. Unit 2"
+          "Catatan": "No. Unit 2",
+          "Harga Bertahap 60x (Rp)": 2300000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 38166667,
+          "Harga Bertahap 72x (Rp)": 2437400000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 33713889,
+          "Selisih Harga 72x vs 60x (Rp)": 137400000,
+          "Hemat Cicilan 72x / Bln (Rp)": 4452778,
+          "Harga KPR (Rp)": 2300000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 2300000000
         },
         {
           "Proyek": "Villa Foresta",
@@ -2408,7 +2944,15 @@ window.CIPTA_DATA = {
           "Tenor Cicilan DP (Bln)": 15,
           "Cicilan DP KPR / Bln (Rp)": 42700000,
           "Plafon KPR (Rp)": 1951500000,
-          "Catatan": "No. Unit 1"
+          "Catatan": "No. Unit 1",
+          "Harga Bertahap 60x (Rp)": 2602000000,
+          "Cicilan Bertahap 60x / Bln (Rp)": 43200000,
+          "Harga Bertahap 72x (Rp)": 2757520000,
+          "Cicilan Bertahap 72x / Bln (Rp)": 38160000,
+          "Selisih Harga 72x vs 60x (Rp)": 155520000,
+          "Hemat Cicilan 72x / Bln (Rp)": 5040000,
+          "Harga KPR (Rp)": 2602000000,
+          "Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)": 17540634
         }
       ],
       "resources": [
