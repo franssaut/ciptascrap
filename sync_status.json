@@ -1,11 +1,11 @@
 {
   "status": "success",
-  "message": "Sinkronisasi berhasil (2.1 detik). 15 proyek & 68 unit terdata.",
-  "last_attempt": "2026-11-04T02:09:28.326Z",
-  "last_sync": "2026-11-04T02:09:28.326Z",
-  "last_sync_formatted": "04 Nov 2026 09:09:28",
+  "message": "Sinkronisasi berhasil (2.2 detik). 15 proyek & 68 unit terdata.",
+  "last_attempt": "2026-11-04T03:39:47.394Z",
+  "last_sync": "2026-11-04T03:39:47.394Z",
+  "last_sync_formatted": "04 Nov 2026 10:39:47",
   "total_projects": 15,
   "total_units": 68,
-  "elapsed_seconds": 2.1,
+  "elapsed_seconds": 2.2,
   "engine": "Node.js v24.21.0"
 }

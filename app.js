@@ -1,4 +1,5 @@
 // Cipta Group Web Application Logic - Synchronized Version with 60x vs 72x vs KPR Comparison
+// Note: Skema Cash Bertahap 72x (+6%) hanya berlaku khusus untuk proyek Cipta Green Ville.
 document.addEventListener('DOMContentLoaded', () => {
   const data = window.CIPTA_DATA;
   if (!data || !data.projects) {
@@ -101,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // State Variables
   let currentCategory = 'ALL';
   let currentActiveProject = null;
+  let currentCalculatorProject = 'Cipta Green Ville'; // Track project selected in calculator
   let calcMode = 'BERTAHAP_60'; // 'BERTAHAP_60' | 'BERTAHAP_72' | 'KPR'
   let dpMode = 'ZERO'; // 'ZERO' (Tanpa DP) | 'CUSTOM' (Pakai DP)
 
@@ -238,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resultCountText.textContent = `Menampilkan ${projects.length} proyek`;
 
     projects.forEach(p => {
+      const isGreenville = p.name.toLowerCase().includes('green ville') || p.name.toLowerCase().includes('greenville');
       const card = document.createElement('div');
       card.className = "bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group";
 
@@ -285,7 +288,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="text-[10px] font-semibold text-slate-400 block uppercase">Cash Bertahap (DP 0%)</span>
                 <span class="font-extrabold text-emerald-600 text-xs">Mulai ${p.min_cicilan > 0 ? formatIDR(p.min_cicilan) + '/bln' : '-'}</span>
               </div>
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">60x & 72x</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded ${isGreenville ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-700 border border-slate-200'}">
+                ${isGreenville ? '60x & 72x (Promo)' : 'Tenor 60x'}
+              </span>
             </div>
           </div>
 
@@ -295,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
               data-id="${p.id}"
             >
               <i data-lucide="layers" class="w-4 h-4 text-amber-400"></i>
-              Lihat Perbandingan 60x, 72x & KPR
+              ${isGreenville ? 'Lihat Perbandingan 60x, 72x & KPR' : 'Lihat Rincian Unit & Tabel Harga'}
             </button>
 
             <div class="grid grid-cols-3 gap-1 sm:gap-1.5 text-center text-[10px] sm:text-[11px] font-semibold">
@@ -423,9 +428,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Open Modal Detail with 60x vs 72x vs KPR Price Comparison Table
+  // 3. Open Modal Detail with 60x vs 72x (Khusus Greenville) vs KPR
   function openModal(proj) {
     currentActiveProject = proj;
+    const isGreenville = proj.name.toLowerCase().includes('green ville') || proj.name.toLowerCase().includes('greenville');
 
     modalLogo.src = proj.thumbnail || proj.online_thumbnail || 'assets/thumbnails/cipta_green_ville.jpeg';
     modalLogo.onerror = () => { modalLogo.src = 'assets/thumbnails/cipta_green_ville.jpeg'; };
@@ -452,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Populate Modal Unit Table with 3-Option Comparison
+    // Populate Modal Unit Table
     modalUnitTableBody.innerHTML = '';
     if (proj.units && proj.units.length > 0) {
       proj.units.forEach((u, idx) => {
@@ -461,9 +467,27 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const p60 = u['Harga Bertahap 60x (Rp)'] || u['Harga Jual (Rp)'];
         const c60 = u['Cicilan Bertahap 60x / Bln (Rp)'] || u['Cicilan Cash Bertahap / Bln (Rp)'];
-        const p72 = u['Harga Bertahap 72x (Rp)'] || (u['Booking Fee / UTJ (Rp)'] + Math.round((p60 - u['Booking Fee / UTJ (Rp)']) * 1.06));
-        const c72 = u['Cicilan Bertahap 72x / Bln (Rp)'] || Math.round((p72 - u['Booking Fee / UTJ (Rp)']) / 72);
-        const hemat72 = u['Hemat Cicilan 72x / Bln (Rp)'] || Math.max(0, c60 - c72);
+        
+        let col72Content = '';
+        if (isGreenville) {
+          const p72 = u['Harga Bertahap 72x (Rp)'] || (u['Booking Fee / UTJ (Rp)'] + Math.round((p60 - u['Booking Fee / UTJ (Rp)']) * 1.06));
+          const c72 = u['Cicilan Bertahap 72x / Bln (Rp)'] || Math.round((p72 - u['Booking Fee / UTJ (Rp)']) / 72);
+          const hemat72 = u['Hemat Cicilan 72x / Bln (Rp)'] || Math.max(0, c60 - c72);
+          col72Content = `
+            <td class="py-2.5 px-3.5 text-right border-l border-slate-200 bg-emerald-50/40">
+              <span class="font-extrabold text-slate-900 block">${formatIDR(p72)}</span>
+              <span class="text-[11px] font-bold text-emerald-600 block">${formatIDR(c72)}/bln</span>
+              <span class="text-[9px] font-semibold text-emerald-700 bg-emerald-100/70 px-1 py-0.2 rounded inline-block mt-0.5">Hemat ${formatIDR(hemat72)}/bln</span>
+            </td>
+          `;
+        } else {
+          col72Content = `
+            <td class="py-2.5 px-3.5 text-center border-l border-slate-200 bg-slate-50/50">
+              <span class="text-slate-400 text-xs font-semibold block">-</span>
+              <span class="text-[9px] text-slate-400 block font-normal">Hanya di Green Ville</span>
+            </td>
+          `;
+        }
         
         const cicilanDpKpr = u['Cicilan DP KPR / Bln (Rp)'] || Math.round((p60 * 0.2 - u['Booking Fee / UTJ (Rp)']) / 15);
         const estBankKpr = u['Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)'] || Math.round((p60 * 0.8) * 0.008988);
@@ -479,11 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="font-extrabold text-slate-900 block">${formatIDR(p60)}</span>
             <span class="text-[11px] font-bold text-amber-600 block">${formatIDR(c60)}/bln</span>
           </td>
-          <td class="py-2.5 px-3.5 text-right border-l border-slate-200 bg-emerald-50/40">
-            <span class="font-extrabold text-slate-900 block">${formatIDR(p72)}</span>
-            <span class="text-[11px] font-bold text-emerald-600 block">${formatIDR(c72)}/bln</span>
-            <span class="text-[9px] font-semibold text-emerald-700 bg-emerald-100/70 px-1 py-0.2 rounded inline-block mt-0.5">Hemat ${formatIDR(hemat72)}/bln</span>
-          </td>
+          ${col72Content}
           <td class="py-2.5 px-3.5 text-right border-l border-slate-200 bg-blue-50/40">
             <span class="font-semibold text-slate-700 text-[11px] block">DP 15x: ${formatIDR(cicilanDpKpr)}/bln</span>
             <span class="text-[10px] text-blue-600 font-bold block">Est. Bank: ${formatIDR(estBankKpr)}/bln</span>
@@ -492,6 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="sim-from-modal-btn px-2.5 py-1.5 rounded-lg bg-cipta-blue hover:bg-blue-800 text-white font-bold text-[10px] transition shadow-sm flex items-center justify-center gap-1 mx-auto" 
               data-price="${p60}" 
               data-booking="${u['Booking Fee / UTJ (Rp)']}" 
+              data-proj="${proj.name}"
               data-unit="${proj.name} - ${u['Tipe Unit']}">
               <i data-lucide="calculator" class="w-3 h-3"></i> Hitung
             </button>
@@ -505,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalLinktreeBtn.href = proj.linktree_url || 'https://linktr.ee/ciptagroupofficial';
     
-    const waText = encodeURIComponent(`Halo Cipta Group, saya ingin informasi perbandingan harga Cash Bertahap 60x vs 72x vs KPR untuk proyek *${proj.name}*.`);
+    const waText = encodeURIComponent(`Halo Cipta Group, saya ingin informasi pricelist & simulasi untuk proyek *${proj.name}*.`);
     modalWaBtn.href = `https://wa.me/628117700000?text=${waText}`;
 
     modalSimulateBtn.onclick = () => {
@@ -514,6 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (proj.units && proj.units.length > 0) {
         populateCalculatorWithUnit(proj.units[0], proj.name);
       } else {
+        currentCalculatorProject = proj.name;
         calcPriceInput.value = proj.min_price || 500000000;
         updateCalculator();
       }
@@ -527,10 +549,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const pr = parseFloat(b.getAttribute('data-price'));
         const bk = parseFloat(b.getAttribute('data-booking'));
         const un = b.getAttribute('data-unit');
+        const pj = b.getAttribute('data-proj');
         
         closeModal();
         window.location.hash = 'kalkulator';
 
+        currentCalculatorProject = pj;
         calcPriceInput.value = pr;
         calcBookingSelect.value = bk;
         setCalculatorMode('BERTAHAP_60');
@@ -548,13 +572,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === projectModal) closeModal();
   });
 
-  // 4. Populate Master Unit Table with Side-by-Side 60x vs 72x vs KPR Comparison
+  // 4. Populate Master Unit Table: 72x ONLY active for Cipta Green Ville
   function renderMasterTable(filterText = '') {
     masterTableBody.innerHTML = '';
     const q = filterText.toLowerCase().trim();
 
     let count = 0;
     data.projects.forEach(p => {
+      const isGreenville = p.name.toLowerCase().includes('green ville') || p.name.toLowerCase().includes('greenville');
+
       p.units.forEach(u => {
         const match = !q || 
           p.name.toLowerCase().includes(q) || 
@@ -569,9 +595,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const p60 = u['Harga Bertahap 60x (Rp)'] || u['Harga Jual (Rp)'];
           const c60 = u['Cicilan Bertahap 60x / Bln (Rp)'] || u['Cicilan Cash Bertahap / Bln (Rp)'];
-          const p72 = u['Harga Bertahap 72x (Rp)'] || (u['Booking Fee / UTJ (Rp)'] + Math.round((p60 - u['Booking Fee / UTJ (Rp)']) * 1.06));
-          const c72 = u['Cicilan Bertahap 72x / Bln (Rp)'] || Math.round((p72 - u['Booking Fee / UTJ (Rp)']) / 72);
-          const hemat72 = u['Hemat Cicilan 72x / Bln (Rp)'] || Math.max(0, c60 - c72);
+          
+          let col72Html = '';
+          if (isGreenville) {
+            const p72 = u['Harga Bertahap 72x (Rp)'] || (u['Booking Fee / UTJ (Rp)'] + Math.round((p60 - u['Booking Fee / UTJ (Rp)']) * 1.06));
+            const c72 = u['Cicilan Bertahap 72x / Bln (Rp)'] || Math.round((p72 - u['Booking Fee / UTJ (Rp)']) / 72);
+            const hemat72 = u['Hemat Cicilan 72x / Bln (Rp)'] || Math.max(0, c60 - c72);
+            col72Html = `
+              <td class="py-3 px-3.5 text-right border-l border-slate-100 bg-emerald-50/20">
+                <div class="font-extrabold text-slate-900">${formatIDR(p72)}</div>
+                <div class="text-[11px] font-bold text-emerald-600">${formatIDR(c72)}<span class="text-[10px] text-slate-400 font-normal">/bln (72x)</span></div>
+                <div class="mt-0.5"><span class="inline-block text-[9px] font-extrabold text-emerald-700 bg-emerald-100 px-1.5 py-0.2 rounded">Hemat ${formatIDR(hemat72)}/bln</span></div>
+              </td>
+            `;
+          } else {
+            col72Html = `
+              <td class="py-3 px-3.5 text-center border-l border-slate-100 bg-slate-50/40">
+                <span class="text-slate-400 text-xs font-bold block">-</span>
+                <span class="text-[9px] text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded inline-block font-medium">Hanya 60x (Khusus Green Ville)</span>
+              </td>
+            `;
+          }
           
           const cicilanDpKpr = u['Cicilan DP KPR / Bln (Rp)'] || Math.round((p60 * 0.2 - u['Booking Fee / UTJ (Rp)']) / 15);
           const estBankKpr = u['Estimasi Angsuran KPR Bank 15 Thn / Bln (Rp)'] || Math.round((p60 * 0.8) * 0.008988);
@@ -593,11 +637,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="font-extrabold text-slate-900">${formatIDR(p60)}</div>
               <div class="text-[11px] font-bold text-amber-600">${formatIDR(c60)}<span class="text-[10px] text-slate-400 font-normal">/bln (60x)</span></div>
             </td>
-            <td class="py-3 px-3.5 text-right border-l border-slate-100 bg-emerald-50/20">
-              <div class="font-extrabold text-slate-900">${formatIDR(p72)}</div>
-              <div class="text-[11px] font-bold text-emerald-600">${formatIDR(c72)}<span class="text-[10px] text-slate-400 font-normal">/bln (72x)</span></div>
-              <div class="mt-0.5"><span class="inline-block text-[9px] font-extrabold text-emerald-700 bg-emerald-100 px-1.5 py-0.2 rounded">Hemat ${formatIDR(hemat72)}/bln</span></div>
-            </td>
+            ${col72Html}
             <td class="py-3 px-3.5 text-right border-l border-slate-100 bg-blue-50/20">
               <div class="text-[11px] font-bold text-slate-700">DP 15x: ${formatIDR(cicilanDpKpr)}/bln</div>
               <div class="text-[11px] font-extrabold text-blue-600">Est. Bank: ${formatIDR(estBankKpr)}/bln</div>
@@ -607,6 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <button class="sim-from-table-btn px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-[11px] transition shadow-sm flex items-center justify-center gap-1 mx-auto" 
                 data-price="${p60}" 
                 data-booking="${u['Booking Fee / UTJ (Rp)']}" 
+                data-proj="${p.name}"
                 data-unit="${p.name} - ${u['Tipe Unit']}">
                 <i data-lucide="calculator" class="w-3.5 h-3.5 text-amber-400"></i> Hitung
               </button>
@@ -628,8 +669,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const pr = parseFloat(b.getAttribute('data-price'));
         const bk = parseFloat(b.getAttribute('data-booking'));
         const un = b.getAttribute('data-unit');
+        const pj = b.getAttribute('data-proj');
         
         window.location.hash = 'kalkulator';
+        currentCalculatorProject = pj;
         calcPriceInput.value = pr;
         calcBookingSelect.value = bk;
         setCalculatorMode('BERTAHAP_60');
@@ -644,8 +687,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5. Populate Calculator Dropdown
   data.projects.forEach(p => {
+    const isGreenville = p.name.toLowerCase().includes('green ville') || p.name.toLowerCase().includes('greenville');
     const optGroup = document.createElement('optgroup');
-    optGroup.label = p.name;
+    optGroup.label = isGreenville ? `${p.name} ⭐ (Tersedia Opsi 72x)` : p.name;
+    
     p.units.forEach(u => {
       const opt = document.createElement('option');
       opt.value = JSON.stringify({
@@ -655,7 +700,8 @@ document.addEventListener('DOMContentLoaded', () => {
         booking: u['Booking Fee / UTJ (Rp)'],
         tenor: u['Tenor Bertahap (Bulan)'] || 60
       });
-      opt.textContent = `${p.name} - ${u['Tipe Unit']} (${u['Posisi'] || 'Std'}) - ${formatIDR(u['Harga Jual (Rp)'])}`;
+      const badgeText = isGreenville ? ' [Opsi 72x Tersedia]' : '';
+      opt.textContent = `${p.name} - ${u['Tipe Unit']} (${u['Posisi'] || 'Std'}) - ${formatIDR(u['Harga Jual (Rp)'])} ${badgeText}`;
       optGroup.appendChild(opt);
     });
     calcUnitSelect.appendChild(optGroup);
@@ -664,12 +710,14 @@ document.addEventListener('DOMContentLoaded', () => {
   calcUnitSelect.addEventListener('change', (e) => {
     if (!e.target.value) return;
     const u = JSON.parse(e.target.value);
+    currentCalculatorProject = u.project;
     calcPriceInput.value = u.price;
     calcBookingSelect.value = u.booking;
     updateCalculator(`${u.project} - ${u.type}`);
   });
 
   function populateCalculatorWithUnit(unit, projectName) {
+    currentCalculatorProject = projectName;
     calcPriceInput.value = unit['Harga Jual (Rp)'];
     calcBookingSelect.value = unit['Booking Fee / UTJ (Rp)'];
     setCalculatorMode('BERTAHAP_60');
@@ -700,10 +748,37 @@ document.addEventListener('DOMContentLoaded', () => {
       tabCashBertahap72.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 bg-emerald-500 text-slate-950 shadow-md";
       tenorLabel.textContent = "Tenor Cash Bertahap Panjang:";
       calcTenorSelect.innerHTML = `
-        <option value="72" selected>72 Bulan (6 Tahun - Markup +6% Pokok)</option>
+        <option value="72" selected>72 Bulan (6 Tahun - Khusus Green Ville)</option>
       `;
       dpControlContainer.classList.remove('hidden');
       setDpMode('ZERO');
+
+      // If current project is not Greenville, auto-switch to Greenville unit so user sees working 72x figures
+      const isGreenville = currentCalculatorProject && (currentCalculatorProject.toLowerCase().includes('green ville') || currentCalculatorProject.toLowerCase().includes('greenville'));
+      if (!isGreenville) {
+        const gvProj = data.projects.find(p => p.name.toLowerCase().includes('green ville') || p.name.toLowerCase().includes('greenville'));
+        if (gvProj && gvProj.units && gvProj.units.length > 0) {
+          currentCalculatorProject = gvProj.name;
+          const gvUnit = gvProj.units[0];
+          calcPriceInput.value = gvUnit['Harga Jual (Rp)'];
+          calcBookingSelect.value = gvUnit['Booking Fee / UTJ (Rp)'];
+          
+          for (let i = 0; i < calcUnitSelect.options.length; i++) {
+            const opt = calcUnitSelect.options[i];
+            if (opt.value) {
+              try {
+                const parsed = JSON.parse(opt.value);
+                if (parsed.project === gvProj.name) {
+                  calcUnitSelect.selectedIndex = i;
+                  break;
+                }
+              } catch(e) {}
+            }
+          }
+          updateCalculator(`${gvProj.name} - ${gvUnit['Tipe Unit']}`);
+          return;
+        }
+      }
     } else if (calcMode === 'KPR') {
       tabKprBank.className = "flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 bg-blue-500 text-white shadow-md";
       tenorLabel.textContent = "Lama Cicilan DP ke Developer:";
@@ -752,6 +827,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const tenor = parseInt(calcTenorSelect.value) || (calcMode === 'BERTAHAP_72' ? 72 : 60);
     const dpPercent = parseInt(calcDpSlider.value) || 20;
 
+    const isGreenville = currentCalculatorProject && (currentCalculatorProject.toLowerCase().includes('green ville') || currentCalculatorProject.toLowerCase().includes('greenville'));
+
     calcPriceFormatted.textContent = formatIDR(basePrice);
 
     // --- Benchmark 1: Skema Cash Bertahap 60x (Base) ---
@@ -759,7 +836,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sisa60 = Math.max(0, p60 - booking);
     const cicilan60 = Math.round(sisa60 / 60);
 
-    // --- Benchmark 2: Skema Cash Bertahap 72x (+6% Markup on Sisa Pokok) ---
+    // --- Benchmark 2: Skema Cash Bertahap 72x (Khusus Cipta Green Ville) ---
     const sisa72 = Math.round(Math.max(0, basePrice - booking) * 1.06);
     const p72 = booking + sisa72;
     const diff72 = p72 - p60;
@@ -781,11 +858,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cmpBooking60) cmpBooking60.textContent = formatIDR(booking);
     if (cmpCicilan60) cmpCicilan60.textContent = formatIDR(cicilan60) + '/bln';
 
-    if (cmpPrice72) cmpPrice72.textContent = formatIDR(p72);
-    if (cmpDiff72) cmpDiff72.textContent = `Selisih: +${formatIDR(diff72)} (+6% Tenor)`;
-    if (cmpBooking72) cmpBooking72.textContent = formatIDR(booking);
-    if (cmpCicilan72) cmpCicilan72.textContent = formatIDR(cicilan72) + '/bln';
-    if (cmpHemat72) cmpHemat72.textContent = `Hemat ${formatIDR(hemat72)}/bln`;
+    // Card 72x: Display calculation ONLY for Cipta Green Ville
+    if (cmpPrice72) {
+      if (isGreenville) {
+        cmpPrice72.textContent = formatIDR(p72);
+        if (cmpDiff72) cmpDiff72.textContent = `Selisih: +${formatIDR(diff72)} (+6% Tenor 6 Thn)`;
+        if (cmpBooking72) cmpBooking72.textContent = formatIDR(booking);
+        if (cmpCicilan72) cmpCicilan72.textContent = formatIDR(cicilan72) + '/bln';
+        if (cmpHemat72) {
+          cmpHemat72.textContent = `Hemat ${formatIDR(hemat72)}/bln`;
+          cmpHemat72.className = 'text-[10px] font-bold text-emerald-300 bg-emerald-500/20 px-2 py-1 rounded border border-emerald-500/30 whitespace-nowrap';
+        }
+      } else {
+        cmpPrice72.textContent = '-';
+        if (cmpDiff72) cmpDiff72.textContent = 'Khusus Proyek Cipta Green Ville';
+        if (cmpBooking72) cmpBooking72.textContent = '-';
+        if (cmpCicilan72) cmpCicilan72.textContent = 'Hanya Tersedia di Green Ville';
+        if (cmpHemat72) {
+          cmpHemat72.textContent = 'Hanya 60x';
+          cmpHemat72.className = 'text-[10px] font-bold text-slate-400 bg-slate-800 px-2 py-1 rounded border border-slate-700 whitespace-nowrap';
+        }
+      }
+    }
 
     if (cmpPriceKpr) cmpPriceKpr.textContent = formatIDR(pKpr);
     if (cmpLabelDpKpr) cmpLabelDpKpr.textContent = `Total DP (${dpPercent}%):`;
@@ -800,6 +894,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let netDp = 0;
     let sisaPokok = 0;
     let monthlyCicilan = 0;
+
+    resMonthlyCicilan.className = "text-2xl xs:text-3xl sm:text-4xl font-extrabold text-white mt-1 text-emerald-400 break-words";
 
     if (calcMode === 'BERTAHAP_60') {
       activePrice = p60;
@@ -849,52 +945,74 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
     } else if (calcMode === 'BERTAHAP_72') {
-      activePrice = p72;
-      if (dpMode === 'ZERO') {
-        badgeCurrentMode.textContent = "Cash Bertahap 72x (+6% Tenor Panjang)";
-        badgeCurrentMode.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
-        labelMonthlyTitle.textContent = "Cicilan Cash Bertahap 72x per Bulan:";
-
-        totalDp = 0;
-        netDp = 0;
-        sisaPokok = sisa72;
-        monthlyCicilan = cicilan72;
-
-        resTenorText.textContent = `selama 72 bulan (6 tahun) • Hemat ${formatIDR(hemat72)}/bulan dibanding tenor 60x`;
-        resLabelDp.textContent = "3. Uang Muka (DP):";
-        resDpValue.textContent = "Rp 0 (DP 0% / Murni Bertahap 72x)";
+      if (!isGreenville) {
+        // Warning when 72x is selected for non-Greenville project
+        badgeCurrentMode.textContent = "Cash Bertahap 72x (Khusus Cipta Green Ville)";
+        badgeCurrentMode.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30";
+        labelMonthlyTitle.textContent = "Catatan Skema Cash Bertahap 72x:";
+        resMonthlyCicilan.textContent = "Hanya di Green Ville";
+        resMonthlyCicilan.className = "text-xl sm:text-2xl font-bold text-amber-400 mt-1";
+        resTenorText.textContent = `Unit proyek ${currentCalculatorProject} hanya berlaku tenor bertahap maksimal 60x (5 tahun).`;
+        resLabelDp.textContent = "3. Status Skema 72x:";
+        resDpValue.textContent = "Tidak Tersedia di Proyek Ini";
         rowNetDp.classList.add('hidden');
-
-        resLabelRemaining.textContent = "4. Sisa Pokok yang Dicicil (Markup +6%):";
-        resRemainingPrice.textContent = formatIDR(sisaPokok);
-
+        resLabelRemaining.textContent = "4. Rekomendasi Pilihan:";
+        resRemainingPrice.textContent = "Gunakan Cash Bertahap 60x atau KPR";
         resFormulaVerification.innerHTML = `
-          ${formatIDR(booking)} (Booking) + (72 bln × ${formatIDR(monthlyCicilan)}) = <b>${formatIDR(activePrice)}</b><br>
-          <span class="text-emerald-300 font-semibold block mt-1">✓ Penghematan cicilan: ${formatIDR(hemat72)}/bulan dibanding tenor 60x (Rp ${formatIDR(cicilan60)}/bln)</span>
+          <span class="text-amber-300 font-semibold block">⚠️ Skema Cash Bertahap 72x hanya berlaku eksklusif untuk proyek <b>Cipta Green Ville</b>.</span>
+          <span class="text-slate-300 text-[11px] block mt-1">Silakan ganti tab ke <b>Cash Bertahap 60x</b> atau pilih unit Cipta Green Ville pada menu dropdown.</span>
         `;
+        monthlyCicilan = 0;
+        activePrice = basePrice;
       } else {
-        badgeCurrentMode.textContent = `Cash Bertahap 72x (DP ${dpPercent}%)`;
-        badgeCurrentMode.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
-        labelMonthlyTitle.textContent = "Cicilan Pokok Bertahap 72x per Bulan:";
+        // Valid 72x calculation for Cipta Green Ville
+        activePrice = p72;
+        if (dpMode === 'ZERO') {
+          badgeCurrentMode.textContent = "Cash Bertahap 72x (Khusus Green Ville)";
+          badgeCurrentMode.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+          labelMonthlyTitle.textContent = "Cicilan Cash Bertahap 72x per Bulan:";
 
-        totalDp = Math.round(activePrice * (dpPercent / 100));
-        netDp = Math.max(0, totalDp - booking);
-        sisaPokok = Math.max(0, activePrice - totalDp);
-        monthlyCicilan = Math.round(sisaPokok / 72);
+          totalDp = 0;
+          netDp = 0;
+          sisaPokok = sisa72;
+          monthlyCicilan = cicilan72;
 
-        dpPercentValue.textContent = `${dpPercent}% (${formatIDR(totalDp)})`;
-        resTenorText.textContent = `selama 72 bulan (setelah pelunasan DP)`;
-        resLabelDp.textContent = `3. Total Uang Muka (${dpPercent}%):`;
-        resDpValue.textContent = formatIDR(totalDp);
-        rowNetDp.classList.remove('hidden');
-        resNetDpValue.textContent = formatIDR(netDp);
+          resTenorText.textContent = `selama 72 bulan (6 tahun) • Hemat ${formatIDR(hemat72)}/bulan dibanding tenor 60x`;
+          resLabelDp.textContent = "3. Uang Muka (DP):";
+          resDpValue.textContent = "Rp 0 (DP 0% / Murni Bertahap 72x)";
+          rowNetDp.classList.add('hidden');
 
-        resLabelRemaining.textContent = "4. Sisa Pokok yang Dicicil (72x):";
-        resRemainingPrice.textContent = formatIDR(sisaPokok);
+          resLabelRemaining.textContent = "4. Sisa Pokok yang Dicicil (Markup +6%):";
+          resRemainingPrice.textContent = formatIDR(sisaPokok);
 
-        resFormulaVerification.innerHTML = `
-          ${formatIDR(booking)} (Booking) + ${formatIDR(netDp)} (Sisa DP) + (72 bln × ${formatIDR(monthlyCicilan)}) = <b>${formatIDR(activePrice)}</b>
-        `;
+          resFormulaVerification.innerHTML = `
+            ${formatIDR(booking)} (Booking) + (72 bln × ${formatIDR(monthlyCicilan)}) = <b>${formatIDR(activePrice)}</b><br>
+            <span class="text-emerald-300 font-semibold block mt-1">✓ Penghematan cicilan: ${formatIDR(hemat72)}/bulan dibanding tenor 60x (Rp ${formatIDR(cicilan60)}/bln)</span>
+          `;
+        } else {
+          badgeCurrentMode.textContent = `Cash Bertahap 72x (DP ${dpPercent}%)`;
+          badgeCurrentMode.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+          labelMonthlyTitle.textContent = "Cicilan Pokok Bertahap 72x per Bulan:";
+
+          totalDp = Math.round(activePrice * (dpPercent / 100));
+          netDp = Math.max(0, totalDp - booking);
+          sisaPokok = Math.max(0, activePrice - totalDp);
+          monthlyCicilan = Math.round(sisaPokok / 72);
+
+          dpPercentValue.textContent = `${dpPercent}% (${formatIDR(totalDp)})`;
+          resTenorText.textContent = `selama 72 bulan (setelah pelunasan DP)`;
+          resLabelDp.textContent = `3. Total Uang Muka (${dpPercent}%):`;
+          resDpValue.textContent = formatIDR(totalDp);
+          rowNetDp.classList.remove('hidden');
+          resNetDpValue.textContent = formatIDR(netDp);
+
+          resLabelRemaining.textContent = "4. Sisa Pokok yang Dicicil (72x):";
+          resRemainingPrice.textContent = formatIDR(sisaPokok);
+
+          resFormulaVerification.innerHTML = `
+            ${formatIDR(booking)} (Booking) + ${formatIDR(netDp)} (Sisa DP) + (72 bln × ${formatIDR(monthlyCicilan)}) = <b>${formatIDR(activePrice)}</b>
+          `;
+        }
       }
     } else {
       // SKEMA KPR BANK
@@ -924,7 +1042,9 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
 
-    resMonthlyCicilan.textContent = formatIDR(monthlyCicilan);
+    if (calcMode !== 'BERTAHAP_72' || isGreenville) {
+      resMonthlyCicilan.textContent = formatIDR(monthlyCicilan);
+    }
     resTotalPrice.textContent = formatIDR(activePrice);
     resBookingFee.textContent = formatIDR(booking);
 
@@ -945,16 +1065,24 @@ document.addEventListener('DOMContentLoaded', () => {
     resFirstInstallmentDate.textContent = firstDate.toLocaleDateString('id-ID', options);
 
     // WhatsApp Message
-    const unitText = customUnitTitle ? `untuk unit *${customUnitTitle}*` : '';
+    const unitText = customUnitTitle ? `untuk unit *${customUnitTitle}*` : (currentCalculatorProject ? `proyek *${currentCalculatorProject}*` : '');
     let modeText = '';
     if (calcMode === 'BERTAHAP_60') {
       modeText = dpMode === 'ZERO' ? 'Cash Bertahap 60x Tanpa DP' : `Cash Bertahap 60x (DP ${dpPercent}%)`;
     } else if (calcMode === 'BERTAHAP_72') {
-      modeText = dpMode === 'ZERO' ? 'Cash Bertahap 72x (+6% Tenor Panjang)' : `Cash Bertahap 72x (DP ${dpPercent}%)`;
+      modeText = dpMode === 'ZERO' ? 'Cash Bertahap 72x (Khusus Cipta Green Ville)' : `Cash Bertahap 72x (DP ${dpPercent}%)`;
     } else {
       modeText = `Skema KPR Bank (DP ${dpPercent}%, Cicil DP ${tenor}x)`;
     }
     
+    let comparisonText = `Perbandingan Skema:\n- 60x: ${formatIDR(p60)} (Cicilan: ${formatIDR(cicilan60)}/bln)\n`;
+    if (isGreenville) {
+      comparisonText += `- 72x: ${formatIDR(p72)} (Cicilan: ${formatIDR(cicilan72)}/bln - Hemat ${formatIDR(hemat72)}/bln)\n`;
+    } else {
+      comparisonText += `- 72x: Tidak tersedia (Hanya berlaku di Cipta Green Ville)\n`;
+    }
+    comparisonText += `- KPR Bank: DP 15x @${formatIDR(cicilanDpKpr)}/bln, Bank 15 Thn @${formatIDR(angsuranBankKpr)}/bln`;
+
     const msg = encodeURIComponent(
       `Halo Cipta Group, saya ingin konsultasi simulasi pembiayaan ${unitText}:\n` +
       `• Pilihan Skema: ${modeText}\n` +
@@ -963,10 +1091,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `• Uang Muka (DP): ${formatIDR(totalDp)}\n` +
       `• Sisa Pokok / Plafon: ${formatIDR(sisaPokok)}\n` +
       `• Estimasi Cicilan: ${formatIDR(monthlyCicilan)}/bulan\n\n` +
-      `Perbandingan:\n` +
-      `- 60x: ${formatIDR(p60)} (Cicilan: ${formatIDR(cicilan60)}/bln)\n` +
-      `- 72x: ${formatIDR(p72)} (Cicilan: ${formatIDR(cicilan72)}/bln - Hemat ${formatIDR(hemat72)}/bln)\n` +
-      `- KPR: DP 15x @${formatIDR(cicilanDpKpr)}/bln, Bank 15 Thn @${formatIDR(angsuranBankKpr)}/bln\n\n` +
+      `${comparisonText}\n\n` +
       `Mohon info ketersediaan unit dan jadwal visit lokasi. Terima kasih!`
     );
     calcWaBtn.onclick = () => {
@@ -1028,7 +1153,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Initial Run
+  // Initial Run - default to Cipta Green Ville for showcase
+  const gv = data.projects.find(p => p.name.toLowerCase().includes('green ville') || p.name.toLowerCase().includes('greenville'));
+  if (gv && gv.units && gv.units.length > 0) {
+    currentCalculatorProject = gv.name;
+    calcPriceInput.value = gv.units[0]['Harga Jual (Rp)'];
+    calcBookingSelect.value = gv.units[0]['Booking Fee / UTJ (Rp)'];
+  }
+
   applyFilters();
   renderMasterTable();
   updateCalculator();

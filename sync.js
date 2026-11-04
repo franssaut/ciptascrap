@@ -278,15 +278,26 @@ async function runSync() {
     // Build Web Projects Array
     const webProjects = projectsData.map(p => {
       const rawUnits = existingUnits.filter(u => u['Proyek'] === p.project_name);
+      const isGreenville = p.project_name.toLowerCase().includes('green ville') || p.project_name.toLowerCase().includes('greenville');
       const pUnits = rawUnits.map(u => {
         const h60 = Number(u['Harga Jual (Rp)'] || u['Harga Bertahap 60x (Rp)']);
         const b = Number(u['Booking Fee / UTJ (Rp)']);
         const sisa60 = h60 - b;
         const c60 = Math.round(sisa60 / 60);
 
-        const sisa72 = Math.round(sisa60 * 1.06);
-        const h72 = b + sisa72;
-        const c72 = Math.round(sisa72 / 72);
+        let h72 = null;
+        let c72 = null;
+        let diff72 = null;
+        let hemat72 = null;
+
+        // Opsi 72x (+6%) hanya berlaku khusus untuk proyek Cipta Green Ville
+        if (isGreenville) {
+          const sisa72 = Math.round(sisa60 * 1.06);
+          h72 = b + sisa72;
+          c72 = Math.round(sisa72 / 72);
+          diff72 = h72 - h60;
+          hemat72 = c60 - c72;
+        }
 
         const dpPct = Number(u['DP KPR (%)'] || 20);
         const dpKpr = Math.round(h60 * (dpPct / 100));
@@ -303,8 +314,8 @@ async function runSync() {
           'Cicilan Bertahap 60x / Bln (Rp)': c60,
           'Harga Bertahap 72x (Rp)': h72,
           'Cicilan Bertahap 72x / Bln (Rp)': c72,
-          'Selisih Harga 72x vs 60x (Rp)': h72 - h60,
-          'Hemat Cicilan 72x / Bln (Rp)': c60 - c72,
+          'Selisih Harga 72x vs 60x (Rp)': diff72,
+          'Hemat Cicilan 72x / Bln (Rp)': hemat72,
           'Harga KPR (Rp)': h60,
           'Plafon KPR (Rp)': plafon,
           'Cicilan DP KPR / Bln (Rp)': cDp
